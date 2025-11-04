@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyPhysio - Interactive Physiology Practice</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="site-title">
+                <i class="fas fa-brain"></i>
+                StudyPhysio
+            </h1>
+            <div class="header-right">
+                <div class="progress-indicator">
+                    <i class="fas fa-trophy"></i>
+                    <span id="totalScore">0 pts</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Course Units</h2>
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="unit-section">
+                <button class="unit-header" data-unit="1">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Unit 1: Cardiovascular System</span>
+                </button>
+                <div class="unit-content" data-unit="1">
+                    <a href="#" class="nav-item" data-section="unit1-checkup">
+                        <i class="fas fa-clipboard-check"></i>
+                        Checkup Test 1
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit1-practice">
+                        <i class="fas fa-pencil-alt"></i>
+                        Practice Questions 1
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit1-practical">
+                        <i class="fas fa-flask"></i>
+                        Practical 1
+                    </a>
+                </div>
+            </div>
+
+            <div class="unit-section">
+                <button class="unit-header" data-unit="2">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Unit 2: Respiratory System</span>
+                </button>
+                <div class="unit-content" data-unit="2">
+                    <a href="#" class="nav-item" data-section="unit2-checkup">
+                        <i class="fas fa-clipboard-check"></i>
+                        Checkup Test 2
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit2-practice">
+                        <i class="fas fa-pencil-alt"></i>
+                        Practice Questions 2
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit2-practical">
+                        <i class="fas fa-flask"></i>
+                        Practical 2
+                    </a>
+                </div>
+            </div>
+
+            <div class="unit-section">
+                <button class="unit-header" data-unit="3">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Unit 3: Nervous System</span>
+                </button>
+                <div class="unit-content" data-unit="3">
+                    <a href="#" class="nav-item" data-section="unit3-checkup">
+                        <i class="fas fa-clipboard-check"></i>
+                        Checkup Test 3
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit3-practice">
+                        <i class="fas fa-pencil-alt"></i>
+                        Practice Questions 3
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit3-practical">
+                        <i class="fas fa-flask"></i>
+                        Practical 3
+                    </a>
+                </div>
+            </div>
+
+            <div class="unit-section">
+                <button class="unit-header" data-unit="4">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Unit 4: Endocrine System</span>
+                </button>
+                <div class="unit-content" data-unit="4">
+                    <a href="#" class="nav-item" data-section="unit4-checkup">
+                        <i class="fas fa-clipboard-check"></i>
+                        Checkup Test 4
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit4-practice">
+                        <i class="fas fa-pencil-alt"></i>
+                        Practice Questions 4
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit4-practical">
+                        <i class="fas fa-flask"></i>
+                        Practical 4
+                    </a>
+                </div>
+            </div>
+
+            <div class="unit-section">
+                <button class="unit-header" data-unit="5">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Unit 5: Muscle Physiology</span>
+                </button>
+                <div class="unit-content" data-unit="5">
+                    <a href="#" class="nav-item" data-section="unit5-checkup">
+                        <i class="fas fa-clipboard-check"></i>
+                        Checkup Test 5
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit5-practice">
+                        <i class="fas fa-pencil-alt"></i>
+                        Practice Questions 5
+                    </a>
+                    <a href="#" class="nav-item" data-section="unit5-practical">
+                        <i class="fas fa-flask"></i>
+                        Practical 5
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Homepage -->
+        <section class="home-section" id="homeSection">
+            <div class="welcome-card">
+                <div class="welcome-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h1 class="welcome-title">Welcome to StudyPhysio</h1>
+                <p class="welcome-subtitle">Master Human Physiology Through Interactive Practice</p>
+                <p class="welcome-description">
+                    Explore comprehensive practice questions covering cardiovascular, respiratory, nervous, endocrine, and muscle systems.
+                    Test your knowledge with checkup tests, practice questions, and practical applications.
+                </p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Multiple Question Types</h3>
+                        <p>MCQs, True/False, Fill-in-the-blank, and Short Answer</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Instant Feedback</h3>
+                        <p>Get immediate explanations for every answer</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Progress Tracking</h3>
+                        <p>Monitor your learning journey and scores</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Friendly</h3>
+                        <p>Study anywhere, anytime on any device</p>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="document.querySelector('.nav-item').click()">
+                    <i class="fas fa-play"></i>
+                    Start Learning
+                </button>
+            </div>
+        </section>
+
+        <!-- Question Section -->
+        <section class="question-section hidden" id="questionSection">
+            <div class="section-header">
+                <h2 id="sectionTitle">Practice Questions</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                    <span class="progress-text" id="progressText">0/0</span>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <span class="question-number" id="questionNumber">Question 1</span>
+                    <span class="question-type-badge" id="questionTypeBadge">Multiple Choice</span>
+                </div>
+
+                <div class="question-content">
+                    <p class="question-text" id="questionText"></p>
+
+                    <!-- Multiple Choice Options -->
+                    <div class="options-container" id="optionsContainer"></div>
+
+                    <!-- Fill in the Blank -->
+                    <div class="fill-blank-container hidden" id="fillBlankContainer">
+                        <input type="text" class="fill-blank-input" id="fillBlankInput" placeholder="Type your answer here...">
+                    </div>
+
+                    <!-- Short Answer -->
+                    <div class="short-answer-container hidden" id="shortAnswerContainer">
+                        <textarea class="short-answer-input" id="shortAnswerInput" placeholder="Type your detailed answer here..." rows="4"></textarea>
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div class="feedback-container hidden" id="feedbackContainer">
+                    <div class="feedback-message" id="feedbackMessage"></div>
+                    <div class="explanation" id="explanation"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="prevBtn">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <button class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-check"></i>
+                        Submit Answer
+                    </button>
+                    <button class="btn btn-primary hidden" id="nextBtn">
+                        <i class="fas fa-arrow-right"></i>
+                        Next
+                    </button>
+                </div>
+            </div>
+
+            <!-- Score Summary -->
+            <div class="score-summary">
+                <div class="score-item">
+                    <i class="fas fa-star"></i>
+                    <span>Score: <strong id="currentScore">0</strong></span>
+                </div>
+                <div class="score-item">
+                    <i class="fas fa-check"></i>
+                    <span>Correct: <strong id="correctCount">0</strong></span>
+                </div>
+                <div class="score-item">
+                    <i class="fas fa-times"></i>
+                    <span>Incorrect: <strong id="incorrectCount">0</strong></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
