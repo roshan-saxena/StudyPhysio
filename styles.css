@@ -8,33 +8,37 @@
 }
 
 :root {
-    /* Color Palette - Medical/Tech Theme */
-    --primary-color: #1e3a8a;
-    --primary-dark: #1e40af;
-    --primary-light: #3b82f6;
-    --secondary-color: #7c3aed;
-    --secondary-dark: #6d28d9;
-    --secondary-light: #8b5cf6;
-    --accent-color: #059669;
-    --accent-light: #34d399;
+    /* Color Palette - Refined Medical Theme */
+    --primary-color: #b91c1c;
+    --primary-dark: #991b1b;
+    --primary-light: #dc2626;
+    --secondary-color: #4a7c59;
+    --secondary-dark: #3d6b4a;
+    --secondary-light: #5a9367;
+    --accent-green: #16a34a;
+    --accent-green-light: #22c55e;
+    --accent-red: #b91c1c;
     --error-color: #dc2626;
     --error-light: #fca5a5;
-    --warning-color: #f59e0b;
-    --info-color: #0ea5e9;
-    --success-color: #10b981;
+    --success-color: #16a34a;
+    --warning-color: #ea580c;
+
+    /* Brand Colors */
+    --study-green: #5a9367;
+    --physio-red: #b91c1c;
 
     /* Neutral Colors */
-    --bg-primary: #f8fafc;
-    --bg-secondary: rgba(255, 255, 255, 0.75);
-    --bg-tertiary: rgba(241, 245, 249, 0.6);
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-light: #64748b;
-    --border-color: rgba(148, 163, 184, 0.12);
+    --bg-primary: #fafafa;
+    --bg-secondary: rgba(255, 255, 255, 0.8);
+    --bg-tertiary: rgba(249, 250, 251, 0.7);
+    --text-primary: #1a1a1a;
+    --text-secondary: #4b5563;
+    --text-light: #6b7280;
+    --border-color: rgba(148, 163, 184, 0.15);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
 
     /* Spacing */
     --header-height: 70px;
@@ -48,7 +52,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 50%, #e7e5ff 100%);
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #f0f0f0 100%);
     background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
@@ -64,9 +68,9 @@ body::before {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(185, 28, 28, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(90, 147, 103, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(185, 28, 28, 0.015) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -84,11 +88,11 @@ body::before {
     left: 0;
     right: 0;
     height: var(--header-height);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 50%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #991b1b 0%, #b91c1c 35%, #dc2626 65%, #b91c1c 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px 0 rgba(30, 58, 138, 0.15);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 20px 0 rgba(185, 28, 28, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
 }
 
@@ -127,17 +131,17 @@ body::before {
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    font-style: italic;
 }
 
-.site-title i {
-    font-size: 1.8rem;
-    animation: pulse 2s infinite;
+.title-study {
+    color: #5a9367;
+    font-weight: 700;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+.title-physio {
+    color: #ffffff;
+    font-weight: 700;
 }
 
 .header-right {
@@ -276,7 +280,7 @@ body::before {
 }
 
 .nav-item.active {
-    background: linear-gradient(90deg, rgba(30, 58, 138, 0.08) 0%, transparent 100%);
+    background: linear-gradient(90deg, rgba(185, 28, 28, 0.08) 0%, transparent 100%);
     color: var(--primary-color);
     font-weight: 600;
     border-left-color: var(--primary-color);
@@ -339,13 +343,19 @@ body::before {
 .welcome-title {
     font-size: 3rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     position: relative;
     z-index: 1;
+    font-style: italic;
+}
+
+.welcome-title .title-study {
+    color: var(--study-green);
+}
+
+.welcome-title .title-physio {
+    color: var(--physio-red);
 }
 
 .welcome-subtitle {
@@ -376,21 +386,21 @@ body::before {
 }
 
 .feature-card {
-    background: rgba(255, 255, 255, 0.65);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(249, 250, 251, 0.7) 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(185, 28, 28, 0.08);
     transition: all var(--transition-normal);
     position: relative;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(30, 58, 138, 0.2);
+    box-shadow: 0 12px 24px 0 rgba(185, 28, 28, 0.12);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(254, 242, 242, 0.85) 100%);
+    border-color: rgba(185, 28, 28, 0.15);
 }
 
 .feature-card h3 {
@@ -409,7 +419,7 @@ body::before {
 }
 
 .cta-button {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 50%, var(--primary-light) 100%);
     color: white;
     border: none;
     padding: 1rem 3rem;
@@ -422,14 +432,15 @@ body::before {
     justify-content: center;
     gap: 0.5rem;
     transition: all var(--transition-normal);
-    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.25);
+    box-shadow: 0 8px 24px rgba(185, 28, 28, 0.3);
     position: relative;
     z-index: 1;
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(30, 58, 138, 0.35);
+    box-shadow: 0 12px 32px rgba(185, 28, 28, 0.4);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-color) 100%);
 }
 
 /* ==========================================
@@ -467,11 +478,11 @@ body::before {
 
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-color) 50%, var(--primary-light) 100%);
     border-radius: 20px;
     transition: width var(--transition-slow);
     position: relative;
-    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+    box-shadow: 0 2px 8px rgba(185, 28, 28, 0.25);
 }
 
 .progress-bar::after {
@@ -527,13 +538,13 @@ body::before {
 }
 
 .question-type-badge {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
     color: white;
     padding: 0.4rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.25);
 }
 
 .question-content {
@@ -574,23 +585,23 @@ body::before {
     border-color: var(--primary-color);
     background: rgba(255, 255, 255, 0.85);
     transform: translateX(5px);
-    box-shadow: 0 4px 16px rgba(30, 58, 138, 0.12);
+    box-shadow: 0 4px 16px rgba(185, 28, 28, 0.12);
 }
 
 .option.selected {
     border-color: var(--primary-color);
-    background: rgba(30, 58, 138, 0.08);
-    box-shadow: 0 4px 16px rgba(30, 58, 138, 0.15);
+    background: rgba(185, 28, 28, 0.08);
+    box-shadow: 0 4px 16px rgba(185, 28, 28, 0.15);
 }
 
 .option.correct {
-    border-color: var(--accent-color);
-    background: rgba(5, 150, 105, 0.12);
+    border-color: var(--accent-green);
+    background: rgba(22, 163, 74, 0.1);
 }
 
 .option.incorrect {
     border-color: var(--error-color);
-    background: rgba(220, 38, 38, 0.12);
+    background: rgba(220, 38, 38, 0.1);
 }
 
 .option.disabled {
@@ -738,14 +749,15 @@ body::before {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
     color: white;
-    box-shadow: 0 4px 16px rgba(30, 58, 138, 0.25);
+    box-shadow: 0 4px 16px rgba(185, 28, 28, 0.3);
 }
 
 .btn-primary:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.35);
+    box-shadow: 0 8px 24px rgba(185, 28, 28, 0.4);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
 }
 
 .btn-secondary {
