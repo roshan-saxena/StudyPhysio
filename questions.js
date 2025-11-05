@@ -98,6 +98,29 @@ const questionBank = {
             ],
             correct: 2,
             explanation: 'The "lub-dub" sounds are caused by the <strong>closing of heart valves</strong>. "Lub" is from AV valves closing, "dub" is from semilunar valves closing.'
+        },
+        {
+            type: 'matching',
+            question: 'Match each heart structure with its primary function:',
+            leftItems: [
+                'SA node',
+                'AV node',
+                'Mitral valve',
+                'Aortic valve'
+            ],
+            rightItems: [
+                'Prevents backflow from aorta to left ventricle',
+                'Delays impulse before ventricular contraction',
+                'Prevents backflow from left ventricle to left atrium',
+                'Initiates electrical impulses for heartbeat'
+            ],
+            correctMatches: {
+                0: 3,  // SA node → Initiates electrical impulses
+                1: 1,  // AV node → Delays impulse
+                2: 2,  // Mitral valve → Prevents backflow to left atrium
+                3: 0   // Aortic valve → Prevents backflow from aorta
+            },
+            explanation: 'The <strong>SA node</strong> is the pacemaker that initiates heartbeat. The <strong>AV node</strong> delays the impulse to allow atrial emptying. The <strong>mitral valve</strong> prevents backflow to the left atrium, and the <strong>aortic valve</strong> prevents backflow from the aorta.'
         }
     ],
 

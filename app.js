@@ -41,6 +41,8 @@ const elements = {
     fillBlankInput: document.getElementById('fillBlankInput'),
     shortAnswerContainer: document.getElementById('shortAnswerContainer'),
     shortAnswerInput: document.getElementById('shortAnswerInput'),
+    matchingContainer: document.getElementById('matchingContainer'),
+    matchingGrid: document.getElementById('matchingGrid'),
 
     // Feedback
     feedbackContainer: document.getElementById('feedbackContainer'),
@@ -194,10 +196,18 @@ function displayQuestion() {
     elements.questionText.textContent = question.question;
     elements.questionTypeBadge.textContent = getQuestionTypeLabel(question.type);
 
+    // Reset matching state
+    appState.matchingSelections = {
+        left: null,
+        right: null,
+        matches: {}
+    };
+
     // Hide all input containers
     elements.optionsContainer.classList.add('hidden');
     elements.fillBlankContainer.classList.add('hidden');
     elements.shortAnswerContainer.classList.add('hidden');
+    elements.matchingContainer.classList.add('hidden');
     elements.feedbackContainer.classList.add('hidden');
 
     // Reset buttons
@@ -216,6 +226,9 @@ function displayQuestion() {
         case 'short':
             displayShortAnswer(question);
             break;
+        case 'matching':
+            displayMatching(question);
+            break;
     }
 
     // Update progress
@@ -228,7 +241,8 @@ function getQuestionTypeLabel(type) {
         'mcq': 'Multiple Choice',
         'tf': 'True/False',
         'fill': 'Fill in the Blank',
-        'short': 'Short Answer'
+        'short': 'Short Answer',
+        'matching': 'Matching'
     };
     return labels[type] || 'Question';
 }
@@ -268,6 +282,124 @@ function displayShortAnswer(question) {
     elements.shortAnswerContainer.classList.remove('hidden');
     elements.shortAnswerInput.value = '';
     elements.shortAnswerInput.focus();
+}
+
+function displayMatching(question) {
+    elements.matchingContainer.classList.remove('hidden');
+    elements.matchingGrid.innerHTML = '';
+
+    // Create left column
+    const leftColumn = document.createElement('div');
+    leftColumn.className = 'matching-column';
+    const leftTitle = document.createElement('div');
+    leftTitle.className = 'matching-column-title';
+    leftTitle.textContent = 'Items';
+    leftColumn.appendChild(leftTitle);
+
+    question.leftItems.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'matching-item';
+        itemDiv.dataset.side = 'left';
+        itemDiv.dataset.index = index;
+
+        const label = document.createElement('span');
+        label.className = 'matching-item-label';
+        label.textContent = index + 1;
+
+        const text = document.createElement('span');
+        text.textContent = item;
+
+        itemDiv.appendChild(label);
+        itemDiv.appendChild(text);
+        itemDiv.addEventListener('click', () => selectMatchingItem(itemDiv));
+
+        leftColumn.appendChild(itemDiv);
+    });
+
+    // Create right column
+    const rightColumn = document.createElement('div');
+    rightColumn.className = 'matching-column';
+    const rightTitle = document.createElement('div');
+    rightTitle.className = 'matching-column-title';
+    rightTitle.textContent = 'Matches';
+    rightColumn.appendChild(rightTitle);
+
+    question.rightItems.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'matching-item';
+        itemDiv.dataset.side = 'right';
+        itemDiv.dataset.index = index;
+
+        const label = document.createElement('span');
+        label.className = 'matching-item-label';
+        label.textContent = String.fromCharCode(65 + index); // A, B, C, D
+
+        const text = document.createElement('span');
+        text.textContent = item;
+
+        itemDiv.appendChild(label);
+        itemDiv.appendChild(text);
+        itemDiv.addEventListener('click', () => selectMatchingItem(itemDiv));
+
+        rightColumn.appendChild(itemDiv);
+    });
+
+    elements.matchingGrid.appendChild(leftColumn);
+    elements.matchingGrid.appendChild(rightColumn);
+
+    // Initialize matching state
+    if (!appState.matchingSelections) {
+        appState.matchingSelections = {
+            left: null,
+            right: null,
+            matches: {}
+        };
+    }
+}
+
+function selectMatchingItem(itemDiv) {
+    const side = itemDiv.dataset.side;
+    const index = parseInt(itemDiv.dataset.index);
+
+    // If item is already matched, don't allow reselection
+    if (itemDiv.classList.contains('matched-correct') || itemDiv.classList.contains('matched-incorrect')) {
+        return;
+    }
+
+    // Remove previous selection from this side
+    document.querySelectorAll(`.matching-item[data-side="${side}"]`).forEach(item => {
+        if (!item.classList.contains('matched-correct') && !item.classList.contains('matched-incorrect')) {
+            item.classList.remove('selected');
+        }
+    });
+
+    // Select current item
+    itemDiv.classList.add('selected');
+    appState.matchingSelections[side] = index;
+
+    // If both sides are selected, create a match
+    if (appState.matchingSelections.left !== null && appState.matchingSelections.right !== null) {
+        const leftIndex = appState.matchingSelections.left;
+        const rightIndex = appState.matchingSelections.right;
+
+        // Store the match
+        appState.matchingSelections.matches[leftIndex] = rightIndex;
+
+        // Remove selections
+        appState.matchingSelections.left = null;
+        appState.matchingSelections.right = null;
+
+        // Update UI to show items are matched (but not yet validated)
+        const leftItem = document.querySelector(`.matching-item[data-side="left"][data-index="${leftIndex}"]`);
+        const rightItem = document.querySelector(`.matching-item[data-side="right"][data-index="${rightIndex}"]`);
+
+        if (leftItem && rightItem) {
+            leftItem.classList.remove('selected');
+            rightItem.classList.remove('selected');
+            leftItem.style.opacity = '0.7';
+            rightItem.style.opacity = '0.7';
+        }
+    }
 }
 
 function selectOption(index) {
@@ -322,6 +454,38 @@ function submitAnswer() {
             // Short answers are always marked as correct with feedback
             isCorrect = true;
             break;
+
+        case 'matching':
+            if (!appState.matchingSelections || Object.keys(appState.matchingSelections.matches).length === 0) {
+                alert('Please make at least one match before submitting.');
+                return;
+            }
+
+            userAnswer = appState.matchingSelections.matches;
+            isCorrect = checkMatchingAnswer(userAnswer, question.correctMatches);
+
+            // Update UI to show correct/incorrect matches
+            for (const leftIndex in userAnswer) {
+                const rightIndex = userAnswer[leftIndex];
+                const leftItem = document.querySelector(`.matching-item[data-side="left"][data-index="${leftIndex}"]`);
+                const rightItem = document.querySelector(`.matching-item[data-side="right"][data-index="${rightIndex}"]`);
+
+                const isMatchCorrect = question.correctMatches[leftIndex] === rightIndex;
+
+                if (leftItem && rightItem) {
+                    leftItem.style.opacity = '1';
+                    rightItem.style.opacity = '1';
+
+                    if (isMatchCorrect) {
+                        leftItem.classList.add('matched-correct');
+                        rightItem.classList.add('matched-correct');
+                    } else {
+                        leftItem.classList.add('matched-incorrect');
+                        rightItem.classList.add('matched-incorrect');
+                    }
+                }
+            }
+            break;
     }
 
     // Store answer
@@ -372,6 +536,21 @@ function checkFillAnswer(userAnswer, correctAnswers) {
     }
 
     return correctAnswers.toLowerCase().trim() === normalized;
+}
+
+function checkMatchingAnswer(userMatches, correctMatches) {
+    // Check if all matches are correct
+    for (const leftIndex in userMatches) {
+        const userRightIndex = userMatches[leftIndex];
+        const correctRightIndex = correctMatches[leftIndex];
+
+        if (userRightIndex !== correctRightIndex) {
+            return false;
+        }
+    }
+
+    // Also check if all items were matched
+    return Object.keys(userMatches).length === Object.keys(correctMatches).length;
 }
 
 function highlightCorrectAnswer(question) {
