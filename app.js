@@ -67,6 +67,11 @@ const elements = {
 // INITIALIZATION
 // ==========================================
 function init() {
+    // Merge pillar checkup questions into main question bank
+    if (typeof pillarCheckupQuestions !== 'undefined') {
+        Object.assign(questionBank, pillarCheckupQuestions);
+    }
+
     loadProgress();
     setupEventListeners();
     updateScoreDisplay();
