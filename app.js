@@ -13,6 +13,8 @@ const appState = {
         correct: 0,
         incorrect: 0
     },
+    examSubmitted: false,
+    examSummary: null,
     checkupConfig: {
         isCheckup: false,
         allQuestions: [],
@@ -122,13 +124,16 @@ function setupEventListeners() {
     });
 
     // Question buttons
-    elements.submitBtn.addEventListener('click', submitAnswer);
+    elements.submitBtn.addEventListener('click', submitExam);
     elements.nextBtn.addEventListener('click', nextQuestion);
     elements.prevBtn.addEventListener('click', previousQuestion);
 
     // Enter key for fill-in-the-blank
     elements.fillBlankInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') submitAnswer();
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleForwardNavigation();
+        }
     });
 }
 
@@ -177,6 +182,8 @@ function loadSection(section) {
     appState.currentSection = section;
     appState.currentQuestionIndex = 0;
     appState.userAnswers = {};
+    appState.examSubmitted = false;
+    appState.examSummary = null;
 
     // Check if this is a pillar checkup
     if (section.includes('pillar-checkup')) {
@@ -195,6 +202,7 @@ function loadSection(section) {
     // Update section title
     const sectionName = formatSectionName(section);
     elements.sectionTitle.textContent = sectionName;
+    elements.sectionTitle.dataset.baseTitle = sectionName;
 
     // Load first question
     if (appState.questions.length > 0) {
@@ -224,47 +232,54 @@ function displayQuestion() {
 
     if (!question) return;
 
+    const storedAnswer = appState.userAnswers[appState.currentQuestionIndex] || {};
+
     // Update question info
     elements.questionNumber.textContent = `Question ${appState.currentQuestionIndex + 1}`;
     elements.questionText.textContent = question.question;
     elements.questionTypeBadge.textContent = getQuestionTypeLabel(question.type);
 
-    // Reset matching state
-    appState.matchingSelections = {
-        left: null,
-        right: null,
-        matches: {}
-    };
-
-    // Hide all input containers
+    // Reset input containers
     elements.optionsContainer.classList.add('hidden');
     elements.fillBlankContainer.classList.add('hidden');
     elements.shortAnswerContainer.classList.add('hidden');
     elements.matchingContainer.classList.add('hidden');
-    elements.feedbackContainer.classList.add('hidden');
 
-    // Reset buttons
-    elements.submitBtn.classList.remove('hidden');
-    elements.nextBtn.classList.add('hidden');
+    elements.feedbackContainer.classList.add('hidden');
+    elements.feedbackContainer.className = 'feedback-container hidden';
+    elements.feedbackMessage.innerHTML = '';
+    elements.explanation.innerHTML = '';
+
+    // Reset matching state with stored answers if available
+    appState.matchingSelections = {
+        left: null,
+        right: null,
+        matches: storedAnswer.matches ? { ...storedAnswer.matches } : {}
+    };
 
     // Display appropriate input type
     switch (question.type) {
         case 'mcq':
         case 'tf':
-            displayMultipleChoice(question);
+            displayMultipleChoice(question, storedAnswer);
             break;
         case 'fill':
-            displayFillBlank(question);
+            displayFillBlank(storedAnswer);
             break;
         case 'short':
-            displayShortAnswer(question);
+            displayShortAnswer(storedAnswer);
             break;
         case 'matching':
-            displayMatching(question);
+            displayMatching(question, storedAnswer);
             break;
     }
 
-    // Update progress
+    // Show review feedback when exam has been submitted
+    if (appState.examSubmitted) {
+        renderReviewFeedback(question, storedAnswer);
+    }
+
+    // Update progress and navigation
     updateProgress();
     updateNavigationButtons();
 }
@@ -280,44 +295,83 @@ function getQuestionTypeLabel(type) {
     return labels[type] || 'Question';
 }
 
-function displayMultipleChoice(question) {
+function displayMultipleChoice(question, storedAnswer) {
     elements.optionsContainer.classList.remove('hidden');
     elements.optionsContainer.innerHTML = '';
 
-    question.options.forEach((option, index) => {
+    const isTrueFalse = question.type === 'tf';
+    const choices = isTrueFalse
+        ? [
+            { label: 'True', value: true },
+            { label: 'False', value: false }
+        ]
+        : (question.options || []).map((text, index) => ({ label: text, value: index }));
+
+    choices.forEach((choice, index) => {
         const optionDiv = document.createElement('div');
         optionDiv.className = 'option';
         optionDiv.dataset.index = index;
 
         const label = document.createElement('span');
         label.className = 'option-label';
-        label.textContent = String.fromCharCode(65 + index); // A, B, C, D
+        label.textContent = isTrueFalse
+            ? (index === 0 ? 'T' : 'F')
+            : String.fromCharCode(65 + index); // A, B, C, D
 
         const text = document.createElement('span');
-        text.textContent = option;
+        text.textContent = choice.label;
 
         optionDiv.appendChild(label);
         optionDiv.appendChild(text);
 
-        optionDiv.addEventListener('click', () => selectOption(index));
+        if (!appState.examSubmitted) {
+            optionDiv.addEventListener('click', () => selectOption(index, question, choice.value));
+        }
+
+        const selectedIndex = typeof storedAnswer.selectedIndex === 'number'
+            ? storedAnswer.selectedIndex
+            : storedAnswer.answer;
+
+        if (typeof selectedIndex === 'number' && selectedIndex === index) {
+            optionDiv.classList.add('selected');
+        }
+
+        if (appState.examSubmitted) {
+            optionDiv.classList.add('disabled');
+        }
 
         elements.optionsContainer.appendChild(optionDiv);
     });
 }
 
-function displayFillBlank(question) {
+function displayFillBlank(storedAnswer) {
     elements.fillBlankContainer.classList.remove('hidden');
-    elements.fillBlankInput.value = '';
-    elements.fillBlankInput.focus();
+    elements.fillBlankInput.value = storedAnswer.answer || '';
+    elements.fillBlankInput.disabled = appState.examSubmitted;
+    elements.fillBlankInput.oninput = (e) => {
+        if (appState.examSubmitted) return;
+        storeAnswer({ answer: e.target.value });
+    };
+
+    if (!appState.examSubmitted) {
+        elements.fillBlankInput.focus();
+    }
 }
 
-function displayShortAnswer(question) {
+function displayShortAnswer(storedAnswer) {
     elements.shortAnswerContainer.classList.remove('hidden');
-    elements.shortAnswerInput.value = '';
-    elements.shortAnswerInput.focus();
-}
+    elements.shortAnswerInput.value = storedAnswer.answer || '';
+    elements.shortAnswerInput.disabled = appState.examSubmitted;
+    elements.shortAnswerInput.oninput = (e) => {
+        if (appState.examSubmitted) return;
+        storeAnswer({ answer: e.target.value });
+    };
 
-function displayMatching(question) {
+    if (!appState.examSubmitted) {
+        elements.shortAnswerInput.focus();
+    }
+}
+function displayMatching(question, storedAnswer) {
     elements.matchingContainer.classList.remove('hidden');
     elements.matchingGrid.innerHTML = '';
 
@@ -344,7 +398,12 @@ function displayMatching(question) {
 
         itemDiv.appendChild(label);
         itemDiv.appendChild(text);
-        itemDiv.addEventListener('click', () => selectMatchingItem(itemDiv));
+
+        itemDiv.style.opacity = '1';
+
+        if (!appState.examSubmitted) {
+            itemDiv.addEventListener('click', () => selectMatchingItem(itemDiv));
+        }
 
         leftColumn.appendChild(itemDiv);
     });
@@ -372,7 +431,12 @@ function displayMatching(question) {
 
         itemDiv.appendChild(label);
         itemDiv.appendChild(text);
-        itemDiv.addEventListener('click', () => selectMatchingItem(itemDiv));
+
+        itemDiv.style.opacity = '1';
+
+        if (!appState.examSubmitted) {
+            itemDiv.addEventListener('click', () => selectMatchingItem(itemDiv));
+        }
 
         rightColumn.appendChild(itemDiv);
     });
@@ -380,17 +444,25 @@ function displayMatching(question) {
     elements.matchingGrid.appendChild(leftColumn);
     elements.matchingGrid.appendChild(rightColumn);
 
-    // Initialize matching state
-    if (!appState.matchingSelections) {
-        appState.matchingSelections = {
-            left: null,
-            right: null,
-            matches: {}
-        };
+    // Apply stored matches
+    const matches = appState.matchingSelections.matches;
+    Object.keys(matches).forEach(leftKey => {
+        const leftIndex = parseInt(leftKey, 10);
+        const rightIndex = matches[leftKey];
+        markPendingMatch(leftIndex, rightIndex);
+    });
+
+    if (appState.examSubmitted) {
+        elements.matchingGrid.querySelectorAll('.matching-item').forEach(item => {
+            item.classList.add('disabled');
+            item.style.opacity = '1';
+        });
     }
 }
 
 function selectMatchingItem(itemDiv) {
+    if (appState.examSubmitted) return;
+
     const side = itemDiv.dataset.side;
     const index = parseInt(itemDiv.dataset.index);
 
@@ -417,25 +489,46 @@ function selectMatchingItem(itemDiv) {
 
         // Store the match
         appState.matchingSelections.matches[leftIndex] = rightIndex;
+        storeAnswer({
+            matches: { ...appState.matchingSelections.matches }
+        });
 
         // Remove selections
         appState.matchingSelections.left = null;
         appState.matchingSelections.right = null;
 
         // Update UI to show items are matched (but not yet validated)
-        const leftItem = document.querySelector(`.matching-item[data-side="left"][data-index="${leftIndex}"]`);
-        const rightItem = document.querySelector(`.matching-item[data-side="right"][data-index="${rightIndex}"]`);
+        markPendingMatch(leftIndex, rightIndex);
+    }
+}
 
-        if (leftItem && rightItem) {
-            leftItem.classList.remove('selected');
-            rightItem.classList.remove('selected');
+function markPendingMatch(leftIndex, rightIndex) {
+    const leftItem = document.querySelector(`.matching-item[data-side="left"][data-index="${leftIndex}"]`);
+    const rightItem = document.querySelector(`.matching-item[data-side="right"][data-index="${rightIndex}"]`);
+
+    if (leftItem && rightItem) {
+        leftItem.classList.remove('selected');
+        rightItem.classList.remove('selected');
+
+        if (!appState.examSubmitted) {
             leftItem.style.opacity = '0.7';
             rightItem.style.opacity = '0.7';
         }
     }
 }
 
-function selectOption(index) {
+function storeAnswer(updates) {
+    const index = appState.currentQuestionIndex;
+    const existing = appState.userAnswers[index] || {};
+    appState.userAnswers[index] = {
+        ...existing,
+        ...updates
+    };
+}
+
+function selectOption(index, question, value) {
+    if (appState.examSubmitted) return;
+
     // Remove selection from all options
     document.querySelectorAll('.option').forEach(opt => {
         opt.classList.remove('selected');
@@ -445,118 +538,174 @@ function selectOption(index) {
     const selectedOption = document.querySelector(`.option[data-index="${index}"]`);
     if (selectedOption) {
         selectedOption.classList.add('selected');
+        const storedValue = question.type === 'tf' ? value : index;
+        storeAnswer({
+            answer: storedValue,
+            selectedIndex: index
+        });
     }
 }
 
 // ==========================================
 // ANSWER SUBMISSION
 // ==========================================
-function submitAnswer() {
+function validateCurrentAnswer() {
     const question = appState.questions[appState.currentQuestionIndex];
-    let userAnswer = null;
-    let isCorrect = false;
+    const storedAnswer = appState.userAnswers[appState.currentQuestionIndex] || {};
 
-    // Get user answer based on question type
     switch (question.type) {
         case 'mcq':
-        case 'tf':
+        case 'tf': {
+            const hasStoredIndex = typeof storedAnswer.selectedIndex === 'number';
+            if ((question.type === 'mcq' && typeof storedAnswer.answer === 'number') || hasStoredIndex) {
+                return true;
+            }
+
             const selected = document.querySelector('.option.selected');
             if (!selected) {
-                alert('Please select an answer before submitting.');
-                return;
-            }
-            userAnswer = parseInt(selected.dataset.index);
-            isCorrect = userAnswer === question.correct;
-            break;
-
-        case 'fill':
-            userAnswer = elements.fillBlankInput.value.trim();
-            if (!userAnswer) {
-                alert('Please enter an answer before submitting.');
-                return;
-            }
-            isCorrect = checkFillAnswer(userAnswer, question.correct);
-            break;
-
-        case 'short':
-            userAnswer = elements.shortAnswerInput.value.trim();
-            if (!userAnswer) {
-                alert('Please enter an answer before submitting.');
-                return;
-            }
-            // Short answers are always marked as correct with feedback
-            isCorrect = true;
-            break;
-
-        case 'matching':
-            if (!appState.matchingSelections || Object.keys(appState.matchingSelections.matches).length === 0) {
-                alert('Please make at least one match before submitting.');
-                return;
+                alert('Please select an answer before continuing.');
+                return false;
             }
 
-            userAnswer = appState.matchingSelections.matches;
-            isCorrect = checkMatchingAnswer(userAnswer, question.correctMatches);
+            const choiceIndex = parseInt(selected.dataset.index, 10);
+            const choiceValue = question.type === 'tf'
+                ? choiceIndex === 0
+                : choiceIndex;
 
-            // Update UI to show correct/incorrect matches
-            for (const leftIndex in userAnswer) {
-                const rightIndex = userAnswer[leftIndex];
-                const leftItem = document.querySelector(`.matching-item[data-side="left"][data-index="${leftIndex}"]`);
-                const rightItem = document.querySelector(`.matching-item[data-side="right"][data-index="${rightIndex}"]`);
+            storeAnswer({
+                answer: choiceValue,
+                selectedIndex: choiceIndex
+            });
+            return true;
+        }
 
-                const isMatchCorrect = question.correctMatches[leftIndex] === rightIndex;
-
-                if (leftItem && rightItem) {
-                    leftItem.style.opacity = '1';
-                    rightItem.style.opacity = '1';
-
-                    if (isMatchCorrect) {
-                        leftItem.classList.add('matched-correct');
-                        rightItem.classList.add('matched-correct');
-                    } else {
-                        leftItem.classList.add('matched-incorrect');
-                        rightItem.classList.add('matched-incorrect');
-                    }
-                }
+        case 'fill': {
+            const response = elements.fillBlankInput.value.trim();
+            if (!response) {
+                alert('Please enter an answer before continuing.');
+                return false;
             }
-            break;
+            storeAnswer({ answer: response });
+            return true;
+        }
+
+        case 'short': {
+            const response = elements.shortAnswerInput.value.trim();
+            if (!response) {
+                alert('Please enter an answer before continuing.');
+                return false;
+            }
+            storeAnswer({ answer: response });
+            return true;
+        }
+
+        case 'matching': {
+            const matches = {
+                ...appState.matchingSelections.matches
+            };
+
+            const requiredMatches = Array.isArray(question.leftItems)
+                ? question.leftItems.length
+                : 0;
+
+            if (Object.keys(matches).length !== requiredMatches) {
+                alert('Please complete all matches before continuing.');
+                return false;
+            }
+
+            storeAnswer({ matches });
+            return true;
+        }
+
+        default:
+            return true;
     }
+}
 
-    // Store answer
-    appState.userAnswers[appState.currentQuestionIndex] = {
-        answer: userAnswer,
-        correct: isCorrect
-    };
+function submitExam() {
+    if (appState.examSubmitted) return;
 
-    // Update scores
-    if (isCorrect) {
-        appState.scores.correct++;
-        appState.scores.total += 10;
-    } else {
-        appState.scores.incorrect++;
-    }
+    const isValid = validateCurrentAnswer();
+    if (!isValid) return;
 
-    // Display feedback
-    displayFeedback(question, isCorrect, userAnswer);
+    const results = gradeExam();
 
-    // Update UI
+    appState.examSubmitted = true;
+    appState.examSummary = results;
+
     updateScoreDisplay();
     saveProgress();
 
-    // Disable interaction
-    if (question.type === 'mcq' || question.type === 'tf') {
-        document.querySelectorAll('.option').forEach(opt => {
-            opt.classList.add('disabled');
-            opt.style.pointerEvents = 'none';
-        });
-        highlightCorrectAnswer(question);
-    } else {
-        elements.fillBlankInput.disabled = true;
-        elements.shortAnswerInput.disabled = true;
-    }
+    const baseTitle = elements.sectionTitle.dataset.baseTitle || elements.sectionTitle.textContent;
+    elements.sectionTitle.dataset.baseTitle = baseTitle;
+    elements.sectionTitle.textContent = `${baseTitle} • Review (${results.correct}/${results.total})`;
 
-    // Update buttons
-    elements.submitBtn.classList.add('hidden');
-    elements.nextBtn.classList.remove('hidden');
+    displayQuestion();
+}
+
+function gradeExam() {
+    let correctCount = 0;
+    let incorrectCount = 0;
+
+    appState.questions.forEach((question, index) => {
+        const storedAnswer = appState.userAnswers[index] || {};
+        let isCorrect = false;
+
+        switch (question.type) {
+            case 'mcq':
+                isCorrect = typeof storedAnswer.answer === 'number' && storedAnswer.answer === question.correct;
+                break;
+            case 'tf':
+                if (typeof question.correct === 'boolean') {
+                    isCorrect = typeof storedAnswer.answer === 'boolean' && storedAnswer.answer === question.correct;
+                } else {
+                    isCorrect = typeof storedAnswer.selectedIndex === 'number' && storedAnswer.selectedIndex === question.correct;
+                }
+                break;
+            case 'fill':
+                if (storedAnswer.answer) {
+                    isCorrect = checkFillAnswer(storedAnswer.answer, question.correct);
+                }
+                break;
+            case 'short':
+                isCorrect = !!(storedAnswer.answer && storedAnswer.answer.trim());
+                break;
+            case 'matching':
+                if (storedAnswer.matches) {
+                    isCorrect = checkMatchingAnswer(storedAnswer.matches, question.correctMatches);
+                }
+                break;
+            default:
+                isCorrect = false;
+        }
+
+        appState.userAnswers[index] = {
+            ...storedAnswer,
+            correct: isCorrect
+        };
+
+        if (isCorrect) {
+            correctCount++;
+        } else {
+            incorrectCount++;
+        }
+    });
+
+    const totalQuestions = appState.questions.length;
+    const percentage = totalQuestions
+        ? Math.round((correctCount / totalQuestions) * 100)
+        : 0;
+
+    appState.scores.correct = correctCount;
+    appState.scores.incorrect = incorrectCount;
+    appState.scores.total = correctCount * 10;
+
+    return {
+        correct: correctCount,
+        incorrect: incorrectCount,
+        total: totalQuestions,
+        percentage
+    };
 }
 
 function checkFillAnswer(userAnswer, correctAnswers) {
@@ -572,73 +721,157 @@ function checkFillAnswer(userAnswer, correctAnswers) {
 }
 
 function checkMatchingAnswer(userMatches, correctMatches) {
-    // Check if all matches are correct
-    for (const leftIndex in userMatches) {
-        const userRightIndex = userMatches[leftIndex];
-        const correctRightIndex = correctMatches[leftIndex];
+    for (const leftIndex in correctMatches) {
+        const expectedRight = correctMatches[leftIndex];
+        const userRight = userMatches[leftIndex];
 
-        if (userRightIndex !== correctRightIndex) {
+        if (userRight !== expectedRight) {
             return false;
         }
     }
 
-    // Also check if all items were matched
     return Object.keys(userMatches).length === Object.keys(correctMatches).length;
 }
 
-function highlightCorrectAnswer(question) {
-    const options = document.querySelectorAll('.option');
-    const selectedOption = document.querySelector('.option.selected');
+function renderReviewFeedback(question, storedAnswer) {
+    const isCorrect = !!storedAnswer.correct;
 
-    options.forEach((opt, index) => {
-        if (index === question.correct) {
-            opt.classList.add('correct');
-        } else if (opt === selectedOption && index !== question.correct) {
-            opt.classList.add('incorrect');
-        }
-    });
-}
-
-function displayFeedback(question, isCorrect, userAnswer) {
     elements.feedbackContainer.classList.remove('hidden');
     elements.feedbackContainer.className = 'feedback-container';
     elements.feedbackContainer.classList.add(isCorrect ? 'correct' : 'incorrect');
 
-    // Feedback message
-    if (question.type === 'short') {
-        elements.feedbackMessage.innerHTML = `
-            <i class="fas fa-check-circle"></i>
-            Answer Submitted!
-        `;
-    } else if (isCorrect) {
-        elements.feedbackMessage.innerHTML = `
-            <i class="fas fa-check-circle"></i>
-            Correct! Well done!
-        `;
-    } else {
-        elements.feedbackMessage.innerHTML = `
-            <i class="fas fa-times-circle"></i>
-            Incorrect. Review the explanation below.
-        `;
+    elements.feedbackMessage.innerHTML = isCorrect
+        ? `<i class="fas fa-check-circle"></i> Correct`
+        : `<i class="fas fa-times-circle"></i> Incorrect`;
+
+    const summaryIntro = (appState.examSummary && appState.currentQuestionIndex === 0)
+        ? `<div class="exam-summary"><strong>Overall Score:</strong> ${appState.examSummary.correct}/${appState.examSummary.total} (${appState.examSummary.percentage}%)</div><br>`
+        : '';
+
+    let userAnswerHtml = '';
+
+    if (question.type === 'fill' || question.type === 'short') {
+        const answerText = storedAnswer.answer ? storedAnswer.answer : 'No answer provided';
+        userAnswerHtml = `<div class="user-answer"><strong>Your answer:</strong> ${answerText}</div><br>`;
+    } else if (question.type === 'tf') {
+        const answerDisplay = typeof storedAnswer.answer === 'boolean'
+            ? (storedAnswer.answer ? 'True' : 'False')
+            : 'No answer provided';
+        userAnswerHtml = `<div class="user-answer"><strong>Your answer:</strong> ${answerDisplay}</div><br>`;
     }
 
-    // Explanation
-    elements.explanation.innerHTML = question.explanation;
+    elements.explanation.innerHTML = `${summaryIntro}${userAnswerHtml}${question.explanation || ''}`;
+
+    if (question.type === 'mcq' || question.type === 'tf') {
+        applyMultipleChoiceReview(question, storedAnswer);
+    }
+
+    if (question.type === 'matching') {
+        applyMatchingReview(question, storedAnswer);
+    }
+}
+
+function applyMultipleChoiceReview(question, storedAnswer) {
+    const options = document.querySelectorAll('.option');
+
+    const correctIndex = (() => {
+        if (question.type === 'tf') {
+            if (typeof question.correct === 'boolean') {
+                return question.correct ? 0 : 1;
+            }
+            return typeof question.correct === 'number' ? question.correct : null;
+        }
+        return typeof question.correct === 'number' ? question.correct : null;
+    })();
+
+    options.forEach((opt, index) => {
+        opt.classList.add('disabled');
+
+        if (correctIndex !== null && index === correctIndex) {
+            opt.classList.add('correct');
+        }
+
+        const selectedIndex = typeof storedAnswer.selectedIndex === 'number'
+            ? storedAnswer.selectedIndex
+            : storedAnswer.answer;
+
+        if (typeof selectedIndex === 'number' && selectedIndex === index) {
+            if (correctIndex !== null && index === correctIndex) {
+                opt.classList.add('correct');
+            } else {
+                opt.classList.add('incorrect');
+            }
+            opt.classList.add('selected');
+        }
+    });
+}
+
+function applyMatchingReview(question, storedAnswer) {
+    if (!question.correctMatches) return;
+
+    const matches = storedAnswer.matches || {};
+
+    Object.keys(question.correctMatches).forEach(leftKey => {
+        const leftIndex = parseInt(leftKey, 10);
+        const expectedRight = question.correctMatches[leftKey];
+        const chosenRight = matches[leftKey];
+
+        const leftItem = document.querySelector(`.matching-item[data-side="left"][data-index="${leftIndex}"]`);
+        const rightItem = document.querySelector(`.matching-item[data-side="right"][data-index="${expectedRight}"]`);
+
+        if (!leftItem) return;
+
+        if (typeof chosenRight === 'number') {
+            const selectedRightItem = document.querySelector(`.matching-item[data-side="right"][data-index="${chosenRight}"]`);
+            const isCorrect = chosenRight === expectedRight;
+
+            leftItem.classList.add(isCorrect ? 'matched-correct' : 'matched-incorrect');
+
+            if (selectedRightItem) {
+                selectedRightItem.classList.add(isCorrect ? 'matched-correct' : 'matched-incorrect');
+            }
+        } else {
+            leftItem.classList.add('matched-incorrect');
+            if (rightItem) {
+                rightItem.classList.add('matched-correct');
+            }
+        }
+
+        if (rightItem) {
+            rightItem.classList.add('matched-correct');
+        }
+    });
+
+    elements.matchingContainer.querySelectorAll('.matching-item').forEach(item => {
+        item.classList.add('disabled');
+        item.style.opacity = '1';
+    });
 }
 
 // ==========================================
 // NAVIGATION BETWEEN QUESTIONS
 // ==========================================
+function handleForwardNavigation() {
+    const isLastQuestion = appState.currentQuestionIndex === appState.questions.length - 1;
+
+    if (!appState.examSubmitted && isLastQuestion) {
+        submitExam();
+    } else {
+        nextQuestion();
+    }
+}
+
 function nextQuestion() {
+    if (!appState.examSubmitted) {
+        const isValid = validateCurrentAnswer();
+        if (!isValid) return;
+    }
+
     if (appState.currentQuestionIndex < appState.questions.length - 1) {
         appState.currentQuestionIndex++;
         displayQuestion();
-
-        // Re-enable inputs
-        elements.fillBlankInput.disabled = false;
-        elements.shortAnswerInput.disabled = false;
-    } else {
-        showCompletionMessage();
+    } else if (appState.examSubmitted) {
+        goToHome();
     }
 }
 
@@ -646,81 +879,33 @@ function previousQuestion() {
     if (appState.currentQuestionIndex > 0) {
         appState.currentQuestionIndex--;
         displayQuestion();
-
-        // Re-enable inputs
-        elements.fillBlankInput.disabled = false;
-        elements.shortAnswerInput.disabled = false;
-
-        // If already answered, show feedback
-        const previousAnswer = appState.userAnswers[appState.currentQuestionIndex];
-        if (previousAnswer) {
-            const question = appState.questions[appState.currentQuestionIndex];
-
-            // Restore answer
-            if (question.type === 'mcq' || question.type === 'tf') {
-                selectOption(previousAnswer.answer);
-                highlightCorrectAnswer(question);
-                document.querySelectorAll('.option').forEach(opt => {
-                    opt.classList.add('disabled');
-                    opt.style.pointerEvents = 'none';
-                });
-            } else if (question.type === 'fill') {
-                elements.fillBlankInput.value = previousAnswer.answer;
-                elements.fillBlankInput.disabled = true;
-            } else if (question.type === 'short') {
-                elements.shortAnswerInput.value = previousAnswer.answer;
-                elements.shortAnswerInput.disabled = true;
-            }
-
-            // Show feedback
-            displayFeedback(question, previousAnswer.correct, previousAnswer.answer);
-            elements.submitBtn.classList.add('hidden');
-            elements.nextBtn.classList.remove('hidden');
-        }
     }
 }
 
 function updateNavigationButtons() {
     elements.prevBtn.disabled = appState.currentQuestionIndex === 0;
-}
 
-function showCompletionMessage() {
-    const percentage = Math.round(
-        (appState.scores.correct / appState.questions.length) * 100
-    );
+    const lastIndex = appState.questions.length - 1;
+    const isLastQuestion = appState.currentQuestionIndex === lastIndex;
 
-    let message = '';
-    let emoji = '';
-
-    if (percentage >= 90) {
-        emoji = '🏆';
-        message = 'Outstanding! You\'re a physiology expert!';
-    } else if (percentage >= 75) {
-        emoji = '🌟';
-        message = 'Great job! You have a strong understanding!';
-    } else if (percentage >= 60) {
-        emoji = '👍';
-        message = 'Good work! Keep practicing to improve!';
+    if (!appState.examSubmitted) {
+        elements.submitBtn.classList.toggle('hidden', !isLastQuestion);
+        elements.nextBtn.classList.toggle('hidden', isLastQuestion);
+        elements.nextBtn.innerHTML = `
+            <i class="fas fa-arrow-right"></i>
+            Next
+        `;
     } else {
-        emoji = '📚';
-        message = 'Keep studying! Review the material and try again!';
+        elements.submitBtn.classList.add('hidden');
+        elements.nextBtn.classList.remove('hidden');
+        elements.nextBtn.innerHTML = isLastQuestion ? `
+            <i class="fas fa-home"></i>
+            Finish Review
+        ` : `
+            <i class="fas fa-arrow-right"></i>
+            Next
+        `;
     }
-
-    elements.feedbackContainer.classList.remove('hidden', 'incorrect');
-    elements.feedbackContainer.classList.add('correct');
-    elements.feedbackMessage.innerHTML = `
-        <i class="fas fa-flag-checkered"></i>
-        Section Complete!
-    `;
-    elements.explanation.innerHTML = `
-        ${emoji} <strong>${message}</strong><br><br>
-        You answered <strong>${appState.scores.correct}</strong> out of
-        <strong>${appState.questions.length}</strong> questions correctly (${percentage}%).<br><br>
-        Select another section from the menu to continue practicing!
-    `;
-
-    elements.submitBtn.classList.add('hidden');
-    elements.nextBtn.classList.add('hidden');
 }
 
 // ==========================================
@@ -732,7 +917,11 @@ function updateProgress() {
     const percentage = (current / total) * 100;
 
     elements.progressBar.style.width = `${percentage}%`;
-    elements.progressText.textContent = `${current}/${total}`;
+    if (appState.examSubmitted && appState.examSummary) {
+        elements.progressText.textContent = `${current}/${total} • Score ${appState.examSummary.correct}/${appState.examSummary.total}`;
+    } else {
+        elements.progressText.textContent = `${current}/${total}`;
+    }
 }
 
 function updateScoreDisplay() {
@@ -786,6 +975,9 @@ function showCheckupSetup(section) {
     appState.checkupConfig.allQuestions = questionBank[section] || [];
     appState.checkupConfig.questionsPerTopic = 0;
     appState.checkupConfig.selectedTopics = new Set();
+    appState.examSubmitted = false;
+    appState.examSummary = null;
+    appState.userAnswers = {};
 
     // Parse topics from questions
     const topics = parseTopicsFromQuestions(appState.checkupConfig.allQuestions);
@@ -942,6 +1134,8 @@ function startCustomCheckup() {
     appState.questions = customQuestions;
     appState.currentQuestionIndex = 0;
     appState.userAnswers = {};
+    appState.examSubmitted = false;
+    appState.examSummary = null;
 
     // Hide setup, show questions
     elements.checkupSetupSection.classList.add('hidden');
@@ -950,6 +1144,7 @@ function startCustomCheckup() {
     // Update section title
     const checkupName = appState.currentSection.includes('checkup1') ? 'Pillar Checkup 1' : 'Pillar Checkup 2';
     elements.sectionTitle.textContent = checkupName;
+    elements.sectionTitle.dataset.baseTitle = checkupName;
 
     // Load first question
     if (appState.questions.length > 0) {
@@ -970,6 +1165,9 @@ function goToHome() {
     appState.currentSection = null;
     appState.currentQuestionIndex = 0;
     appState.questions = [];
+    appState.userAnswers = {};
+    appState.examSubmitted = false;
+    appState.examSummary = null;
 }
 
 // ==========================================
