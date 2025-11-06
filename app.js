@@ -12,6 +12,13 @@ const appState = {
         total: 0,
         correct: 0,
         incorrect: 0
+    },
+    checkupConfig: {
+        isCheckup: false,
+        allQuestions: [],
+        topics: [],
+        selectedTopics: new Set(),
+        questionsPerTopic: 0
     }
 };
 
@@ -29,7 +36,16 @@ const elements = {
 
     // Sections
     homeSection: document.getElementById('homeSection'),
+    checkupSetupSection: document.getElementById('checkupSetupSection'),
     questionSection: document.getElementById('questionSection'),
+
+    // Checkup Setup
+    checkupTitle: document.getElementById('checkupTitle'),
+    totalAvailableQuestions: document.getElementById('totalAvailableQuestions'),
+    currentQuestionCount: document.getElementById('currentQuestionCount'),
+    topicsPills: document.getElementById('topicsPills'),
+    startCheckupBtn: document.getElementById('startCheckupBtn'),
+    siteTitle: document.getElementById('siteTitle'),
 
     // Question Display
     sectionTitle: document.getElementById('sectionTitle'),
@@ -91,6 +107,9 @@ function setupEventListeners() {
     elements.menuToggle.addEventListener('click', openSidebar);
     elements.closeSidebar.addEventListener('click', closeSidebar);
     elements.overlay.addEventListener('click', closeSidebar);
+
+    // Site title - go to home
+    elements.siteTitle.addEventListener('click', goToHome);
 
     // Unit accordion
     elements.unitHeaders.forEach(header => {
@@ -157,11 +176,20 @@ function handleNavigation(e) {
 function loadSection(section) {
     appState.currentSection = section;
     appState.currentQuestionIndex = 0;
-    appState.questions = questionBank[section] || [];
     appState.userAnswers = {};
+
+    // Check if this is a pillar checkup
+    if (section.includes('pillar-checkup')) {
+        showCheckupSetup(section);
+        return;
+    }
+
+    // Regular section loading
+    appState.questions = questionBank[section] || [];
 
     // Show question section
     elements.homeSection.classList.add('hidden');
+    elements.checkupSetupSection.classList.add('hidden');
     elements.questionSection.classList.remove('hidden');
 
     // Update section title
@@ -747,6 +775,201 @@ function resetProgress() {
         localStorage.removeItem('studyPhysioProgress');
         updateScoreDisplay();
     }
+}
+
+// ==========================================
+// CHECKUP SETUP FUNCTIONS
+// ==========================================
+function showCheckupSetup(section) {
+    // Store checkup info
+    appState.checkupConfig.isCheckup = true;
+    appState.checkupConfig.allQuestions = questionBank[section] || [];
+    appState.checkupConfig.questionsPerTopic = 0;
+    appState.checkupConfig.selectedTopics = new Set();
+
+    // Parse topics from questions
+    const topics = parseTopicsFromQuestions(appState.checkupConfig.allQuestions);
+    appState.checkupConfig.topics = topics;
+
+    // Initially select all topics
+    topics.forEach((_, index) => {
+        appState.checkupConfig.selectedTopics.add(index);
+    });
+
+    // Hide other sections, show checkup setup
+    elements.homeSection.classList.add('hidden');
+    elements.questionSection.classList.add('hidden');
+    elements.checkupSetupSection.classList.remove('hidden');
+
+    // Update title and info
+    const checkupName = section.includes('checkup1') ? 'Pillar Checkup 1' : 'Pillar Checkup 2';
+    elements.checkupTitle.textContent = checkupName;
+    elements.totalAvailableQuestions.textContent = appState.checkupConfig.allQuestions.length;
+
+    // Populate topic pills
+    populateTopicPills(topics);
+
+    // Setup event listeners
+    setupCheckupEventListeners();
+
+    // Update question count
+    updateQuestionCount();
+}
+
+function parseTopicsFromQuestions(questions) {
+    const topics = [];
+
+    // Group questions by topic based on order (5 questions per topic)
+    const topicNames = [
+        'Health', 'Signs and Symptoms', 'Social Determinants', 'Social Connections', 'Social Media',
+        'Nutrition Myths', 'Mediterranean Diet', 'Homeostasis',
+        'Blood Glucose', 'Insulin and Glucagon'
+    ];
+
+    // For Pillar Checkup 2
+    const topicNames2 = [
+        'Types of Exercise', 'Exercise Guidelines', 'Blood pH', 'Sleep Facts',
+        'REM Sleep', 'Sleep Deprivation', 'Acute Stress',
+        'Chronic Stress', 'Trauma and PTSD', 'Healthcare'
+    ];
+
+    // Determine which topic set to use based on section
+    const names = appState.currentSection.includes('checkup2') ? topicNames2 : topicNames;
+
+    // Group questions into topics (5 questions each)
+    for (let i = 0; i < questions.length; i++) {
+        const topicIndex = Math.floor(i / 5);
+        if (!topics[topicIndex]) {
+            topics[topicIndex] = {
+                number: topicIndex + 1,
+                name: names[topicIndex] || `Topic ${topicIndex + 1}`,
+                questions: []
+            };
+        }
+        topics[topicIndex].questions.push(questions[i]);
+    }
+
+    return topics;
+}
+
+function populateTopicPills(topics) {
+    elements.topicsPills.innerHTML = '';
+
+    topics.forEach((topic, index) => {
+        const pill = document.createElement('button');
+        pill.className = 'topic-pill';
+        pill.textContent = topic.name;
+        pill.dataset.topicIndex = index;
+        pill.addEventListener('click', () => toggleTopic(index));
+        elements.topicsPills.appendChild(pill);
+    });
+}
+
+function toggleTopic(topicIndex) {
+    if (appState.checkupConfig.selectedTopics.has(topicIndex)) {
+        appState.checkupConfig.selectedTopics.delete(topicIndex);
+    } else {
+        appState.checkupConfig.selectedTopics.add(topicIndex);
+    }
+
+    // Update pill appearance
+    const pills = elements.topicsPills.querySelectorAll('.topic-pill');
+    pills[topicIndex].classList.toggle('unselected');
+
+    // Update question count
+    updateQuestionCount();
+}
+
+function setupCheckupEventListeners() {
+    // Number selector buttons
+    document.querySelectorAll('.number-btn').forEach(btn => {
+        btn.addEventListener('click', handleNumberSelect);
+    });
+
+    // Start checkup button
+    elements.startCheckupBtn.removeEventListener('click', startCustomCheckup);
+    elements.startCheckupBtn.addEventListener('click', startCustomCheckup);
+}
+
+function handleNumberSelect(e) {
+    const btn = e.currentTarget;
+    const count = parseInt(btn.dataset.count);
+
+    // Remove selection from all buttons
+    document.querySelectorAll('.number-btn').forEach(b => {
+        b.classList.remove('selected');
+    });
+
+    // Select this button
+    btn.classList.add('selected');
+    appState.checkupConfig.questionsPerTopic = count;
+
+    // Update question count
+    updateQuestionCount();
+}
+
+function updateQuestionCount() {
+    const selectedTopicCount = appState.checkupConfig.selectedTopics.size;
+    const questionsPerTopic = appState.checkupConfig.questionsPerTopic;
+    const totalQuestions = selectedTopicCount * questionsPerTopic;
+
+    elements.currentQuestionCount.textContent = totalQuestions;
+
+    // Enable start button only if topics are selected and a number is chosen
+    elements.startCheckupBtn.disabled = !(selectedTopicCount > 0 && questionsPerTopic > 0);
+}
+
+function startCustomCheckup() {
+    const questionsPerTopic = appState.checkupConfig.questionsPerTopic;
+    const selectedTopics = appState.checkupConfig.selectedTopics;
+
+    if (questionsPerTopic === 0 || selectedTopics.size === 0) return;
+
+    // Generate customized question set
+    const customQuestions = [];
+
+    appState.checkupConfig.topics.forEach((topic, index) => {
+        // Only include questions from selected topics
+        if (selectedTopics.has(index)) {
+            // Randomize questions within this topic
+            const shuffled = [...topic.questions].sort(() => Math.random() - 0.5);
+            // Take the selected number of questions
+            customQuestions.push(...shuffled.slice(0, questionsPerTopic));
+        }
+    });
+
+    // Set up the question section with custom questions
+    appState.questions = customQuestions;
+    appState.currentQuestionIndex = 0;
+    appState.userAnswers = {};
+
+    // Hide setup, show questions
+    elements.checkupSetupSection.classList.add('hidden');
+    elements.questionSection.classList.remove('hidden');
+
+    // Update section title
+    const checkupName = appState.currentSection.includes('checkup1') ? 'Pillar Checkup 1' : 'Pillar Checkup 2';
+    elements.sectionTitle.textContent = checkupName;
+
+    // Load first question
+    if (appState.questions.length > 0) {
+        displayQuestion();
+    }
+}
+
+function goToHome() {
+    // Hide all sections
+    elements.checkupSetupSection.classList.add('hidden');
+    elements.questionSection.classList.add('hidden');
+    elements.homeSection.classList.remove('hidden');
+
+    // Remove active state from nav items
+    elements.navItems.forEach(item => item.classList.remove('active'));
+
+    // Reset state
+    appState.currentSection = null;
+    appState.currentQuestionIndex = 0;
+    appState.questions = [];
 }
 
 // ==========================================

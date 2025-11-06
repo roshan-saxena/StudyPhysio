@@ -14,7 +14,7 @@
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
-            <h1 class="site-title">
+            <h1 class="site-title" id="siteTitle" style="cursor: pointer;">
                 <i class="fas fa-brain"></i>
                 <span class="title-text"><span class="title-study">Study</span><span class="title-physio">Physio</span></span>
             </h1>
@@ -108,6 +108,49 @@
                 <button class="cta-button" onclick="document.querySelector('.nav-item').click()">
                     Start Learning
                 </button>
+            </div>
+        </section>
+
+        <!-- Checkup Setup Section -->
+        <section class="checkup-setup-section hidden" id="checkupSetupSection">
+            <div class="setup-card">
+                <div class="setup-header">
+                    <h1 id="checkupTitle">Pillar Checkup 1</h1>
+                </div>
+
+                <div class="setup-content">
+                    <div class="setup-info">
+                        <p class="info-total">In total, we have <span class="highlight" id="totalAvailableQuestions">50</span> questions available for you.</p>
+                        <p class="info-current">Currently, your practice exam will feature <span class="highlight" id="currentQuestionCount">0</span> question(s).</p>
+                        <p class="info-instruction">If you'd like to, you may unselect topics that you wouldn't like to be quizzed on.</p>
+                    </div>
+
+                    <div class="topics-pills" id="topicsPills">
+                        <!-- Topic pills will be dynamically added here -->
+                    </div>
+
+                    <div class="setup-divider"></div>
+
+                    <div class="questions-per-topic-section">
+                        <p class="section-prompt">Choose the number of questions focused on each topic.</p>
+
+                        <div class="number-selector">
+                            <button class="number-btn" data-count="1">1</button>
+                            <button class="number-btn" data-count="2">2</button>
+                            <button class="number-btn" data-count="3">3</button>
+                            <button class="number-btn" data-count="4">4</button>
+                            <button class="number-btn" data-count="5">5</button>
+                        </div>
+
+                        <p class="recommendation-text">
+                            We recommend that you choose a lower number above so you can review your mistakes, learn, and attempt previously-unattempted questions to improve. Remember, we'll randomize which questions show up on your practice quiz.
+                        </p>
+                    </div>
+
+                    <button class="btn-start-exam" id="startCheckupBtn" disabled>
+                        Start Exam
+                    </button>
+                </div>
             </div>
         </section>
 
