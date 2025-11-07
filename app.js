@@ -925,10 +925,10 @@ function updateProgress() {
 }
 
 function updateScoreDisplay() {
-    elements.currentScore.textContent = appState.scores.total;
-    elements.correctCount.textContent = appState.scores.correct;
-    elements.incorrectCount.textContent = appState.scores.incorrect;
-    elements.totalScore.textContent = `${appState.scores.total} pts`;
+    if (elements.currentScore) elements.currentScore.textContent = appState.scores.total;
+    if (elements.correctCount) elements.correctCount.textContent = appState.scores.correct;
+    if (elements.incorrectCount) elements.incorrectCount.textContent = appState.scores.incorrect;
+    if (elements.totalScore) elements.totalScore.textContent = `${appState.scores.total} pts`;
 }
 
 // ==========================================
@@ -1081,6 +1081,12 @@ function setupCheckupEventListeners() {
     // Start checkup button
     elements.startCheckupBtn.removeEventListener('click', startCustomCheckup);
     elements.startCheckupBtn.addEventListener('click', startCustomCheckup);
+
+    // Auto-select 1 question per topic by default
+    const defaultBtn = document.querySelector('.number-btn[data-count="1"]');
+    if (defaultBtn) {
+        defaultBtn.click();
+    }
 }
 
 function handleNumberSelect(e) {
