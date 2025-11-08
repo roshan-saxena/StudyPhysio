@@ -67,18 +67,27 @@ const elements = {
     feedbackMessage: document.getElementById('feedbackMessage'),
     explanation: document.getElementById('explanation'),
 
-    // Buttons
-    submitBtn: document.getElementById('submitBtn'),
-    nextBtn: document.getElementById('nextBtn'),
-    prevBtn: document.getElementById('prevBtn'),
-
     // Progress
     progressBar: document.getElementById('progressBar'),
     progressText: document.getElementById('progressText'),
     currentScore: document.getElementById('currentScore'),
     correctCount: document.getElementById('correctCount'),
     incorrectCount: document.getElementById('incorrectCount'),
-    totalScore: document.getElementById('totalScore')
+    totalScore: document.getElementById('totalScore'),
+
+    // Question Navigation
+    questionNavigation: document.getElementById('questionNavigation'),
+    navNumbers: document.getElementById('navNumbers'),
+    submitBtnBottom: document.getElementById('submitBtnBottom'),
+
+    // Review Screen
+    reviewScreen: document.getElementById('reviewScreen'),
+    reviewScore: document.getElementById('reviewScore'),
+    reviewScoreDetails: document.getElementById('reviewScoreDetails'),
+    reviewTopics: document.getElementById('reviewTopics'),
+    reviewAllQuestions: document.getElementById('reviewAllQuestions'),
+    tryAgainBtn: document.getElementById('tryAgainBtn'),
+    backToHomeBtn: document.getElementById('backToHomeBtn')
 };
 
 // ==========================================
@@ -123,10 +132,8 @@ function setupEventListeners() {
         item.addEventListener('click', handleNavigation);
     });
 
-    // Question buttons
-    elements.submitBtn.addEventListener('click', submitExam);
-    elements.nextBtn.addEventListener('click', nextQuestion);
-    elements.prevBtn.addEventListener('click', previousQuestion);
+    // Question buttons (using bottom navigation only)
+    elements.submitBtnBottom.addEventListener('click', submitExam);
 
     // Enter key for fill-in-the-blank
     elements.fillBlankInput.addEventListener('keypress', (e) => {
@@ -135,6 +142,10 @@ function setupEventListeners() {
             handleForwardNavigation();
         }
     });
+
+    // Review screen buttons
+    elements.tryAgainBtn.addEventListener('click', retakeExam);
+    elements.backToHomeBtn.addEventListener('click', goToHome);
 }
 
 // ==========================================
@@ -206,6 +217,7 @@ function loadSection(section) {
 
     // Load first question
     if (appState.questions.length > 0) {
+        generateQuestionNavigation();
         displayQuestion();
     }
 }
@@ -274,14 +286,10 @@ function displayQuestion() {
             break;
     }
 
-    // Show review feedback when exam has been submitted
-    if (appState.examSubmitted) {
-        renderReviewFeedback(question, storedAnswer);
-    }
-
     // Update progress and navigation
     updateProgress();
     updateNavigationButtons();
+    generateQuestionNavigation(); // Regenerate to show adaptive pagination
 }
 
 function getQuestionTypeLabel(type) {
@@ -524,6 +532,179 @@ function storeAnswer(updates) {
         ...existing,
         ...updates
     };
+    updateQuestionNavigation();
+}
+
+// ==========================================
+// QUESTION NAVIGATION - PAGINATION STYLE
+// ==========================================
+function generateQuestionNavigation() {
+    if (!elements.navNumbers) return;
+
+    elements.navNumbers.innerHTML = '';
+
+    // Add Prev button
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'nav-number-btn nav-prev-next nav-prev';
+    prevBtn.innerHTML = '« Prev';
+    prevBtn.addEventListener('click', previousQuestion);
+    prevBtn.id = 'navPrevBtn';
+    elements.navNumbers.appendChild(prevBtn);
+
+    // Generate adaptive pagination centered on current question
+    const totalQuestions = appState.questions.length;
+    const current = appState.currentQuestionIndex;
+    const range = 2; // Show 2 numbers on each side of current
+    const maxVisible = 7; // Total numbers to show when not showing all
+
+    if (totalQuestions <= maxVisible) {
+        // Show all numbers if total is small
+        for (let i = 0; i < totalQuestions; i++) {
+            createNumberButton(i);
+        }
+    } else {
+        // Calculate start and end of visible range
+        let start = Math.max(0, current - range);
+        let end = Math.min(totalQuestions - 1, current + range);
+
+        // Adjust if at the beginning or end
+        if (current < range) {
+            end = Math.min(totalQuestions - 1, maxVisible - 1);
+        } else if (current > totalQuestions - range - 1) {
+            start = Math.max(0, totalQuestions - maxVisible);
+        }
+
+        // Show first number if not in range
+        if (start > 0) {
+            createNumberButton(0);
+            if (start > 1) {
+                const ellipsis = document.createElement('button');
+                ellipsis.className = 'nav-number-btn ellipsis';
+                ellipsis.textContent = '...';
+                ellipsis.disabled = true;
+                elements.navNumbers.appendChild(ellipsis);
+            }
+        }
+
+        // Show visible range
+        for (let i = start; i <= end; i++) {
+            createNumberButton(i);
+        }
+
+        // Show last number if not in range
+        if (end < totalQuestions - 1) {
+            if (end < totalQuestions - 2) {
+                const ellipsis = document.createElement('button');
+                ellipsis.className = 'nav-number-btn ellipsis';
+                ellipsis.textContent = '...';
+                ellipsis.disabled = true;
+                elements.navNumbers.appendChild(ellipsis);
+            }
+            createNumberButton(totalQuestions - 1);
+        }
+    }
+
+    // Add Next button
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'nav-number-btn nav-prev-next nav-next';
+    nextBtn.innerHTML = 'Next »';
+    nextBtn.addEventListener('click', nextQuestion);
+    nextBtn.id = 'navNextBtn';
+    elements.navNumbers.appendChild(nextBtn);
+
+    updateQuestionNavigation();
+}
+
+function createNumberButton(index) {
+    const btn = document.createElement('button');
+    btn.className = 'nav-number-btn';
+    btn.textContent = index + 1;
+    btn.dataset.questionIndex = index;
+    btn.addEventListener('click', () => navigateToQuestion(index));
+    elements.navNumbers.appendChild(btn);
+}
+
+function updateQuestionNavigation() {
+    if (!elements.navNumbers || appState.questions.length === 0) return;
+
+    const buttons = elements.navNumbers.querySelectorAll('.nav-number-btn:not(.nav-prev-next):not(.ellipsis)');
+    const prevBtn = document.getElementById('navPrevBtn');
+    const nextBtn = document.getElementById('navNextBtn');
+
+    buttons.forEach((btn) => {
+        const btnIndex = parseInt(btn.dataset.questionIndex);
+        btn.classList.remove('current', 'answered', 'unanswered');
+
+        // Mark current question
+        if (btnIndex === appState.currentQuestionIndex) {
+            btn.classList.add('current');
+        }
+
+        // Check if question is answered
+        const answer = appState.userAnswers[btnIndex];
+        const question = appState.questions[btnIndex];
+
+        if (isQuestionAnswered(btnIndex, answer, question)) {
+            btn.classList.add('answered');
+        } else {
+            btn.classList.add('unanswered');
+        }
+    });
+
+    // Update Prev/Next button states
+    if (prevBtn) {
+        prevBtn.disabled = appState.currentQuestionIndex === 0;
+    }
+    if (nextBtn) {
+        nextBtn.disabled = false; // Next is always enabled during test
+    }
+
+    // Update submit button state
+    updateSubmitButtonState();
+}
+
+function isQuestionAnswered(index, answer, question) {
+    if (!answer) return false;
+
+    switch (question.type) {
+        case 'mcq':
+        case 'tf':
+            return typeof answer.answer !== 'undefined' || typeof answer.selectedIndex === 'number';
+        case 'fill':
+        case 'short':
+            return answer.answer && answer.answer.trim() !== '';
+        case 'matching':
+            return answer.matches && Object.keys(answer.matches).length === question.leftItems.length;
+        default:
+            return false;
+    }
+}
+
+function updateSubmitButtonState() {
+    if (appState.examSubmitted) {
+        elements.submitBtnBottom.classList.add('hidden');
+        return;
+    }
+
+    // Check if all questions are answered
+    const allAnswered = appState.questions.every((question, index) => {
+        const answer = appState.userAnswers[index];
+        return isQuestionAnswered(index, answer, question);
+    });
+
+    elements.submitBtnBottom.disabled = !allAnswered;
+}
+
+function navigateToQuestion(index) {
+    if (index < 0 || index >= appState.questions.length) return;
+
+    // Save current answer silently if not in review mode (allow free navigation)
+    if (!appState.examSubmitted) {
+        saveCurrentAnswerSilently();
+    }
+
+    appState.currentQuestionIndex = index;
+    displayQuestion();
 }
 
 function selectOption(index, question, value) {
@@ -549,6 +730,65 @@ function selectOption(index, question, value) {
 // ==========================================
 // ANSWER SUBMISSION
 // ==========================================
+function saveCurrentAnswerSilently() {
+    // Save current answer without validation alerts (for free navigation)
+    const question = appState.questions[appState.currentQuestionIndex];
+    const storedAnswer = appState.userAnswers[appState.currentQuestionIndex] || {};
+
+    switch (question.type) {
+        case 'mcq':
+        case 'tf': {
+            const hasStoredIndex = typeof storedAnswer.selectedIndex === 'number';
+            if ((question.type === 'mcq' && typeof storedAnswer.answer === 'number') || hasStoredIndex) {
+                return;
+            }
+
+            const selected = document.querySelector('.option.selected');
+            if (selected) {
+                const choiceIndex = parseInt(selected.dataset.index, 10);
+                const choiceValue = question.type === 'tf'
+                    ? choiceIndex === 0
+                    : choiceIndex;
+
+                storeAnswer({
+                    answer: choiceValue,
+                    selectedIndex: choiceIndex
+                });
+            }
+            return;
+        }
+
+        case 'fill': {
+            const response = elements.fillBlankInput.value.trim();
+            if (response) {
+                storeAnswer({ answer: response });
+            }
+            return;
+        }
+
+        case 'short': {
+            const response = elements.shortAnswerInput.value.trim();
+            if (response) {
+                storeAnswer({ answer: response });
+            }
+            return;
+        }
+
+        case 'matching': {
+            const matches = {
+                ...appState.matchingSelections.matches
+            };
+            if (Object.keys(matches).length > 0) {
+                storeAnswer({ matches });
+            }
+            return;
+        }
+
+        default:
+            return;
+    }
+}
+
 function validateCurrentAnswer() {
     const question = appState.questions[appState.currentQuestionIndex];
     const storedAnswer = appState.userAnswers[appState.currentQuestionIndex] || {};
@@ -625,8 +865,20 @@ function validateCurrentAnswer() {
 function submitExam() {
     if (appState.examSubmitted) return;
 
+    // Validate current answer
     const isValid = validateCurrentAnswer();
     if (!isValid) return;
+
+    // Check if all questions are answered
+    const allAnswered = appState.questions.every((question, index) => {
+        const answer = appState.userAnswers[index];
+        return isQuestionAnswered(index, answer, question);
+    });
+
+    if (!allAnswered) {
+        alert('Please answer all questions before submitting the exam.');
+        return;
+    }
 
     const results = gradeExam();
 
@@ -636,16 +888,14 @@ function submitExam() {
     updateScoreDisplay();
     saveProgress();
 
-    const baseTitle = elements.sectionTitle.dataset.baseTitle || elements.sectionTitle.textContent;
-    elements.sectionTitle.dataset.baseTitle = baseTitle;
-    elements.sectionTitle.textContent = `${baseTitle} • Review (${results.correct}/${results.total})`;
-
-    displayQuestion();
+    // Navigate to review screen
+    showReviewScreen();
 }
 
 function gradeExam() {
     let correctCount = 0;
     let incorrectCount = 0;
+    const topicPerformance = {};
 
     appState.questions.forEach((question, index) => {
         const storedAnswer = appState.userAnswers[index] || {};
@@ -689,6 +939,21 @@ function gradeExam() {
         } else {
             incorrectCount++;
         }
+
+        // Track topic performance (if checkup mode)
+        if (appState.checkupConfig.isCheckup && appState.checkupConfig.topics.length > 0) {
+            const topicIndex = Math.floor(index / appState.checkupConfig.questionsPerTopic);
+            const topic = appState.checkupConfig.topics[topicIndex];
+            if (topic) {
+                if (!topicPerformance[topic.name]) {
+                    topicPerformance[topic.name] = { correct: 0, total: 0 };
+                }
+                topicPerformance[topic.name].total++;
+                if (isCorrect) {
+                    topicPerformance[topic.name].correct++;
+                }
+            }
+        }
     });
 
     const totalQuestions = appState.questions.length;
@@ -700,12 +965,233 @@ function gradeExam() {
     appState.scores.incorrect = incorrectCount;
     appState.scores.total = correctCount * 10;
 
+    // Sort topic performance by score (descending)
+    const topicBreakdown = Object.entries(topicPerformance)
+        .map(([name, data]) => ({
+            name,
+            correct: data.correct,
+            total: data.total,
+            percentage: data.total ? Math.round((data.correct / data.total) * 100) : 0
+        }))
+        .sort((a, b) => b.percentage - a.percentage);
+
     return {
         correct: correctCount,
         incorrect: incorrectCount,
         total: totalQuestions,
-        percentage
+        percentage,
+        topicBreakdown
     };
+}
+
+// ==========================================
+// REVIEW SCREEN
+// ==========================================
+function showReviewScreen() {
+    // Hide question section, show review screen
+    elements.questionSection.classList.add('hidden');
+    elements.reviewScreen.classList.remove('hidden');
+
+    const results = appState.examSummary;
+
+    // Update score header
+    elements.reviewScore.textContent = `Score: ${results.correct}/${results.total} (${results.percentage}%)`;
+    elements.reviewScoreDetails.textContent = `You answered ${results.correct} out of ${results.total} questions correctly`;
+
+    // Generate topic badges
+    elements.reviewTopics.innerHTML = '';
+    if (results.topicBreakdown && results.topicBreakdown.length > 0) {
+        results.topicBreakdown.forEach(topic => {
+            const badge = document.createElement('div');
+            badge.className = 'review-topic-badge';
+
+            // Classify performance
+            if (topic.percentage >= 80) {
+                badge.classList.add('mastered');
+            } else if (topic.percentage >= 60) {
+                badge.classList.add('good');
+            } else {
+                badge.classList.add('needs-work');
+            }
+
+            badge.textContent = `${topic.name}: ${topic.correct}/${topic.total} (${topic.percentage}%)`;
+            elements.reviewTopics.appendChild(badge);
+        });
+    }
+
+    // Generate all question cards
+    elements.reviewAllQuestions.innerHTML = '';
+    appState.questions.forEach((question, index) => {
+        const card = createReviewQuestionCard(question, index);
+        elements.reviewAllQuestions.appendChild(card);
+    });
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+function createReviewQuestionCard(question, index) {
+    const answer = appState.userAnswers[index] || {};
+    const isCorrect = !!answer.correct;
+
+    const card = document.createElement('div');
+    card.className = `review-question-card ${isCorrect ? 'correct' : 'incorrect'}`;
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'review-question-header';
+
+    const questionNum = document.createElement('span');
+    questionNum.className = 'review-question-number';
+    questionNum.textContent = `Question ${index + 1}`;
+
+    const resultBadge = document.createElement('div');
+    resultBadge.className = `review-result-badge ${isCorrect ? 'correct' : 'incorrect'}`;
+    resultBadge.innerHTML = isCorrect
+        ? '<i class="fas fa-check-circle"></i> Correct'
+        : '<i class="fas fa-times-circle"></i> Incorrect';
+
+    header.appendChild(questionNum);
+    header.appendChild(resultBadge);
+    card.appendChild(header);
+
+    // Question text
+    const questionText = document.createElement('div');
+    questionText.className = 'review-question-text';
+    questionText.textContent = question.question;
+    card.appendChild(questionText);
+
+    // User answer
+    const userAnswerSection = document.createElement('div');
+    userAnswerSection.className = 'review-answer-section';
+
+    const userLabel = document.createElement('div');
+    userLabel.className = 'review-answer-label your-answer';
+    userLabel.innerHTML = '<i class="fas fa-user"></i> Your Answer:';
+
+    const userContent = document.createElement('div');
+    userContent.className = `review-answer-content ${isCorrect ? 'correct' : 'incorrect'}`;
+    userContent.textContent = formatUserAnswer(question, answer);
+
+    userAnswerSection.appendChild(userLabel);
+    userAnswerSection.appendChild(userContent);
+    card.appendChild(userAnswerSection);
+
+    // Correct answer
+    const correctAnswerSection = document.createElement('div');
+    correctAnswerSection.className = 'review-answer-section';
+
+    const correctLabel = document.createElement('div');
+    correctLabel.className = 'review-answer-label correct-answer';
+    correctLabel.innerHTML = '<i class="fas fa-check-circle"></i> Correct Answer:';
+
+    const correctContent = document.createElement('div');
+    correctContent.className = 'review-answer-content correct';
+    correctContent.textContent = formatCorrectAnswer(question);
+
+    correctAnswerSection.appendChild(correctLabel);
+    correctAnswerSection.appendChild(correctContent);
+    card.appendChild(correctAnswerSection);
+
+    // Explanation
+    if (question.explanation) {
+        const explanation = document.createElement('div');
+        explanation.className = 'review-explanation';
+
+        const explLabel = document.createElement('div');
+        explLabel.className = 'review-explanation-label';
+        explLabel.innerHTML = '<i class="fas fa-lightbulb"></i> Explanation';
+
+        const explText = document.createElement('div');
+        explText.className = 'review-explanation-text';
+        explText.innerHTML = question.explanation;
+
+        explanation.appendChild(explLabel);
+        explanation.appendChild(explText);
+        card.appendChild(explanation);
+    }
+
+    return card;
+}
+
+function formatUserAnswer(question, answer) {
+    if (!answer || !answer.answer && !answer.matches) {
+        return 'Unanswered';
+    }
+
+    switch (question.type) {
+        case 'mcq':
+            return typeof answer.answer === 'number'
+                ? question.options[answer.answer]
+                : 'Unanswered';
+        case 'tf':
+            return typeof answer.answer === 'boolean'
+                ? (answer.answer ? 'True' : 'False')
+                : 'Unanswered';
+        case 'fill':
+        case 'short':
+            return answer.answer || 'Unanswered';
+        case 'matching':
+            if (answer.matches) {
+                const matches = [];
+                Object.keys(answer.matches).forEach(leftIdx => {
+                    const left = question.leftItems[leftIdx];
+                    const right = question.rightItems[answer.matches[leftIdx]];
+                    matches.push(`${left} → ${right}`);
+                });
+                return matches.join(', ');
+            }
+            return 'Unanswered';
+        default:
+            return 'Unanswered';
+    }
+}
+
+function formatCorrectAnswer(question) {
+    switch (question.type) {
+        case 'mcq':
+            return question.options[question.correct];
+        case 'tf':
+            if (typeof question.correct === 'boolean') {
+                return question.correct ? 'True' : 'False';
+            }
+            return question.correct === 0 ? 'True' : 'False';
+        case 'fill':
+            return Array.isArray(question.correct)
+                ? question.correct.join(' or ')
+                : question.correct;
+        case 'short':
+            return 'See explanation for expected answer';
+        case 'matching':
+            if (question.correctMatches) {
+                const matches = [];
+                Object.keys(question.correctMatches).forEach(leftIdx => {
+                    const left = question.leftItems[leftIdx];
+                    const right = question.rightItems[question.correctMatches[leftIdx]];
+                    matches.push(`${left} → ${right}`);
+                });
+                return matches.join(', ');
+            }
+            return 'See explanation';
+        default:
+            return 'N/A';
+    }
+}
+
+function retakeExam() {
+    // Reset state
+    appState.currentQuestionIndex = 0;
+    appState.userAnswers = {};
+    appState.examSubmitted = false;
+    appState.examSummary = null;
+
+    // Hide review, show question section
+    elements.reviewScreen.classList.add('hidden');
+    elements.questionSection.classList.remove('hidden');
+
+    // Regenerate navigation and display first question
+    generateQuestionNavigation();
+    displayQuestion();
 }
 
 function checkFillAnswer(userAnswer, correctAnswers) {
@@ -744,20 +1230,45 @@ function renderReviewFeedback(question, storedAnswer) {
         ? `<i class="fas fa-check-circle"></i> Correct`
         : `<i class="fas fa-times-circle"></i> Incorrect`;
 
-    const summaryIntro = (appState.examSummary && appState.currentQuestionIndex === 0)
-        ? `<div class="exam-summary"><strong>Overall Score:</strong> ${appState.examSummary.correct}/${appState.examSummary.total} (${appState.examSummary.percentage}%)</div><br>`
-        : '';
+    // Build summary with topic breakdown on first question
+    let summaryIntro = '';
+    if (appState.examSummary && appState.currentQuestionIndex === 0) {
+        summaryIntro = `<div class="exam-summary">
+            <strong>Overall Score:</strong> ${appState.examSummary.correct}/${appState.examSummary.total} (${appState.examSummary.percentage}%)
+        </div>`;
+
+        // Add topic breakdown if available
+        if (appState.examSummary.topicBreakdown && appState.examSummary.topicBreakdown.length > 0) {
+            summaryIntro += '<div class="topic-breakdown"><strong>Performance by Topic:</strong><ul>';
+            appState.examSummary.topicBreakdown.forEach(topic => {
+                summaryIntro += `<li><strong>${topic.name}:</strong> ${topic.correct}/${topic.total} (${topic.percentage}%)</li>`;
+            });
+            summaryIntro += '</ul></div>';
+        }
+        summaryIntro += '<br>';
+    }
 
     let userAnswerHtml = '';
 
     if (question.type === 'fill' || question.type === 'short') {
-        const answerText = storedAnswer.answer ? storedAnswer.answer : 'No answer provided';
+        const answerText = storedAnswer.answer ? storedAnswer.answer : '<em class="unanswered-text">Unanswered</em>';
         userAnswerHtml = `<div class="user-answer"><strong>Your answer:</strong> ${answerText}</div><br>`;
     } else if (question.type === 'tf') {
         const answerDisplay = typeof storedAnswer.answer === 'boolean'
             ? (storedAnswer.answer ? 'True' : 'False')
-            : 'No answer provided';
+            : '<em class="unanswered-text">Unanswered</em>';
         userAnswerHtml = `<div class="user-answer"><strong>Your answer:</strong> ${answerDisplay}</div><br>`;
+    } else if (question.type === 'mcq') {
+        if (typeof storedAnswer.answer === 'number') {
+            const selectedOption = question.options[storedAnswer.answer];
+            userAnswerHtml = `<div class="user-answer"><strong>Your answer:</strong> ${selectedOption}</div><br>`;
+        } else {
+            userAnswerHtml = `<div class="user-answer"><strong>Your answer:</strong> <em class="unanswered-text">Unanswered</em></div><br>`;
+        }
+    } else if (question.type === 'matching') {
+        if (!storedAnswer.matches || Object.keys(storedAnswer.matches).length === 0) {
+            userAnswerHtml = `<div class="user-answer"><strong>Your answer:</strong> <em class="unanswered-text">Unanswered</em></div><br>`;
+        }
     }
 
     elements.explanation.innerHTML = `${summaryIntro}${userAnswerHtml}${question.explanation || ''}`;
@@ -863,8 +1374,7 @@ function handleForwardNavigation() {
 
 function nextQuestion() {
     if (!appState.examSubmitted) {
-        const isValid = validateCurrentAnswer();
-        if (!isValid) return;
+        saveCurrentAnswerSilently();
     }
 
     if (appState.currentQuestionIndex < appState.questions.length - 1) {
@@ -876,6 +1386,10 @@ function nextQuestion() {
 }
 
 function previousQuestion() {
+    if (!appState.examSubmitted) {
+        saveCurrentAnswerSilently();
+    }
+
     if (appState.currentQuestionIndex > 0) {
         appState.currentQuestionIndex--;
         displayQuestion();
@@ -883,29 +1397,7 @@ function previousQuestion() {
 }
 
 function updateNavigationButtons() {
-    elements.prevBtn.disabled = appState.currentQuestionIndex === 0;
-
-    const lastIndex = appState.questions.length - 1;
-    const isLastQuestion = appState.currentQuestionIndex === lastIndex;
-
-    if (!appState.examSubmitted) {
-        elements.submitBtn.classList.toggle('hidden', !isLastQuestion);
-        elements.nextBtn.classList.toggle('hidden', isLastQuestion);
-        elements.nextBtn.innerHTML = `
-            <i class="fas fa-arrow-right"></i>
-            Next
-        `;
-    } else {
-        elements.submitBtn.classList.add('hidden');
-        elements.nextBtn.classList.remove('hidden');
-        elements.nextBtn.innerHTML = isLastQuestion ? `
-            <i class="fas fa-home"></i>
-            Finish Review
-        ` : `
-            <i class="fas fa-arrow-right"></i>
-            Next
-        `;
-    }
+    // No longer needed - using bottom navigation only
 }
 
 // ==========================================
@@ -1154,6 +1646,7 @@ function startCustomCheckup() {
 
     // Load first question
     if (appState.questions.length > 0) {
+        generateQuestionNavigation();
         displayQuestion();
     }
 }
@@ -1162,6 +1655,7 @@ function goToHome() {
     // Hide all sections
     elements.checkupSetupSection.classList.add('hidden');
     elements.questionSection.classList.add('hidden');
+    elements.reviewScreen.classList.add('hidden');
     elements.homeSection.classList.remove('hidden');
 
     // Remove active state from nav items

@@ -195,21 +195,43 @@
                     <div class="explanation" id="explanation"></div>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button class="btn btn-secondary" id="prevBtn">
-                        <i class="fas fa-arrow-left"></i>
-                        Previous
-                    </button>
-                    <button class="btn btn-primary hidden" id="submitBtn">
+                <!-- Question Navigation -->
+                <div class="question-navigation" id="questionNavigation">
+                    <div class="nav-numbers" id="navNumbers">
+                        <!-- Question number buttons will be dynamically added here -->
+                    </div>
+                    <button class="btn btn-submit-final" id="submitBtnBottom" disabled>
                         <i class="fas fa-flag-checkered"></i>
                         Submit Exam
                     </button>
-                    <button class="btn btn-primary" id="nextBtn">
-                        <i class="fas fa-arrow-right"></i>
-                        Next
+                </div>
+            </div>
+        </section>
+
+        <!-- Review Screen -->
+        <section class="review-screen hidden" id="reviewScreen">
+            <div class="review-header">
+                <h1 class="review-score" id="reviewScore">Score: 0/0 (0%)</h1>
+                <p class="review-score-details" id="reviewScoreDetails">You answered 0 out of 0 questions correctly</p>
+
+                <div class="review-topics" id="reviewTopics">
+                    <!-- Topic badges will be dynamically added here -->
+                </div>
+
+                <div class="review-actions">
+                    <button class="btn btn-primary" id="tryAgainBtn">
+                        <i class="fas fa-redo"></i>
+                        Try Again
+                    </button>
+                    <button class="btn btn-secondary" id="backToHomeBtn">
+                        <i class="fas fa-home"></i>
+                        Back to Home
                     </button>
                 </div>
+            </div>
+
+            <div class="review-all-questions" id="reviewAllQuestions">
+                <!-- All questions will be dynamically added here -->
             </div>
         </section>
     </main>
