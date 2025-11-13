@@ -1117,7 +1117,7 @@ function createReviewQuestionCard(question, index) {
 }
 
 function formatUserAnswer(question, answer) {
-    if (!answer || !answer.answer && !answer.matches) {
+    if (!answer) {
         return 'Unanswered';
     }
 
@@ -1414,13 +1414,23 @@ function updateNavigationButtons() {
 function updateProgress() {
     const total = appState.questions.length;
     const current = appState.currentQuestionIndex + 1;
-    const percentage = (current / total) * 100;
+
+    // Calculate number of answered questions
+    const answeredCount = Object.keys(appState.userAnswers).filter(key => {
+        const index = parseInt(key);
+        const answer = appState.userAnswers[index];
+        const question = appState.questions[index];
+        return isQuestionAnswered(index, answer, question);
+    }).length;
+
+    // Progress bar based on answered questions
+    const percentage = (answeredCount / total) * 100;
 
     elements.progressBar.style.width = `${percentage}%`;
     if (appState.examSubmitted && appState.examSummary) {
         elements.progressText.textContent = `${current}/${total} • Score ${appState.examSummary.correct}/${appState.examSummary.total}`;
     } else {
-        elements.progressText.textContent = `${current}/${total}`;
+        elements.progressText.textContent = `${answeredCount}/${total} Answered`;
     }
 }
 
