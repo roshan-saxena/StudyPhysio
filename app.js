@@ -656,7 +656,9 @@ function updateQuestionNavigation() {
         prevBtn.disabled = appState.currentQuestionIndex === 0;
     }
     if (nextBtn) {
-        nextBtn.disabled = false; // Next is always enabled during test
+        const isLastQuestion = appState.currentQuestionIndex === appState.questions.length - 1;
+        // Disable Next button only on last question (users should use Submit instead)
+        nextBtn.disabled = isLastQuestion;
     }
 
     // Update submit button state
@@ -1185,13 +1187,19 @@ function retakeExam() {
     appState.examSubmitted = false;
     appState.examSummary = null;
 
-    // Hide review, show question section
-    elements.reviewScreen.classList.add('hidden');
-    elements.questionSection.classList.remove('hidden');
+    // Check if this is a checkup - if so, show setup screen instead
+    if (appState.checkupConfig.isCheckup) {
+        elements.reviewScreen.classList.add('hidden');
+        showCheckupSetup(appState.currentSection);
+    } else {
+        // Hide review, show question section
+        elements.reviewScreen.classList.add('hidden');
+        elements.questionSection.classList.remove('hidden');
 
-    // Regenerate navigation and display first question
-    generateQuestionNavigation();
-    displayQuestion();
+        // Regenerate navigation and display first question
+        generateQuestionNavigation();
+        displayQuestion();
+    }
 }
 
 function checkFillAnswer(userAnswer, correctAnswers) {

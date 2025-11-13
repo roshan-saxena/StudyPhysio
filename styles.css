@@ -1523,6 +1523,30 @@ body::before {
     .btn {
         width: 100%;
     }
+
+    /* Navigation buttons - keep Prev/Next on same line, Submit below */
+    .nav-numbers {
+        flex-wrap: wrap;
+    }
+
+    .nav-number-btn {
+        min-width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .nav-prev-next {
+        min-width: 100px;
+        padding: 0 1rem;
+        font-size: 0.95rem;
+    }
+
+    /* Force submit button to new line but keep prev/next together */
+    .btn-submit-final {
+        width: 100%;
+        order: 999;
+        flex-basis: 100%;
+    }
 }
 
 @media (max-width: 480px) {
