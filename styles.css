@@ -1587,6 +1587,11 @@ body::before {
         gap: 0.75rem;
         align-items: flex-start;
     }
+
+    /* Hide question number buttons on very small screens - only show prev/next */
+    .nav-number-btn:not(.nav-prev-next) {
+        display: none;
+    }
 }
 
 /* ==========================================

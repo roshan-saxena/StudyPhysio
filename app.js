@@ -99,6 +99,20 @@ function init() {
         Object.assign(questionBank, pillarCheckupQuestions);
     }
 
+    // Merge unit 2 cardiovascular checkup questions
+    if (typeof unit2CardiovascularCheckup !== 'undefined') {
+        Object.assign(questionBank, unit2CardiovascularCheckup);
+    }
+
+    // Merge unit 3 self defense checkup questions
+    if (typeof unit3SelfDefenseCheckup1 !== 'undefined') {
+        Object.assign(questionBank, unit3SelfDefenseCheckup1);
+    }
+
+    if (typeof unit3SelfDefenseCheckup2 !== 'undefined') {
+        Object.assign(questionBank, unit3SelfDefenseCheckup2);
+    }
+
     loadProgress();
     setupEventListeners();
     updateScoreDisplay();
@@ -196,8 +210,8 @@ function loadSection(section) {
     appState.examSubmitted = false;
     appState.examSummary = null;
 
-    // Check if this is a pillar checkup
-    if (section.includes('pillar-checkup')) {
+    // Check if this is a checkup (pillar checkup, cardiovascular checkup, or self defense checkup)
+    if (section.includes('pillar-checkup') || section.includes('cardiovascular-checkup') || section.includes('self-defense-checkup')) {
         showCheckupSetup(section);
         return;
     }
@@ -223,6 +237,14 @@ function loadSection(section) {
 }
 
 function formatSectionName(section) {
+    // Handle special checkup names
+    if (section === 'unit1-pillar-checkup1') return 'Pillar Checkup 1';
+    if (section === 'unit1-pillar-checkup2') return 'Pillar Checkup 2';
+    if (section === 'unit2-cardiovascular-checkup') return 'Cardiovascular Health Checkup';
+    if (section === 'unit3-self-defense-checkup1') return 'Self Defense Checkup 1';
+    if (section === 'unit3-self-defense-checkup2') return 'Self Defense Checkup 2';
+
+    // Default formatting for other sections
     const map = {
         'checkup': 'Checkup Test',
         'practice': 'Practice Questions',
@@ -551,57 +573,59 @@ function generateQuestionNavigation() {
     prevBtn.id = 'navPrevBtn';
     elements.navNumbers.appendChild(prevBtn);
 
-    // Generate adaptive pagination centered on current question
+    // Generate fixed pagination with consistent button count
     const totalQuestions = appState.questions.length;
     const current = appState.currentQuestionIndex;
-    const range = 2; // Show 2 numbers on each side of current
-    const maxVisible = 7; // Total numbers to show when not showing all
+    const maxVisible = 7; // Total question numbers to show when not showing all
 
     if (totalQuestions <= maxVisible) {
-        // Show all numbers if total is small
+        // Show all numbers if total is small (7 or fewer questions)
         for (let i = 0; i < totalQuestions; i++) {
             createNumberButton(i);
         }
     } else {
-        // Calculate start and end of visible range
-        let start = Math.max(0, current - range);
-        let end = Math.min(totalQuestions - 1, current + range);
+        // Fixed layout: Always show 1 ... middle range ... last
+        // This ensures consistent button count regardless of current position
+        const middleCount = maxVisible - 2; // Reserve space for first and last
 
-        // Adjust if at the beginning or end
-        if (current < range) {
-            end = Math.min(totalQuestions - 1, maxVisible - 1);
-        } else if (current > totalQuestions - range - 1) {
-            start = Math.max(0, totalQuestions - maxVisible);
+        // Always show first button
+        createNumberButton(0);
+
+        // Calculate middle range centered on current question
+        let start = Math.max(1, current - Math.floor((middleCount - 1) / 2));
+        let end = start + middleCount - 1;
+
+        // Adjust if end exceeds bounds
+        if (end >= totalQuestions - 1) {
+            end = totalQuestions - 2;
+            start = Math.max(1, end - middleCount + 1);
         }
 
-        // Show first number if not in range
-        if (start > 0) {
-            createNumberButton(0);
-            if (start > 1) {
-                const ellipsis = document.createElement('button');
-                ellipsis.className = 'nav-number-btn ellipsis';
-                ellipsis.textContent = '...';
-                ellipsis.disabled = true;
-                elements.navNumbers.appendChild(ellipsis);
-            }
+        // Add left ellipsis if there's a gap
+        if (start > 1) {
+            const ellipsis = document.createElement('button');
+            ellipsis.className = 'nav-number-btn ellipsis';
+            ellipsis.textContent = '...';
+            ellipsis.disabled = true;
+            elements.navNumbers.appendChild(ellipsis);
         }
 
-        // Show visible range
+        // Show middle range
         for (let i = start; i <= end; i++) {
             createNumberButton(i);
         }
 
-        // Show last number if not in range
-        if (end < totalQuestions - 1) {
-            if (end < totalQuestions - 2) {
-                const ellipsis = document.createElement('button');
-                ellipsis.className = 'nav-number-btn ellipsis';
-                ellipsis.textContent = '...';
-                ellipsis.disabled = true;
-                elements.navNumbers.appendChild(ellipsis);
-            }
-            createNumberButton(totalQuestions - 1);
+        // Add right ellipsis if there's a gap
+        if (end < totalQuestions - 2) {
+            const ellipsis = document.createElement('button');
+            ellipsis.className = 'nav-number-btn ellipsis';
+            ellipsis.textContent = '...';
+            ellipsis.disabled = true;
+            elements.navNumbers.appendChild(ellipsis);
         }
+
+        // Always show last button
+        createNumberButton(totalQuestions - 1);
     }
 
     // Add Next button
@@ -1504,7 +1528,18 @@ function showCheckupSetup(section) {
     elements.checkupSetupSection.classList.remove('hidden');
 
     // Update title and info
-    const checkupName = section.includes('checkup1') ? 'Pillar Checkup 1' : 'Pillar Checkup 2';
+    let checkupName = 'Checkup';
+    if (section.includes('pillar-checkup1')) {
+        checkupName = 'Pillar Checkup 1';
+    } else if (section.includes('pillar-checkup2')) {
+        checkupName = 'Pillar Checkup 2';
+    } else if (section.includes('cardiovascular-checkup')) {
+        checkupName = 'Cardiovascular Health Checkup';
+    } else if (section.includes('self-defense-checkup1')) {
+        checkupName = 'Self Defense Checkup 1';
+    } else if (section.includes('self-defense-checkup2')) {
+        checkupName = 'Self Defense Checkup 2';
+    }
     elements.checkupTitle.textContent = checkupName;
     elements.totalAvailableQuestions.textContent = appState.checkupConfig.allQuestions.length;
 
@@ -1535,8 +1570,36 @@ function parseTopicsFromQuestions(questions) {
         'Chronic Stress', 'Trauma and PTSD', 'Healthcare'
     ];
 
+    // For Cardiovascular Health Checkup
+    const cardiovascularTopics = [
+        'Directional Terms', 'Heart Blood Flow', 'Coronary Circulation', 'Arteries and Veins', 'Heart Disease',
+        'Heart Electrical System', 'Heart Attacks', 'CPR and AED', 'Stress and Heart', 'Heart Health'
+    ];
+
+    // For Self Defense Checkup 1
+    const selfDefense1Topics = [
+        'Pathogens', 'Infection Sites', 'Outbreak Types', 'Latent Infections', 'STIs',
+        'Lymphatic System', 'Blood Cells', 'Blood Disorders', 'Reading CBC', 'CBC Differential'
+    ];
+
+    // For Self Defense Checkup 2
+    const selfDefense2Topics = [
+        'Physical Barriers', 'Inflammation', 'T Cells and B Cells',
+        'Immune Responses', 'Active vs Passive',
+        'Vaccines', 'Herd Immunity', 'Immune Disorders', 'Allergies', 'Cancer'
+    ];
+
     // Determine which topic set to use based on section
-    const names = appState.currentSection.includes('checkup2') ? topicNames2 : topicNames;
+    let names = topicNames;
+    if (appState.currentSection.includes('pillar-checkup2')) {
+        names = topicNames2;
+    } else if (appState.currentSection.includes('cardiovascular-checkup')) {
+        names = cardiovascularTopics;
+    } else if (appState.currentSection.includes('self-defense-checkup1')) {
+        names = selfDefense1Topics;
+    } else if (appState.currentSection.includes('self-defense-checkup2')) {
+        names = selfDefense2Topics;
+    }
 
     // Group questions into topics (5 questions each)
     for (let i = 0; i < questions.length; i++) {
@@ -1658,7 +1721,7 @@ function startCustomCheckup() {
     elements.questionSection.classList.remove('hidden');
 
     // Update section title
-    const checkupName = appState.currentSection.includes('checkup1') ? 'Pillar Checkup 1' : 'Pillar Checkup 2';
+    const checkupName = formatSectionName(appState.currentSection);
     elements.sectionTitle.textContent = checkupName;
     elements.sectionTitle.dataset.baseTitle = checkupName;
 
