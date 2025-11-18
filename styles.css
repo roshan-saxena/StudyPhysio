@@ -1613,3 +1613,32 @@ body::before {
 .sidebar::-webkit-scrollbar-thumb:hover {
     background: var(--text-light);
 }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.site-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    padding: 1.5rem 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.site-footer p {
+    margin: 0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Ensure body uses flexbox for footer to stick to bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
