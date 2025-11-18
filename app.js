@@ -272,7 +272,13 @@ function displayQuestion() {
     // Update question info
     elements.questionNumber.textContent = `Question ${appState.currentQuestionIndex + 1}`;
     elements.questionText.textContent = question.question;
-    elements.questionTypeBadge.textContent = getQuestionTypeLabel(question.type);
+
+    // Display topic name if in checkup mode, otherwise show question type
+    if (appState.checkupConfig.isCheckup && question.topicName) {
+        elements.questionTypeBadge.textContent = question.topicName;
+    } else {
+        elements.questionTypeBadge.textContent = getQuestionTypeLabel(question.type);
+    }
 
     // Reset input containers
     elements.optionsContainer.classList.add('hidden');
@@ -1706,8 +1712,12 @@ function startCustomCheckup() {
         if (selectedTopics.has(index)) {
             // Randomize questions within this topic
             const shuffled = [...topic.questions].sort(() => Math.random() - 0.5);
-            // Take the selected number of questions
-            customQuestions.push(...shuffled.slice(0, questionsPerTopic));
+            // Take the selected number of questions and tag them with the topic name
+            const questionsWithTopic = shuffled.slice(0, questionsPerTopic).map(q => ({
+                ...q,
+                topicName: topic.name
+            }));
+            customQuestions.push(...questionsWithTopic);
         }
     });
 
