@@ -1721,8 +1721,11 @@ function startCustomCheckup() {
         }
     });
 
+    // Randomize the order of all questions so topics are mixed
+    const finalQuestions = customQuestions.sort(() => Math.random() - 0.5);
+
     // Set up the question section with custom questions
-    appState.questions = customQuestions;
+    appState.questions = finalQuestions;
     appState.currentQuestionIndex = 0;
     appState.userAnswers = {};
     appState.examSubmitted = false;
