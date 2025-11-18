@@ -222,6 +222,7 @@ function loadSection(section) {
     // Show question section
     elements.homeSection.classList.add('hidden');
     elements.checkupSetupSection.classList.add('hidden');
+    elements.reviewScreen.classList.add('hidden');
     elements.questionSection.classList.remove('hidden');
 
     // Update section title
@@ -1525,6 +1526,7 @@ function showCheckupSetup(section) {
     // Hide other sections, show checkup setup
     elements.homeSection.classList.add('hidden');
     elements.questionSection.classList.add('hidden');
+    elements.reviewScreen.classList.add('hidden');
     elements.checkupSetupSection.classList.remove('hidden');
 
     // Update title and info
