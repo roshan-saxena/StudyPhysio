@@ -1483,6 +1483,10 @@ body::before {
         margin-left: 0;
     }
 
+    .site-footer {
+        margin-left: 0;
+    }
+
     .close-sidebar {
         display: flex;
         align-items: center;
@@ -1624,6 +1628,8 @@ body::before {
     text-align: center;
     width: 100%;
     margin-top: auto;
+    margin-left: var(--sidebar-width);
+    transition: margin-left var(--transition-normal);
 }
 
 .site-footer p {
