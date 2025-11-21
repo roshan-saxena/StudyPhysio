@@ -1716,6 +1716,7 @@ function startCustomCheckup() {
 
     // Generate customized question set
     const customQuestions = [];
+    const topicQuestionPool = []; // Store remaining questions by topic for swapping
 
     appState.checkupConfig.topics.forEach((topic, index) => {
         // Only include questions from selected topics
@@ -1725,14 +1726,28 @@ function startCustomCheckup() {
             // Take the selected number of questions and tag them with the topic name
             const questionsWithTopic = shuffled.slice(0, questionsPerTopic).map(q => ({
                 ...q,
-                topicName: topic.name
+                topicName: topic.name,
+                topicIndex: index
             }));
             customQuestions.push(...questionsWithTopic);
+
+            // Store remaining questions from this topic for potential swapping
+            const remainingQuestions = shuffled.slice(questionsPerTopic).map(q => ({
+                ...q,
+                topicName: topic.name,
+                topicIndex: index
+            }));
+            if (remainingQuestions.length > 0) {
+                topicQuestionPool.push(...remainingQuestions);
+            }
         }
     });
 
     // Randomize the order of all questions so topics are mixed
-    const finalQuestions = customQuestions.sort(() => Math.random() - 0.5);
+    let finalQuestions = customQuestions.sort(() => Math.random() - 0.5);
+
+    // SMART BALANCING: Ensure at least 40% false questions
+    finalQuestions = balanceTrueFalseQuestions(finalQuestions, topicQuestionPool);
 
     // Set up the question section with custom questions
     appState.questions = finalQuestions;
@@ -1755,6 +1770,129 @@ function startCustomCheckup() {
         generateQuestionNavigation();
         displayQuestion();
     }
+}
+
+// ==========================================
+// SMART TRUE/FALSE BALANCING
+// ==========================================
+function balanceTrueFalseQuestions(selectedQuestions, remainingPool) {
+    // Only apply balancing to true/false questions
+    const tfQuestions = selectedQuestions.filter(q => q.type === 'tf');
+
+    if (tfQuestions.length === 0) {
+        return selectedQuestions; // No true/false questions, return as is
+    }
+
+    // Count current true/false distribution
+    const falseCount = tfQuestions.filter(q => q.correct === false).length;
+    const totalTF = tfQuestions.length;
+    const falsePercentage = (falseCount / totalTF) * 100;
+
+    // If we already have 40%+ false questions, we're good
+    if (falsePercentage >= 40) {
+        return selectedQuestions;
+    }
+
+    // Calculate how many false questions we need
+    const targetFalseCount = Math.ceil(totalTF * 0.4);
+    const neededFalseCount = targetFalseCount - falseCount;
+
+    if (neededFalseCount <= 0) {
+        return selectedQuestions;
+    }
+
+    // Find true questions we can swap out (group by topic for better distribution)
+    const trueQuestionsByTopic = {};
+    tfQuestions.forEach((q, originalIndex) => {
+        if (q.correct === true) {
+            const actualIndex = selectedQuestions.indexOf(q);
+            if (!trueQuestionsByTopic[q.topicIndex]) {
+                trueQuestionsByTopic[q.topicIndex] = [];
+            }
+            trueQuestionsByTopic[q.topicIndex].push({ question: q, index: actualIndex });
+        }
+    });
+
+    // Find available false questions in the remaining pool (group by topic)
+    const falseQuestionsByTopic = {};
+    remainingPool.forEach(q => {
+        if (q.type === 'tf' && q.correct === false) {
+            if (!falseQuestionsByTopic[q.topicIndex]) {
+                falseQuestionsByTopic[q.topicIndex] = [];
+            }
+            falseQuestionsByTopic[q.topicIndex].push(q);
+        }
+    });
+
+    // Perform swaps topic by topic to maintain topic distribution
+    let swapsMade = 0;
+    const swappedIndices = new Set();
+
+    // Try to swap within each topic first
+    Object.keys(trueQuestionsByTopic).forEach(topicIndex => {
+        if (swapsMade >= neededFalseCount) return;
+
+        const trueQuestionsInTopic = trueQuestionsByTopic[topicIndex];
+        const falseQuestionsInTopic = falseQuestionsByTopic[topicIndex] || [];
+
+        // Swap as many as possible within this topic
+        const swapsInTopic = Math.min(
+            trueQuestionsInTopic.length,
+            falseQuestionsInTopic.length,
+            neededFalseCount - swapsMade
+        );
+
+        for (let i = 0; i < swapsInTopic; i++) {
+            const trueQ = trueQuestionsInTopic[i];
+            const falseQ = falseQuestionsInTopic[i];
+
+            // Replace the true question with the false question
+            selectedQuestions[trueQ.index] = falseQ;
+            swappedIndices.add(trueQ.index);
+            swapsMade++;
+        }
+    });
+
+    // If we still need more false questions, swap from any available topic
+    if (swapsMade < neededFalseCount) {
+        const remainingTrueQuestions = [];
+        Object.values(trueQuestionsByTopic).forEach(questions => {
+            questions.forEach(q => {
+                if (!swappedIndices.has(q.index)) {
+                    remainingTrueQuestions.push(q);
+                }
+            });
+        });
+
+        const remainingFalseQuestions = [];
+        Object.values(falseQuestionsByTopic).forEach(questions => {
+            remainingFalseQuestions.push(...questions);
+        });
+
+        // Remove already used false questions
+        const usedFalseQuestions = new Set(
+            Array.from(swappedIndices).map(idx => selectedQuestions[idx])
+        );
+        const availableFalseQuestions = remainingFalseQuestions.filter(
+            q => !usedFalseQuestions.has(q)
+        );
+
+        // Make additional swaps
+        const additionalSwaps = Math.min(
+            remainingTrueQuestions.length,
+            availableFalseQuestions.length,
+            neededFalseCount - swapsMade
+        );
+
+        for (let i = 0; i < additionalSwaps; i++) {
+            const trueQ = remainingTrueQuestions[i];
+            const falseQ = availableFalseQuestions[i];
+            selectedQuestions[trueQ.index] = falseQ;
+            swapsMade++;
+        }
+    }
+
+    return selectedQuestions;
 }
 
 function goToHome() {
