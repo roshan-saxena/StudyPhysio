@@ -1,378 +1,397 @@
-// StudyPhysio - Unit 3: Self Defense Checkup 1 Questions
-// 50 True/False questions covering 10 topics
+// Self Defense Checkup 1 - Complete Question Bank
+// 50 Questions Total: 10 Topics × 5 Questions per Topic
+// Target distribution: ~50-60% True, ~40-50% False
 
 const unit3SelfDefenseCheckup1 = {
     'unit3-self-defense-checkup1': [
-
-        // TOPIC 1: Pathogens (5 questions)
+        // ==========================================
+        // TOPIC 1: Pathogens (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
             topic: 'Pathogens',
-            question: 'Bacteria are single-celled organisms that can be treated with antibiotics.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Bacteria</strong> are prokaryotic single-celled organisms, and bacterial infections can be treated with <strong>antibiotics</strong> that target bacterial cell walls, protein synthesis, or other bacterial-specific processes.'
-        },
-        {
-            type: 'tf',
-            topic: 'Pathogens',
-            question: 'Viruses can reproduce on their own without needing a host cell.',
+            question: 'Since antibiotics target bacterial cell walls, they would also be effective against fungi because fungi also have cell walls to protect themselves.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Viruses cannot reproduce independently</strong>. They must infect host cells and hijack the cell\'s machinery to replicate. This is why antibiotics don\'t work on viruses—they need antiviral medications.'
+            explanation: 'This is <strong>false</strong>. While it\'s true that both bacteria and fungi have cell walls, the trick is that their cell walls are made of <strong>different materials</strong>. Bacterial cell walls contain <strong>peptidoglycan</strong>, which is what antibiotics target. Fungal cell walls are made of <strong>chitin</strong> (the same material in insect exoskeletons), which antibiotics cannot break down. This is why you cannot treat a fungal infection with antibiotics—the cell wall composition is completely different despite both having walls.'
         },
         {
             type: 'tf',
             topic: 'Pathogens',
-            question: 'Fungi can cause infections in humans, such as athlete\'s foot and ringworm.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Fungi</strong> are eukaryotic organisms that can cause various infections in humans, including superficial infections (athlete\'s foot, ringworm) and more serious systemic infections, especially in immunocompromised individuals.'
+            question: 'A vector that carries the malaria parasite will eventually die from the infection because the pathogen will damage its body systems over time.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. This is a tricky question because we know infections cause disease in humans, so it seems logical a vector would also get sick. However, vectors like mosquitoes have <strong>evolved alongside their pathogens</strong> and the pathogen replicates in the mosquito without causing illness or death. The mosquito remains healthy enough to transmit the parasite to humans. If the pathogen killed the vector, it would be a poor survival strategy for the pathogen itself.'
         },
         {
             type: 'tf',
             topic: 'Pathogens',
-            question: 'Parasites live on or in a host organism and benefit at the host\'s expense.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Parasites</strong> depend on host organisms for survival, obtaining nutrients and shelter while causing harm. Examples include protozoans (malaria), helminths (tapeworms), and ectoparasites (lice, ticks).'
+            question: 'Viruses are smaller than bacteria, so if an antibiotic could squeeze through a bacterial cell wall, it would definitely be able to penetrate and kill a virus.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>—this is a tricky logic trap. Size alone does not determine whether something can be killed by antibiotics. The real issue is that viruses are <strong>not cells at all</strong>. They\'re just genetic material (DNA or RNA) wrapped in a protein coat. Antibiotics are designed to attack living cellular structures like cell walls, ribosomes, and metabolic pathways. Viruses don\'t have these structures to attack. It\'s not about size; it\'s about the fundamental difference between a cell (bacteria) and a non-cellular infectious agent (virus).'
         },
         {
             type: 'tf',
             topic: 'Pathogens',
-            question: 'A vector is an organism that transmits pathogens from one host to another.',
+            question: 'Parasites include both helminths like tapeworms and protozoans like malaria parasites, even though they are very different in size and complexity.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. A <strong>vector</strong> is a carrier organism (often an insect like mosquitoes or ticks) that transmits pathogens between hosts. Examples include mosquitoes spreading malaria and ticks spreading Lyme disease.'
+            explanation: 'This is <strong>true</strong>. The category "parasites" is broad and includes <strong>helminths (multicellular worms)</strong> that can be seen with a microscope or sometimes with the naked eye, AND <strong>protozoans (single-celled organisms)</strong> like the parasite causing malaria. Despite their huge differences in size and complexity, they\'re grouped together as parasites because they all <strong>live on or inside a host and feed at the host\'s expense</strong>.'
+        },
+        {
+            type: 'tf',
+            topic: 'Pathogens',
+            question: 'Bacteria have cell walls made of peptidoglycan, which is why antibiotics can target and destroy bacteria, but since viruses also use peptidoglycan in their structure, some antibiotics might work against viruses too.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The trick here is the second part. While it\'s correct that bacteria have peptidoglycan cell walls that antibiotics target, <strong>viruses do not have peptidoglycan or any cell wall at all</strong>. Viruses consist only of genetic material surrounded by a protein coat—they\'re not even cells. There is no peptidoglycan for antibiotics to attack in viruses, which is why antibiotics are completely useless against viral infections no matter what type of antibiotic is used.'
         },
 
-        // TOPIC 2: Infections by location (5 questions)
+        // ==========================================
+        // TOPIC 2: Infection Sites (5 questions) - 2T, 3F
+        // ==========================================
         {
             type: 'tf',
             topic: 'Infection Sites',
-            question: 'Meningitis is an infection or inflammation of the membranes covering the brain and spinal cord.',
+            question: 'Pneumonia and bronchitis both affect the lungs, but pneumonia is more dangerous because it affects the alveoli where gas exchange occurs, while bronchitis only affects the airways.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Meningitis</strong> is inflammation of the meninges (protective membranes around the brain and spinal cord). It can be caused by bacteria, viruses, or fungi and is potentially life-threatening.'
-        },
-        {
-            type: 'tf',
-            topic: 'Infection Sites',
-            question: 'Pneumonia is an infection of the urinary tract.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Pneumonia</strong> is an infection of the <strong>lungs</strong> (specifically the alveoli), not the urinary tract. Urinary tract infections (UTIs) affect the bladder, urethra, or kidneys.'
-        },
-        {
-            type: 'tf',
-            topic: 'Infection Sites',
-            question: 'Bronchitis is inflammation of the bronchial tubes that carry air to the lungs.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Bronchitis</strong> is inflammation of the bronchi (airways leading to the lungs), causing coughing, mucus production, and breathing difficulty. It can be acute or chronic.'
+            explanation: 'This is <strong>true</strong>, but it requires understanding <strong>why location matters for severity</strong>. <strong>Pneumonia infects the alveoli</strong> (tiny air sacs where oxygen enters the blood), causing fluid buildup that prevents oxygen from transferring into your bloodstream. <strong>Bronchitis infects the bronchi</strong> (the tubes that carry air down to the lungs), which causes coughing and mucus but usually doesn\'t prevent oxygen transfer. This anatomical difference in location directly explains why pneumonia is more life-threatening.'
         },
         {
             type: 'tf',
             topic: 'Infection Sites',
-            question: 'A urinary tract infection (UTI) can affect the bladder, urethra, or kidneys.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>UTIs</strong> can occur in any part of the urinary system: urethra (urethritis), bladder (cystitis), or kidneys (pyelonephritis). They\'re more common in women due to shorter urethras.'
+            question: 'Meningitis can be caused by bacteria, viruses, or fungi, but bacterial meningitis is the most contagious form and spreads faster than viral meningitis.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>—this is tricky because bacterial meningitis IS more serious and dangerous, which might make you think it\'s also more contagious. However, <strong>contagiousness and severity are different things</strong>. <strong>Viral meningitis is actually more easily transmitted between people</strong> than bacterial meningitis (which requires close contact). Bacterial meningitis is deadlier and progresses faster, but not necessarily more contagious. Don\'t confuse "more dangerous" with "more contagious."'
         },
         {
             type: 'tf',
             topic: 'Infection Sites',
-            question: 'Septicemia (sepsis) is a localized infection that remains in one part of the body.',
+            question: 'A urinary tract infection can begin in the urethra or bladder, and if left untreated, it can travel upward to infect the kidneys, making early treatment important.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. UTIs can <strong>ascend from lower to upper parts of the urinary system</strong>. An infection that starts in the bladder can travel up the ureters to reach the kidneys. Kidney infections are much more serious and can cause permanent kidney damage and sepsis. This is why untreated bladder infections are dangerous—they can progress to more serious infections.'
+        },
+        {
+            type: 'tf',
+            topic: 'Infection Sites',
+            question: 'Septicemia occurs when bacteria enter the bloodstream, and it is therefore always more serious than a localized infection like meningitis because it affects the whole body.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Septicemia (sepsis)</strong> is a <strong>systemic infection</strong> where bacteria or their toxins spread throughout the bloodstream. It\'s a life-threatening condition requiring immediate treatment.'
+            explanation: 'This is <strong>false</strong>—this is tricky because it mixes accurate information with a wrong conclusion. Yes, septicemia affects the whole body systemically. However, <strong>meningitis is actually extremely serious even though it\'s localized to the brain and spinal cord membranes</strong>. A localized brain infection can be deadlier than some cases of septicemia because the brain is so vital. Severity depends on the location AND the pathogen, not just whether it\'s systemic or localized.'
+        },
+        {
+            type: 'tf',
+            topic: 'Infection Sites',
+            question: 'Bronchitis and pneumonia both cause cough and affect the respiratory system, so they produce identical symptoms and require the same treatment approach.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. This is tricky because both diseases are respiratory infections and both cause cough. However, <strong>they affect different parts of the respiratory system and cause different patterns of symptoms</strong>. Bronchitis causes persistent cough with mucus but usually preserves normal oxygen levels. Pneumonia causes cough, fever, chest pain, and difficulty breathing due to fluid in the alveoli. This means pneumonia requires more aggressive treatment while mild bronchitis might only need supportive care.'
         },
 
-        // TOPIC 3: Endemic epidemic pandemic (5 questions)
+        // ==========================================
+        // TOPIC 3: Outbreak Types (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
             topic: 'Outbreak Types',
-            question: 'An endemic disease is constantly present in a particular region or population.',
+            question: 'An endemic disease is one that is constantly present in a particular population or region at a relatively stable rate, such as malaria in certain tropical areas.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Endemic</strong> means a disease is consistently present in a specific geographic area or population at expected levels. Examples include malaria in tropical regions or Lyme disease in certain U.S. areas.'
-        },
-        {
-            type: 'tf',
-            topic: 'Outbreak Types',
-            question: 'An epidemic is a disease outbreak that occurs on a global scale.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. An <strong>epidemic</strong> is a disease outbreak that spreads rapidly and affects many people in a <strong>region or population</strong>, exceeding normal expectations. A <strong>pandemic</strong> is a global outbreak.'
-        },
-        {
-            type: 'tf',
-            topic: 'Outbreak Types',
-            question: 'A pandemic is an epidemic that has spread across multiple countries or continents.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. A <strong>pandemic</strong> is an epidemic that spreads across international boundaries, affecting large numbers of people on multiple continents. COVID-19 and the 1918 flu were pandemics.'
-        },
-        {
-            type: 'tf',
-            topic: 'Outbreak Types',
-            question: 'The distinction between endemic, epidemic, and pandemic is based only on the severity of the disease.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. The distinction is based on <strong>geographic spread and affected population size</strong>, not severity. Endemic is localized, epidemic is regional outbreak, pandemic is global—regardless of how deadly the disease is.'
+            explanation: 'This is <strong>true</strong>. <strong>Endemic means predictable, consistent presence</strong> in a specific geographic area or population. The disease occurs at expected baseline levels continuously. Examples: malaria in sub-Saharan Africa, Lyme disease in northeastern US. "Endemic" describes pattern and geography, not severity or contagiousness.'
         },
         {
             type: 'tf',
             topic: 'Outbreak Types',
-            question: 'A disease can transition from endemic to epidemic if cases suddenly increase beyond expected levels.',
+            question: 'An epidemic occurs when disease cases exceed normally expected levels in a region, while a pandemic is an epidemic that has spread across multiple countries or continents.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. An endemic disease can become <strong>epidemic</strong> if there\'s a sudden surge in cases beyond normal levels. This can happen due to environmental changes, weakened immunity, or pathogen mutations.'
+            explanation: 'This is <strong>true</strong>. <strong>Epidemic means outbreak beyond expected levels</strong> in a specific area—a rapid increase affecting many people. <strong>Pandemic means global epidemic</strong> with widespread geographic distribution across countries/continents. COVID-19 transitioned from epidemic (China) to pandemic (worldwide). Scale and geography distinguish them.'
+        },
+        {
+            type: 'tf',
+            topic: 'Outbreak Types',
+            question: 'The distinction between endemic, epidemic, and pandemic is based solely on how deadly the disease is, with pandemics always being more lethal than epidemics.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. These terms describe <strong>geographic distribution and case patterns, NOT lethality</strong>. A mild disease can be pandemic (H1N1 flu 2009 was relatively mild but global). A severe disease can be a limited epidemic (Ebola was very deadly but geographically contained). Virulence and spread pattern are independent characteristics.'
+        },
+        {
+            type: 'tf',
+            topic: 'Outbreak Types',
+            question: 'A disease cannot be endemic and epidemic simultaneously in the same location.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. <strong>Endemic diseases CAN have epidemic outbreaks</strong>. A disease with usual baseline presence (endemic) can experience sudden spikes above expected levels (epidemic). Example: Dengue fever is endemic in many tropical regions but can have epidemic outbreaks when cases surge dramatically. The baseline (endemic) and spike (epidemic) can coexist conceptually.'
+        },
+        {
+            type: 'tf',
+            topic: 'Outbreak Types',
+            question: 'Understanding whether a disease is endemic, epidemic, or pandemic helps public health officials determine appropriate response strategies and resource allocation.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Classification guides public health response</strong>. Endemic diseases need sustainable prevention/treatment infrastructure. Epidemics require rapid response, contact tracing, and surge resources. Pandemics demand international coordination, travel restrictions, and massive resource mobilization. Proper classification ensures proportionate, effective response matching the disease pattern and scale.'
         },
 
-        // TOPIC 4: Latent infections (5 questions)
+        // ==========================================
+        // TOPIC 4: Latent Infections (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
             topic: 'Latent Infections',
-            question: 'Latent infections are those where the pathogen remains inactive in the body for a period of time.',
+            question: 'Latent infections occur when a pathogen remains dormant in the body without causing active symptoms, but can reactivate later under certain conditions like stress or weakened immunity.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. In <strong>latent infections</strong>, the pathogen remains dormant in the body without causing symptoms but can reactivate later. The person carries the pathogen but isn\'t actively sick.'
+            explanation: 'This is <strong>true</strong>. <strong>Latent infections are "hidden" infections</strong> where the pathogen persists in body cells without active replication or symptoms. The person carries the pathogen but isn\'t sick. Triggers like stress, illness, aging, or weakened immunity can reactivate dormant pathogens, causing recurrent disease. Classic examples: herpes viruses, chickenpox/shingles.'
         },
         {
             type: 'tf',
             topic: 'Latent Infections',
-            question: 'Herpes simplex virus (HSV) can establish latent infections that may reactivate causing cold sores.',
+            question: 'Herpes simplex virus (HSV) can establish latent infection in nerve cells, which is why cold sores or genital herpes can recur even after the initial infection has healed.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>HSV</strong> establishes latent infection in nerve cells. The virus can reactivate due to stress, illness, or immune suppression, causing recurrent cold sores or genital herpes outbreaks.'
+            explanation: 'This is <strong>true</strong>. <strong>HSV latency explains recurrence</strong>. After initial infection, HSV travels along nerves to nerve cell bodies where it becomes dormant. The immune system can\'t reach it there. Stress, illness, sun exposure, or immune suppression can trigger reactivation, causing virus to travel back down nerves to cause new outbreaks at the original site.'
         },
         {
             type: 'tf',
             topic: 'Latent Infections',
-            question: 'During a latent infection, the pathogen is completely eliminated from the body.',
+            question: 'During a latent infection, the pathogen is completely eliminated from the body and only returns if the person is re-exposed to the same pathogen from an external source.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. During latency, the pathogen <strong>remains in the body</strong> but is dormant/inactive. It hasn\'t been eliminated and can potentially reactivate. True elimination would mean the infection is cured.'
+            explanation: 'This is <strong>false</strong>. In latent infections, <strong>the pathogen NEVER leaves the body</strong>. It remains dormant inside host cells indefinitely. Recurrence comes from reactivation of the existing internal infection, not new external exposure. This is why people with herpes have recurrent outbreaks without re-exposure—the virus is always present internally.'
         },
         {
             type: 'tf',
             topic: 'Latent Infections',
-            question: 'Chickenpox and shingles are caused by the same virus that can remain latent in nerve cells.',
+            question: 'The varicella-zoster virus that causes chickenpox in children can remain latent for decades and reactivate later in life to cause shingles (herpes zoster).',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Varicella-zoster virus</strong> causes chickenpox in initial infection, then becomes latent in nerve cells. It can reactivate years later as shingles, causing painful rash along nerve pathways.'
+            explanation: 'This is <strong>true</strong>. <strong>Chickenpox and shingles are caused by the same virus</strong>. After chickenpox resolves (usually in childhood), varicella-zoster virus becomes latent in nerve root ganglia. Decades later, typically in older adults or immunocompromised individuals, it can reactivate and travel down sensory nerves, causing painful shingles rash in a specific pattern.'
         },
         {
             type: 'tf',
             topic: 'Latent Infections',
-            question: 'A person with a latent infection cannot transmit the pathogen to others.',
+            question: 'Latent infections are highly contagious even when no symptoms are present, making them more dangerous than active infections.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While <strong>transmission is less likely</strong> during latency, some latent infections (like HIV) can still be transmitted. Additionally, reactivation produces active infection that is definitely contagious.'
+            explanation: 'This is <strong>false</strong>. <strong>Latent infections are generally NOT contagious or much less contagious</strong> than active infections because the pathogen isn\'t actively replicating or being shed. Active infections produce and release pathogens, making them contagious. While some latent infections can occasionally shed virus asymptomatically, the main transmission risk is during active infection/reactivation.'
         },
 
-        // TOPIC 5: Sexually transmitted infections (5 questions)
+        // ==========================================
+        // TOPIC 5: STIs (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
             topic: 'STIs',
-            question: 'STIs (sexually transmitted infections) can be caused by bacteria, viruses, and parasites.',
+            question: 'Many sexually transmitted infections are asymptomatic, meaning infected individuals may not show symptoms but can still transmit the infection to partners.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>STIs</strong> can be bacterial (chlamydia, gonorrhea, syphilis), viral (HIV, herpes, HPV, hepatitis B), or parasitic (trichomoniasis). Treatment depends on the type of pathogen.'
-        },
-        {
-            type: 'tf',
-            topic: 'STIs',
-            question: 'All STIs can be cured with antibiotics.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. Only <strong>bacterial STIs</strong> can be cured with antibiotics. <strong>Viral STIs</strong> (HIV, herpes, HPV) cannot be cured, though symptoms can be managed with antiviral medications.'
+            explanation: 'This is <strong>true</strong>. <strong>Asymptomatic STIs are a major public health challenge</strong>. Many people with chlamydia, gonorrhea, or other STIs have no symptoms but are contagious. This allows infections to spread unknowingly and can lead to serious complications before diagnosis. Regular STI screening is essential for sexually active individuals.'
         },
         {
             type: 'tf',
             topic: 'STIs',
-            question: 'Many STIs can be asymptomatic, meaning infected people may not show symptoms.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Many STIs are <strong>asymptomatic</strong>, especially in early stages. People can be infected and transmit the disease without knowing. Regular testing is important for sexually active individuals.'
+            question: 'All sexually transmitted infections can be cured with antibiotics if caught early enough.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Only <strong>bacterial STIs</strong> (chlamydia, gonorrhea, syphilis) can be cured with antibiotics. <strong>Viral STIs cannot be cured</strong>—HIV, herpes, and HPV are lifelong infections. Antivirals can manage symptoms and reduce transmission but don\'t eliminate the virus. This distinction between bacterial (curable) and viral (manageable but incurable) is crucial.'
         },
         {
             type: 'tf',
             topic: 'STIs',
-            question: 'HPV (human papillomavirus) infection can lead to cervical cancer.',
+            question: 'Human papillomavirus (HPV) infection is concerning because certain types can cause cervical cancer and other cancers over time.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Certain high-risk strains of <strong>HPV</strong> can cause cervical cancer and other cancers. HPV vaccines protect against these cancer-causing strains and are recommended for adolescents.'
+            explanation: 'This is <strong>true</strong>. <strong>High-risk HPV types cause cancer</strong>. Persistent infection with certain strains can lead to cervical cancer and also cancers of other areas. The virus disrupts normal cell regulation. HPV vaccines protect against cancer-causing strains, which is why vaccination is recommended for adolescents.'
         },
         {
             type: 'tf',
             topic: 'STIs',
-            question: 'STIs can only be transmitted through sexual intercourse.',
+            question: 'STIs can only be transmitted through sexual intercourse and cannot be spread through other forms of contact or from mother to child.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While primarily sexually transmitted, some STIs can spread through <strong>other routes</strong>: blood transfusions, shared needles, mother to child during birth/breastfeeding, or close skin contact (like herpes).'
+            explanation: 'This is <strong>false</strong>. While primarily sexually transmitted, <strong>STIs have other transmission routes</strong>. Some spread through blood (HIV, hepatitis B), mother-to-child during pregnancy/birth/breastfeeding (HIV, syphilis, herpes), or close skin contact (herpes, HPV). Shared needles transmit HIV and hepatitis. Understanding all transmission routes is important for prevention.'
+        },
+        {
+            type: 'tf',
+            topic: 'STIs',
+            question: 'Untreated sexually transmitted infections in women can lead to serious reproductive complications including chronic pain and infertility.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Untreated bacterial STIs cause serious complications</strong> (especially chlamydia and gonorrhea). Infection ascends from cervix to uterus, fallopian tubes, and ovaries, causing inflammation and scarring. This damage can block fallopian tubes, leading to infertility or ectopic pregnancy. Chronic pain can persist even after treatment. Prevention through screening and treatment is crucial.'
         },
 
-        // TOPIC 6: Lymphatic system (5 questions)
+        // ==========================================
+        // TOPIC 6: Lymphatic System (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
             topic: 'Lymphatic System',
-            question: 'The lymphatic system helps defend the body against infection and returns excess fluid to the bloodstream.',
+            question: 'The lymphatic system returns excess fluid from tissues back to the bloodstream and plays a crucial role in immune defense by filtering lymph through lymph nodes.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. The <strong>lymphatic system</strong> has two main functions: returning excess interstitial fluid (lymph) to blood circulation and housing immune cells (lymphocytes) that fight infection.'
-        },
-        {
-            type: 'tf',
-            topic: 'Lymphatic System',
-            question: 'Lymph is a fluid that circulates through lymphatic vessels and contains white blood cells.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Lymph</strong> is clear fluid derived from blood plasma that leaks into tissues. It contains lymphocytes (white blood cells) and flows through lymphatic vessels back to the bloodstream.'
-        },
-        {
-            type: 'tf',
-            topic: 'Lymphatic System',
-            question: 'The lymphatic system has a pump like the heart to circulate lymph.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. Unlike blood circulation, the lymphatic system <strong>has no central pump</strong>. Lymph moves through muscle contractions, breathing movements, and one-way valves in lymphatic vessels.'
+            explanation: 'This is <strong>true</strong>. The lymphatic system has <strong>two main functions</strong>: (1) <strong>fluid balance</strong>—returning excess interstitial fluid (lymph) leaked from capillaries back to blood circulation, and (2) <strong>immune defense</strong>—lymph nodes contain immune cells that filter pathogens and abnormal cells from lymph before it returns to blood.'
         },
         {
             type: 'tf',
             topic: 'Lymphatic System',
-            question: 'Lymph nodes filter lymph and contain immune cells that can trap and destroy pathogens.',
+            question: 'Lymph is a clear fluid that contains white blood cells, particularly lymphocytes, and circulates through lymphatic vessels separate from blood vessels.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Lymph nodes</strong> filter lymph, trapping bacteria, viruses, and abnormal cells. They contain lymphocytes and macrophages that destroy pathogens. Swollen nodes indicate active immune response.'
+            explanation: 'This is <strong>true</strong>. <strong>Lymph is tissue fluid rich in lymphocytes</strong>. It\'s derived from blood plasma that leaks into tissues, picks up waste products and pathogens, then drains into lymphatic vessels. Though separate from blood vessels, lymphatic vessels eventually return lymph to the bloodstream via the thoracic duct.'
         },
         {
             type: 'tf',
             topic: 'Lymphatic System',
-            question: 'Lymphatic circulation is separate from blood circulation and the two never connect.',
+            question: 'The lymphatic system has a central pump like the heart that actively circulates lymph throughout the body.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While separate, the lymphatic and blood circulatory systems <strong>do connect</strong>. Lymph returns to blood circulation via the thoracic duct and right lymphatic duct, which empty into subclavian veins.'
+            explanation: 'This is <strong>false</strong>. Unlike blood circulation with the heart as a pump, <strong>lymph has no dedicated pump</strong>. Lymph moves through: (1) skeletal muscle contractions squeezing vessels, (2) breathing movements creating pressure changes, (3) smooth muscle in lymphatic vessel walls, and (4) one-way valves preventing backflow. This is why movement/exercise helps lymph circulation.'
+        },
+        {
+            type: 'tf',
+            topic: 'Lymphatic System',
+            question: 'Swollen lymph nodes during an infection indicate that the lymph nodes are diseased and failing to function properly.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. <strong>Swollen lymph nodes usually indicate proper immune function</strong>, not failure. When fighting infection, lymph nodes trap pathogens and immune cells proliferate to combat the infection. This increases lymph node size and causes tenderness. Swelling shows the immune system is actively responding. Persistent or painless swelling might indicate other problems.'
+        },
+        {
+            type: 'tf',
+            topic: 'Lymphatic System',
+            question: 'Lymphatic circulation and blood circulation are connected, with lymph eventually draining back into the bloodstream through ducts that empty into large veins near the heart.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. Though lymphatic and blood systems are separate, <strong>they do connect</strong>. Lymph from throughout the body collects in the thoracic duct (left side) and right lymphatic duct (right upper body), which empty into the subclavian veins near the heart. This returns filtered fluid to blood circulation, completing the cycle of fluid movement through the body.'
         },
 
-        // TOPIC 7: Blood cells (5 questions)
+        // ==========================================
+        // TOPIC 7: Blood Cells (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
             topic: 'Blood Cells',
-            question: 'Red blood cells (erythrocytes) contain hemoglobin that carries oxygen.',
+            question: 'Red blood cells (erythrocytes) contain hemoglobin protein that binds oxygen in the lungs and releases it to body tissues.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>RBCs</strong> contain hemoglobin protein that binds oxygen in the lungs and delivers it to tissues. Mature RBCs lack a nucleus, maximizing space for hemoglobin.'
+            explanation: 'This is <strong>true</strong>. <strong>RBCs are specialized oxygen carriers</strong>. Hemoglobin (iron-containing protein) binds oxygen in high-oxygen environments (lungs) and releases it in low-oxygen environments (tissues). Mature RBCs lack nuclei, maximizing space for hemoglobin. Each RBC contains millions of hemoglobin molecules, allowing efficient oxygen transport throughout the body.'
         },
         {
             type: 'tf',
             topic: 'Blood Cells',
-            question: 'White blood cells (leukocytes) are primarily responsible for fighting infections.',
+            question: 'White blood cells (leukocytes) are primarily responsible for fighting infections and include several different types such as neutrophils, lymphocytes, and eosinophils.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>WBCs (leukocytes)</strong> are the body\'s defense against infection and disease. Different types include neutrophils (bacteria fighters), lymphocytes (adaptive immunity), and eosinophils (parasites/allergies).'
+            explanation: 'This is <strong>true</strong>. <strong>WBCs are the immune system\'s cellular defenders</strong> with different specialized roles: <strong>Neutrophils</strong> attack bacteria through phagocytosis; <strong>Lymphocytes</strong> (B cells and T cells) provide adaptive immunity; <strong>Eosinophils</strong> fight parasites and respond to allergens. Each type addresses specific threats.'
         },
         {
             type: 'tf',
             topic: 'Blood Cells',
-            question: 'Platelets (thrombocytes) are responsible for blood clotting.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Platelets</strong> are cell fragments that initiate blood clotting (coagulation) at injury sites. They clump together and release chemicals that form clots to stop bleeding.'
-        },
-        {
-            type: 'tf',
-            topic: 'Blood Cells',
-            question: 'All blood cells are produced in the lymph nodes.',
+            question: 'Platelets (thrombocytes) are complete cells responsible for initiating blood clotting at sites of blood vessel injury.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Blood cells are produced in <strong>bone marrow</strong>, not lymph nodes. Red bone marrow contains stem cells that differentiate into RBCs, WBCs, and platelets through hematopoiesis.'
+            explanation: 'This is <strong>false</strong> regarding "complete cells." <strong>Platelets are cell fragments, not whole cells</strong>—they\'re pieces of megakaryocytes (large bone marrow cells). However, they DO initiate clotting: platelets stick to damaged vessel walls, release chemical signals, clump together, and trigger the coagulation cascade forming blood clots to stop bleeding.'
         },
         {
             type: 'tf',
             topic: 'Blood Cells',
-            question: 'Plasma is the liquid component of blood that carries cells, nutrients, and wastes.',
+            question: 'All blood cells are produced in the bone marrow through a process called hematopoiesis.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Plasma</strong> is the straw-colored liquid (about 55% of blood) that suspends blood cells and transports nutrients, hormones, proteins, gases, and waste products throughout the body.'
+            explanation: 'This is <strong>true</strong>. <strong>Bone marrow is the blood cell factory</strong>. Hematopoietic stem cells in red bone marrow differentiate into all blood cell types: erythrocytes (RBCs), leukocytes (WBCs of all types), and thrombocytes (platelets). This continuous production replaces aged or damaged blood cells. Bone marrow disorders disrupt blood cell production.'
+        },
+        {
+            type: 'tf',
+            topic: 'Blood Cells',
+            question: 'Plasma makes up the solid portion of blood and contains the blood cells, while the liquid portion is called serum.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>—it\'s reversed! <strong>Plasma is the liquid portion</strong> of blood (~55% of volume) that carries cells, nutrients, hormones, proteins, and waste. <strong>Serum is plasma minus clotting factors</strong> (what remains after blood clots). The cellular components (RBCs, WBCs, platelets) make up about 45% of blood volume and are suspended in plasma.'
         },
 
-        // TOPIC 8: Blood disorders (5 questions)
+        // ==========================================
+        // TOPIC 8: Blood Disorders (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
             topic: 'Blood Disorders',
-            question: 'Anemia is a condition where there is a deficiency in red blood cells or hemoglobin.',
+            question: 'Anemia is a condition characterized by insufficient red blood cells or hemoglobin, resulting in reduced oxygen-carrying capacity of the blood.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Anemia</strong> means insufficient RBCs or hemoglobin to carry adequate oxygen, causing fatigue, weakness, and pale skin. Causes include iron deficiency, blood loss, or genetic conditions.'
+            explanation: 'This is <strong>true</strong>. <strong>Anemia means inadequate oxygen delivery</strong> due to low RBC count, low hemoglobin, or dysfunctional hemoglobin. This causes fatigue, weakness, pale skin, shortness of breath, and dizziness. Causes include iron deficiency, vitamin deficiency, blood loss, chronic disease, genetic disorders, or bone marrow problems.'
         },
         {
             type: 'tf',
             topic: 'Blood Disorders',
-            question: 'Iron deficiency anemia results from inadequate iron needed to produce hemoglobin.',
+            question: 'Iron deficiency anemia occurs when the body lacks sufficient iron to produce adequate hemoglobin, and is the most common type of anemia worldwide.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Iron deficiency anemia</strong> is the most common type, occurring when the body lacks sufficient iron to make hemoglobin. It can result from poor diet, blood loss, or absorption problems.'
+            explanation: 'This is <strong>true</strong>. <strong>Iron deficiency anemia is the most prevalent anemia globally</strong>. Iron is essential for hemoglobin synthesis. Causes include inadequate dietary iron, poor absorption, blood loss (menstruation, GI bleeding), or increased needs (pregnancy, growth). Treatment involves iron supplementation and addressing underlying causes like bleeding.'
         },
         {
             type: 'tf',
             topic: 'Blood Disorders',
-            question: 'Sickle cell anemia causes red blood cells to become rigid and crescent-shaped.',
+            question: 'Sickle cell anemia causes red blood cells to become abnormally shaped (crescent/sickle), which can block blood flow in small vessels and cause painful crises.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Sickle cell anemia</strong> is a genetic disorder causing RBCs to become rigid, sticky, and sickle-shaped. These cells block blood flow, break down early, and cause pain crises and organ damage.'
+            explanation: 'This is <strong>true</strong>. <strong>Sickle cell is a genetic hemoglobin disorder</strong>. Abnormal hemoglobin causes RBCs to become rigid, sticky, and sickle-shaped when deoxygenated. These cells block capillaries (vaso-occlusive crises) causing severe pain, organ damage, and stroke risk. Sickled cells also break down prematurely, causing chronic anemia. It\'s inherited recessively.'
         },
         {
             type: 'tf',
             topic: 'Blood Disorders',
-            question: 'Leukemia is a cancer of the blood characterized by overproduction of abnormal white blood cells.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Leukemia</strong> is cancer of blood-forming tissues causing production of abnormal WBCs that don\'t function properly. These crowd out normal blood cells, impairing immunity and causing anemia.'
-        },
-        {
-            type: 'tf',
-            topic: 'Blood Disorders',
-            question: 'All types of anemia are caused by iron deficiency.',
+            question: 'All types of anemia have the same cause and are treated with iron supplements.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While iron deficiency is common, anemia has many causes: <strong>vitamin B12 or folate deficiency, chronic disease, blood loss, genetic disorders</strong> (sickle cell, thalassemia), or bone marrow problems.'
+            explanation: 'This is <strong>false</strong>. <strong>Anemia has many different causes requiring different treatments</strong>. Iron deficiency needs iron supplements. Vitamin B12 deficiency needs B12 injections. Sickle cell requires pain management, transfusions, and possibly medications. Anemia from kidney disease needs erythropoietin. Hemolytic anemia may need immunosuppressants. Treatment must match the underlying cause.'
+        },
+        {
+            type: 'tf',
+            topic: 'Blood Disorders',
+            question: 'Leukemia and lymphoma are both cancers affecting white blood cells, with leukemia typically involving bone marrow and blood while lymphoma primarily affects lymph nodes.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Both are cancers of white blood cells with different locations</strong>. Leukemia (liquid cancer) involves abnormal WBC proliferation in bone marrow and blood. Lymphoma (solid cancer) involves abnormal lymphocyte proliferation in lymph nodes and other lymphoid tissues. Both cause abnormal WBC proliferation and impaired immunity, but origination and presentation patterns differ.'
         },
 
-        // TOPIC 9: Reading a CBC (5 questions)
+        // ==========================================
+        // TOPIC 9: Reading a CBC (5 questions) - 2T, 3F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Reading CBC',
-            question: 'A CBC (Complete Blood Count) measures the numbers of different types of blood cells.',
+            topic: 'Reading a CBC',
+            question: 'A Complete Blood Count (CBC) measures the numbers and characteristics of red blood cells, white blood cells, and platelets, providing crucial diagnostic information.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. A <strong>CBC</strong> measures RBCs, WBCs, platelets, hemoglobin, hematocrit, and other parameters. It helps diagnose conditions like anemia, infections, immune disorders, and blood cancers.'
+            explanation: 'This is <strong>true</strong>. <strong>A CBC is a fundamental diagnostic test</strong> measuring: RBC count, hemoglobin, hematocrit, WBC count, platelet count, and cell indices (size, shape). It helps diagnose anemia, infections, immune disorders, blood cancers, clotting problems, and monitor treatment effects. It\'s one of the most commonly ordered lab tests.'
         },
         {
             type: 'tf',
-            topic: 'Reading CBC',
-            question: 'Elevated white blood cell count typically indicates an infection or inflammation.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Elevated WBC count (leukocytosis)</strong> usually indicates infection, inflammation, stress, or leukemia. The body produces more WBCs to fight pathogens or in response to tissue damage.'
-        },
-        {
-            type: 'tf',
-            topic: 'Reading CBC',
-            question: 'Low red blood cell count and low hemoglobin levels suggest anemia.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Low RBC count and hemoglobin</strong> indicate anemia—insufficient oxygen-carrying capacity. This causes fatigue and weakness. Further tests determine the specific type and cause of anemia.'
-        },
-        {
-            type: 'tf',
-            topic: 'Reading CBC',
-            question: 'A CBC with differential breaks down the percentage of different types of white blood cells.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. A <strong>CBC with differential</strong> shows percentages of WBC types: neutrophils, lymphocytes, monocytes, eosinophils, and basophils. This pattern helps diagnose specific infections or immune conditions.'
-        },
-        {
-            type: 'tf',
-            topic: 'Reading CBC',
-            question: 'Normal CBC values are the same for everyone regardless of age or sex.',
+            topic: 'Reading a CBC',
+            question: 'An elevated white blood cell count always indicates a bacterial infection requiring immediate antibiotic treatment.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Normal CBC ranges vary</strong> by age, sex, and sometimes altitude or pregnancy status. For example, men typically have higher RBC counts and hemoglobin than women.'
+            explanation: 'This is <strong>false</strong>. While <strong>elevated WBC often suggests infection</strong>, it has many causes: viral infections, inflammation, stress, exercise, pregnancy, medications, smoking, or leukemia. Some bacterial infections paradoxically lower WBC count. Diagnosis requires clinical context, symptoms, and often a differential to see which WBC types are elevated. Treatment depends on the underlying cause.'
+        },
+        {
+            type: 'tf',
+            topic: 'Reading a CBC',
+            question: 'Low hemoglobin and low red blood cell count on a CBC indicate anemia and warrant further testing to determine the specific type and cause.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Low RBC/hemoglobin confirms anemia but doesn\'t reveal the cause</strong>. Further tests needed include: iron studies, vitamin B12/folate levels, reticulocyte count, blood smear examination, hemolysis markers, and sometimes bone marrow biopsy. The CBC identifies anemia; additional tests determine why and guide treatment.'
+        },
+        {
+            type: 'tf',
+            topic: 'Reading a CBC',
+            question: 'A CBC with differential provides the same information as a standard CBC and is therefore unnecessary.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. <strong>The differential adds crucial information</strong>. A standard CBC gives total WBC count. A <strong>CBC with differential breaks down WBC types</strong>: neutrophils, lymphocytes, monocytes, eosinophils, basophils (as percentages and absolute numbers). This pattern helps distinguish bacterial infections (high neutrophils) from viral (high lymphocytes), parasites (high eosinophils), or blood cancers (abnormal differentials).'
+        },
+        {
+            type: 'tf',
+            topic: 'Reading a CBC',
+            question: 'Normal CBC values are identical for all people regardless of age, sex, altitude, or pregnancy status.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. <strong>Normal ranges vary significantly</strong>. Males typically have higher RBC counts and hemoglobin than females. Children have different ranges that change with age. People at high altitude have elevated RBC counts (adaptation to low oxygen). Pregnancy causes physiological anemia (dilutional). Smoking increases RBC count. Labs provide reference ranges adjusted for these variables.'
         },
 
-        // TOPIC 10: CBC/Differential (5 questions)
+        // ==========================================
+        // TOPIC 10: CBC/Differential (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'CBC Differential',
-            question: 'Neutrophils are the most abundant type of white blood cell and are first responders to bacterial infections.',
+            topic: 'CBC/Differential',
+            question: 'Neutrophils are the most abundant type of white blood cell and are particularly important for fighting bacterial infections through phagocytosis.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Neutrophils</strong> comprise 50-70% of WBCs and are first responders to infection. They phagocytose (engulf) bacteria and release antimicrobial chemicals. Elevated neutrophils suggest bacterial infection.'
+            explanation: 'This is <strong>true</strong>. <strong>Neutrophils comprise 50-70% of WBCs</strong> and are first responders to bacterial invasion. They perform phagocytosis (engulfing and digesting bacteria), release antimicrobial chemicals, and form pus at infection sites. Elevated neutrophils typically indicate bacterial infection. Severely low neutrophils causes dangerous susceptibility to bacterial infections.'
         },
         {
             type: 'tf',
-            topic: 'CBC Differential',
-            question: 'Lymphocytes include B cells and T cells that are important for adaptive immunity.',
+            topic: 'CBC/Differential',
+            question: 'Lymphocytes include both B cells (which produce antibodies) and T cells (which coordinate immune responses and kill infected cells), making them central to adaptive immunity.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Lymphocytes</strong> (20-40% of WBCs) include B cells (produce antibodies) and T cells (cell-mediated immunity). Elevated lymphocytes often indicate viral infections or immune disorders.'
+            explanation: 'This is <strong>true</strong>. <strong>Lymphocytes are adaptive immunity specialists</strong>. <strong>B cells</strong> differentiate into plasma cells producing specific antibodies. <strong>Helper T cells</strong> coordinate immune responses, activating B cells and other immune cells. <strong>Cytotoxic T cells</strong> kill virus-infected and cancerous cells. Lymphocytosis often indicates viral infections, while severe lymphopenia occurs in AIDS.'
         },
         {
             type: 'tf',
-            topic: 'CBC Differential',
-            question: 'Eosinophils increase in number primarily during bacterial infections.',
+            topic: 'CBC/Differential',
+            question: 'An elevated eosinophil count is most commonly associated with bacterial infections such as strep throat or pneumonia.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Eosinophils</strong> increase primarily during <strong>parasitic infections and allergic reactions</strong>, not bacterial infections. They release chemicals that damage parasites and moderate allergic responses.'
+            explanation: 'This is <strong>false</strong>. <strong>Eosinophilia typically indicates parasitic infections or allergic reactions</strong>, NOT bacterial infections. Eosinophils combat parasites (helminths) by releasing toxic proteins, and they moderate allergic responses. Bacterial infections typically elevate neutrophils instead. Eosinophilia suggests: parasites, asthma, allergies, or certain cancers/autoimmune diseases.'
         },
         {
             type: 'tf',
-            topic: 'CBC Differential',
-            question: 'A shift in the differential can help doctors determine whether an infection is bacterial or viral.',
+            topic: 'CBC/Differential',
+            question: 'The pattern of elevated white blood cell types in a differential can help clinicians distinguish between bacterial infections (typically elevated neutrophils) and viral infections (typically elevated lymphocytes).',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Elevated neutrophils</strong> suggest bacterial infection, while <strong>elevated lymphocytes</strong> suggest viral infection. The pattern in the differential helps guide diagnosis and treatment decisions.'
+            explanation: 'This is <strong>true</strong>. <strong>The differential pattern guides diagnosis</strong>. <strong>Bacterial infections</strong> usually cause neutrophilia with a "left shift" (immature neutrophils). <strong>Viral infections</strong> typically cause lymphocytosis, sometimes with atypical lymphocytes. <strong>Parasites</strong> cause eosinophilia. This pattern helps determine if antibiotics are needed or if the infection will self-resolve, improving antibiotic stewardship.'
         },
         {
             type: 'tf',
-            topic: 'CBC Differential',
-            question: 'Monocytes differentiate into macrophages that engulf pathogens and dead cells.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Monocytes</strong> circulate in blood and migrate into tissues where they differentiate into <strong>macrophages</strong>—large phagocytic cells that engulf pathogens, dead cells, and debris.'
+            topic: 'CBC/Differential',
+            question: 'All white blood cell types perform the same function in the immune system, so the differential breakdown provides no useful clinical information.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. <strong>Each WBC type has specialized, distinct functions</strong>: <strong>Neutrophils</strong> fight bacteria; <strong>Lymphocytes</strong> provide adaptive immunity; <strong>Monocytes</strong> become tissue macrophages; <strong>Eosinophils</strong> combat parasites and allergies; <strong>Basophils</strong> release histamine in allergic reactions. The differential reveals which immune responses are activated, guiding diagnosis and treatment. This specialization is precisely why the differential is clinically valuable.'
         }
-    ],
-
+    ]
 };

@@ -91,12 +91,22 @@ const elements = {
 };
 
 // ==========================================
+// QUESTION BANK
+// ==========================================
+const questionBank = {};
+
+// ==========================================
 // INITIALIZATION
 // ==========================================
 function init() {
-    // Merge pillar checkup questions into main question bank
-    if (typeof pillarCheckupQuestions !== 'undefined') {
-        Object.assign(questionBank, pillarCheckupQuestions);
+    // Merge pillar checkup 1 questions into main question bank
+    if (typeof pillarCheckup1Questions !== 'undefined') {
+        Object.assign(questionBank, pillarCheckup1Questions);
+    }
+
+    // Merge pillar checkup 2 questions into main question bank
+    if (typeof pillarCheckup2Questions !== 'undefined') {
+        Object.assign(questionBank, pillarCheckup2Questions);
     }
 
     // Merge unit 2 cardiovascular checkup questions
