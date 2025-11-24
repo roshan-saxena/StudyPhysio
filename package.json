@@ -1,0 +1,24 @@
+{
+  "name": "studyphysio",
+  "version": "1.0.0",
+  "description": "Interactive physiology practice questions with instant feedback and progress tracking.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roshan-saxena/StudyPhysio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/roshan-saxena/StudyPhysio/issues"
+  },
+  "homepage": "https://github.com/roshan-saxena/StudyPhysio#readme",
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
+  }
+}
