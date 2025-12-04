@@ -1,406 +1,399 @@
-// Unit 1: Pillar Checkup 1 - Final Question Bank
-// 50 Questions Total: 10 Topics × 5 Questions per Topic
-// Exact distribution: 25 True (50%), 25 False (50%)
-// Difficulty level: Requires deep understanding, not surface facts
+// UNIT 1: PILLAR CHECKUP 1 - COMPLETE HARDER/TRICKIER QUESTION BANK
+// 50 True/False Questions (5 per topic × 10 topics)
+// Distribution: 28 True (~56%), 22 False (~44%)
+// Challenge conceptual understanding with tricky logic, misconceptions, and nuanced distinctions
 
 const pillarCheckup1Questions = {
     'unit1-pillar-checkup1': [
+
         // ==========================================
-        // TOPIC 1: Health (5 questions) - 3T, 2F
+        // TOPIC 1: HEALTH (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Health',
-            question: 'Health-informed decisions require understanding the difference between primary sources like peer-reviewed studies and secondary sources like news articles, since secondary sources can sometimes misrepresent research findings.',
+            question: 'Overall good health requires physical, mental, and social health working together because neglecting one pillar can undermine gains made in the others.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. While secondary sources make research accessible, they can oversimplify, misinterpret, or even distort findings from primary research. <strong>Primary sources (peer-reviewed studies) show the actual data and methods</strong>, while secondary sources (news, blogs, social media) may contain errors, sensationalism, or incomplete information. Understanding this distinction helps you evaluate the reliability of health claims.'
+            explanation: 'This is <strong>true</strong>. Health is interconnected—<strong>the three pillars support each other</strong>. Someone physically fit but socially isolated experiences poor mental health and weakened immune function. Someone mentally healthy but sedentary faces physical decline. <strong>Neglecting one pillar creates cascading problems</strong> that affect the others. This is why comprehensive health requires all three working together.'
         },
         {
             type: 'tf',
             topic: 'Health',
-            question: 'Since social determinants of health like income and neighborhood affect health outcomes, improving individual health behaviors alone can completely overcome the negative effects of poor social determinants.',
+            question: 'Lateral reading is a strategy that requires checking multiple sources to verify health information, so checking one credible secondary source is sufficient to confirm information as accurate.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. This is tricky because individual behaviors DO matter, but they have <strong>limited power against structural barriers</strong>. A person in a food desert cannot eat nutritiously through willpower alone; someone in an unsafe neighborhood cannot exercise freely. Research shows social determinants often have MORE impact than individual choices. While behaviors help, <strong>systemic change is necessary to address health inequities</strong>.'
+            explanation: 'This is <strong>false</strong>. Lateral reading means <strong>checking MULTIPLE different sources</strong>, not just one credible one. Even credible sources can be incomplete, have methodological limitations, or emphasize certain findings. One source—even from CDC or WHO—should be cross-referenced with others to catch blind spots, biases, or outdated information. <strong>True lateral reading requires multiple independent sources confirming the same conclusion.</strong>'
         },
         {
             type: 'tf',
             topic: 'Health',
-            question: 'The five pillars of health—social connection, nutrition, exercise, sleep, and stress management—work synergistically, meaning deficiency in one pillar cannot be fully compensated by excellence in the others.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. The pillars are <strong>interdependent, not interchangeable</strong>. Someone with excellent nutrition and exercise but severe social isolation still suffers health consequences from loneliness. Someone with perfect sleep but chronic unmanaged stress still faces disease risk. Each pillar provides unique benefits the others cannot replace. True health requires balanced attention to all five.'
+            question: 'A health claim supported by peer-reviewed research from a reputable institution is automatically more credible than a secondary source synthesizing that research, regardless of sample size or study design.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. <strong>Credibility depends on methodology and synthesis, not just peer review status</strong>. A meta-analysis synthesizing 50 studies is more credible than one poorly-designed peer-reviewed study with 20 subjects. Publication doesn\'t guarantee quality—it just means experts reviewed it. Sample size, study design, conflict of interest, and synthesis of multiple studies all matter more than the mere existence of peer review.'
         },
         {
             type: 'tf',
             topic: 'Health',
-            question: 'Peer-reviewed research is always more accurate than reports from established health organizations like the CDC or WHO because peer review ensures higher standards than institutional review boards.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. Both have rigorous review processes but serve different purposes. Peer review validates individual studies for accuracy and methodology. Institutional review boards and health organizations synthesize multiple studies into evidence-based guidelines. Individual peer-reviewed studies can have limitations or even be wrong, while organizations aggregate many studies to identify trends. Trusting one source type blindly creates problems—you need both.'
+            question: 'Physical health problems can negatively affect mental health and vice versa because the body and mind are connected through physiological mechanisms like hormone release and inflammation.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. Physical and mental health are deeply interconnected through biological pathways: <strong>chronic pain triggers depression</strong> (neurochemical changes), <strong>depression suppresses immune function</strong> (lowered antibodies), <strong>stress causes inflammation</strong> (affecting heart health), <strong>exercise improves mood</strong> (endorphin release). The mind-body connection isn\'t metaphorical—it\'s physiological. Treating one without addressing the other is incomplete.'
         },
         {
             type: 'tf',
             topic: 'Health',
-            question: 'Lateral reading involves opening multiple browser tabs to cross-reference health claims against primary sources and reputable organizations, helping identify when secondary sources have misrepresented research or made unsupported claims.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Lateral reading is a powerful critical evaluation tool</strong>. When you encounter a health claim, checking the original research reveals whether secondary sources accurately represented findings. News articles frequently misinterpret studies, claim causation from correlation, or exaggerate effect sizes. By comparing the secondary claim to the actual research, you catch these distortions and identify credible versus unreliable sources.'
+            question: 'The relationship between social connection and health is correlational rather than causal, meaning we cannot conclude that improving social connections will actually improve health outcomes.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. While initial research identified correlations, subsequent intervention studies have demonstrated <strong>causality—improving social connections directly improves health outcomes</strong>. When people increase social contact, blood pressure drops, immune function improves, and longevity increases. <strong>Longitudinal studies show that changes in social connection precede health changes, confirming causality.</strong> This is no longer just correlation.'
         },
 
         // ==========================================
-        // TOPIC 2: Signs and Symptoms (5 questions) - 2T, 3F
+        // TOPIC 2: SIGNS AND SYMPTOMS (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Signs and Symptoms',
-            question: 'A patient reporting persistent fatigue that interferes with daily activities is describing a symptom, whereas visible jaundice (yellowing of skin) observed by a healthcare provider is a sign.',
+            question: 'A person can have dangerously high blood pressure (objective sign) while feeling completely fine with no subjective symptoms, which is why hypertension is called the "silent killer."',
             correct: true,
-            explanation: 'This is <strong>true</strong>. The patient\'s reported fatigue is subjective experience (symptom). The visible yellowing of skin is an objective, observable finding (sign). Both are important: the symptom tells us something is wrong from the patient\'s perspective, while the sign reveals physical evidence that helps identify the cause.'
+            explanation: 'This is <strong>true</strong>. <strong>Signs and symptoms are independent</strong>. Hypertension often progresses silently—people have measurable signs (high blood pressure on reading) but no subjective feelings. This independence is dangerous because patients feel healthy while organ damage accumulates. <strong>Absence of symptoms does NOT mean absence of disease.</strong> This is why screening for signs through measurement is essential, not relying on how people feel.'
         },
         {
             type: 'tf',
             topic: 'Signs and Symptoms',
-            question: 'Symptoms are more clinically useful than signs because they reflect what the patient actually experiences, whereas signs only show objective measurements that don\'t necessarily correlate with how sick the patient feels.',
+            question: 'Symptoms are more reliable than signs for making accurate medical diagnoses because patients directly experience and report their symptoms.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. This reverses clinical reality. <strong>Signs and symptoms serve different purposes—both are essential</strong>. A patient might FEEL fine (symptom) while showing dangerous vital signs (signs of sepsis). Conversely, a patient might complain of severe pain (symptom) while appearing healthy (signs normal). Experienced clinicians know to trust objective signs when they contradict reported symptoms, as serious conditions can be asymptomatic.'
+            explanation: 'This is <strong>false</strong>. <strong>Signs are more reliable than symptoms</strong> for diagnosis. Signs (objective, measured) cannot be biased by patient perception, memory, or reporting ability. Symptoms (subjective, reported) are filtered through individual interpretation. Someone\'s pain description depends on their pain tolerance, cultural background, emotional state. <strong>Good diagnosis requires BOTH but weights objective signs more heavily</strong> for accuracy.'
         },
         {
             type: 'tf',
             topic: 'Signs and Symptoms',
-            question: 'Because signs are objective and measurable, they are always more important clinically than symptoms when making a diagnosis.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. While signs are objective, <strong>symptoms are often equally or more important clinically</strong>. Many serious conditions (chest pain from heart disease, severe headaches from migraines) are primarily diagnosed through symptoms. A patient might report severe pain (symptom) while showing minimal physical findings (signs). Dismissing symptoms as less important leads to missed diagnoses.'
+            question: 'A fever is a sign because it can be measured with a thermometer, while the patient\'s report of feeling hot and uncomfortable is a symptom.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. This correctly distinguishes the concepts. <strong>Fever (measured temperature) = sign</strong> (objective, independent of patient report). <strong>Feeling hot/uncomfortable = symptom</strong> (subjective, only the patient experiences it). A person could have a high fever but NOT feel hot (happens with certain medications), or feel hot but have normal temperature. Signs and symptoms are categorically different.'
         },
         {
             type: 'tf',
             topic: 'Signs and Symptoms',
-            question: 'A fever of 102°F measured with a thermometer is a sign, while a patient saying "I feel hot and sweaty" is describing the same phenomenon, making these essentially equivalent for diagnostic purposes.',
+            question: 'Healthcare providers rely more on patient-reported symptoms than on measured signs when diagnosing diseases because symptoms directly indicate the disease process.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Though related, these are NOT equivalent. The measured fever (sign) provides specific diagnostic information about severity and pattern. The patient\'s description (symptom) reflects perception but lacks precision—someone feeling "hot" might have a 99°F fever or might be in a warm room. Clinicians need the sign (measurement) to distinguish actual fever from subjective sensation. They\'re complementary but distinct.'
+            explanation: 'This is <strong>false</strong>. While symptoms provide context, <strong>healthcare providers prioritize measured signs for diagnosis</strong>. Many diseases present with similar symptoms (chest pain could be heart attack, anxiety, or muscle strain), but specific signs (EKG changes, troponin levels, physical exam findings) distinguish them. Symptoms guide which signs to measure; signs confirm diagnosis. Relying primarily on symptoms leads to misdiagnosis.'
         },
         {
             type: 'tf',
             topic: 'Signs and Symptoms',
-            question: 'Nausea is classified as a symptom rather than a sign because only the patient can experience and report the sensation of nausea, making it impossible for healthcare providers to observe or measure it directly.',
+            question: 'A patient reporting severe joint pain without visible swelling could have rheumatoid arthritis with inflammatory damage occurring, even if there are no objective signs visible on initial examination.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Nausea is purely subjective—no physical finding directly reveals it</strong>. A provider cannot see, hear, or measure nausea the way they can measure blood pressure or observe rash. They rely entirely on patient report. While providers can observe consequences (vomiting), the sensation itself belongs only to the patient experiencing it, making it definitionally a symptom.'
+            explanation: 'This is <strong>true</strong>. Disease can exist with symptoms but few visible signs, especially in early stages. Rheumatoid arthritis can cause severe pain before swelling becomes visible. This is why <strong>blood tests and imaging (additional signs) are needed to confirm</strong> what symptoms suggest. This illustrates why symptoms alone cannot diagnose—you need objective evidence (signs) to confirm what you suspect from subjective reports.'
         },
 
         // ==========================================
-        // TOPIC 3: Social Determinants of Health (5 questions) - 3T, 2F
+        // TOPIC 3: SOCIAL DETERMINANTS (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Social Determinants of Health',
-            question: 'Researchers found that when low-income immigrants move to higher-income countries, their health outcomes often improve despite their genetic makeup remaining unchanged, suggesting social determinants can override genetic predisposition.',
+            question: 'Social determinants like neighborhood, income, and education directly affect health outcomes because they determine access to resources like food, healthcare, and safe environments.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Migration studies show dramatic health improvements in immigrants moving from resource-poor to resource-rich countries, even within the same generation. This proves <strong>environment powerfully shapes health outcomes independent of genetics</strong>. If genetics were deterministic, these improvements wouldn\'t occur. This is strong evidence that social determinants are primary drivers of health disparities.'
+            explanation: 'This is <strong>true</strong>. <strong>Social determinants create measurable health disparities</strong>. Neighborhoods without grocery stores = poor nutrition. Areas with high pollution = respiratory disease. Limited healthcare access = late diagnosis. Underfunded schools = poor health literacy. <strong>These aren\'t just correlated with poverty—they directly cause worse health.</strong> A person with identical genetics has dramatically different outcomes based on zip code.'
         },
         {
             type: 'tf',
             topic: 'Social Determinants of Health',
-            question: 'The statement "your zip code matters more than your genetic code" oversimplifies health, since genetics and social determinants interact, and environmental factors are limited in their power to change genetic predispositions.',
+            question: 'If a low-income person and a wealthy person both receive identical health information and have equal willpower, they will have nearly identical health outcomes because personal choices determine health more than social determinants.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While genetics matter, research overwhelmingly shows that <strong>environmental and social factors can dramatically override genetic predisposition</strong>. Someone genetically predisposed to heart disease can avoid it through good nutrition and exercise. Environmental toxins and stress can express latent genetic risks. Social determinants are remarkably powerful—not limited.'
+            explanation: 'This is <strong>false</strong>. This confuses information access with environmental barriers. <strong>Knowledge doesn\'t overcome structural barriers</strong>. A person in a food desert cannot choose fresh vegetables if stores don\'t sell them. Someone in unsafe neighborhoods cannot exercise outdoors. Chronic stress from discrimination physiologically harms health regardless of willpower. <strong>Individual agency has limits when social determinants are stacked against you.</strong> Zip code remains a better predictor than personal choice.'
         },
         {
             type: 'tf',
             topic: 'Social Determinants of Health',
-            question: 'Social determinants of health explain why life expectancy can vary by 10-20 years depending on neighborhood within the same city.',
+            question: 'Access to quality education is considered a social determinant because education increases health literacy and income, both of which are associated with better health outcomes.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Dramatic health disparities within cities are largely explained by social determinants: access to quality healthcare, safe neighborhoods, nutritious food, education, and economic opportunity. Two neighborhoods just miles apart can have vastly different life expectancies due to these structural differences. This shows health is not just individual choice—it\'s shaped by where you live.'
+            explanation: 'This is <strong>true</strong>. <strong>Education is foundational to health</strong>. It enables: understanding health information, making informed decisions, accessing better-paying jobs, affording healthcare and healthy food. Health literacy specifically allows people to navigate complex medical systems and evaluate health claims. <strong>Each extra year of education correlates with increased life expectancy.</strong> Education is transformative across all health domains.'
         },
         {
             type: 'tf',
             topic: 'Social Determinants of Health',
-            question: 'Since education is a social determinant that correlates with better health outcomes, providing health education programs to disadvantaged communities can eliminate health disparities caused by other social determinants.',
+            question: 'Social determinants only affect people living in poverty; wealthy individuals in safe neighborhoods with good schools and healthcare access are not affected by social determinants.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Education alone cannot overcome systemic barriers. Even well-informed people in food deserts cannot access nutritious food. Knowledge about exercise doesn\'t help in unsafe neighborhoods. <strong>Social determinants are structural issues requiring structural solutions</strong>—not just individual behavior change. While education helps, addressing poverty, discrimination, healthcare access, and environmental quality is necessary to truly reduce disparities.'
+            explanation: 'This is <strong>false</strong>. <strong>Social determinants affect everyone</strong>, though the effects are most extreme at the bottom. Even wealthy people are affected—they benefit from good schools, safe neighborhoods, healthcare access. The difference is that advantages compound for wealthy people while disadvantages compound for poor people. Social determinants show a gradient effect, not a poverty-only effect. Understanding this helps recognize privilege and structural advantages.'
         },
         {
             type: 'tf',
             topic: 'Social Determinants of Health',
-            question: 'Access to higher education affects health outcomes because it typically leads to better employment, higher income, and health insurance coverage, creating multiple pathways through which education influences health.',
+            question: 'Zip code can predict health outcomes better than genetic makeup because environmental and social factors ultimately have more influence on health than inherited traits.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Education is a crucial social determinant with cascading effects. <strong>Higher education → better employment → higher income → health insurance access → better healthcare → health screening → preventive care</strong>. Beyond economics, education also improves health literacy (understanding medical information) and sense of agency (believing you can improve your health). Education\'s effects on health are powerful and multifaceted.'
+            explanation: 'This is <strong>true</strong>. Research confirms <strong>zip code predicts health better than genetic code</strong>. While genetics set potential predispositions, <strong>social determinants determine actual outcomes</strong>: nutrition, stress, healthcare access, exercise opportunities, environmental toxins. Someone genetically prone to heart disease might avoid it with good environment and lifestyle, while someone with genetics favoring longevity might die young in disadvantaged circumstances. Environment activates or suppresses genetic potential.'
         },
 
         // ==========================================
-        // TOPIC 4: Social Connection (5 questions) - 3T, 2F
+        // TOPIC 4: SOCIAL CONNECTIONS (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Social',
-            question: 'Studies comparing isolated individuals to socially connected individuals show that chronic loneliness increases mortality risk at a magnitude comparable to smoking 15 cigarettes daily, suggesting social connection is as important to longevity as major behavioral health factors.',
+            question: 'Loneliness triggers the stress response by increasing cortisol, and chronic loneliness keeps cortisol elevated, which damages the immune system and increases inflammation.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Meta-analyses of large population studies consistently show <strong>social isolation increases mortality risk equivalent to smoking</strong>. This is remarkable because it establishes social factors as major health determinants—equal to behavioral factors we consider critical. The mechanism involves chronic stress activation, immune suppression, and increased inflammation.'
+            explanation: 'This is <strong>true</strong>. <strong>Loneliness is physiologically stressful</strong>. The brain interprets social isolation as threat, activating the stress response chronically. Persistently elevated cortisol: suppresses immune cells, increases inflammation, damages the hippocampus, impairs healing. <strong>This is why social isolation increases mortality risk at levels comparable to smoking.</strong> The mechanism is biological, not just psychological.'
         },
         {
             type: 'tf',
             topic: 'Social',
-            question: 'Chronic loneliness produces elevated cortisol levels which suppress immune function, explaining why isolated individuals are more susceptible to both infectious and chronic diseases.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Loneliness activates chronic stress response</strong>, keeping cortisol high. Elevated cortisol: suppresses antibody production, reduces lymphocyte function, increases inflammation, and impairs wound healing. This explains why isolated people suffer higher rates of colds, infections, heart disease, and earlier mortality. The biological mechanism connects social isolation directly to physical disease risk.'
+            question: 'Since both social isolation and brief exercise increase cortisol, and cortisol is a stress hormone, both social isolation and exercise have similar negative health effects.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. This confuses hormone presence with health outcome. While both briefly raise cortisol, <strong>the pattern determines the effect</strong>. Exercise-induced cortisol is controlled, brief, followed by recovery—the body adapts and strengthens. Isolation-induced cortisol is chronic, uncontrolled, without recovery—damaging. <strong>Same hormone, opposite effects based on duration and recovery.</strong> This distinguishes hormetic stress (beneficial adaptation) from chronic stress (damage).'
         },
         {
             type: 'tf',
             topic: 'Social',
-            question: 'Since quality of relationships matters more than quantity for health outcomes, having one very close friend is equivalent to having a large social network for health protection.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. While quality matters more than quantity, <strong>research shows both matter</strong>. A single close relationship provides some protection, but a diverse social network provides MORE protection. Different relationships meet different needs: intimate partners provide emotional support, friends provide belonging, community connections provide purpose. One relationship, no matter how close, cannot fully replace the health benefits of multiple types of connection.'
+            question: 'Quality of social connections is more important for health than quantity because a few close, supportive relationships provide greater health benefits than many superficial acquaintances.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Research shows quality over quantity matters</strong>. One genuine confidant providing support confers more health benefit than dozens of shallow social media followers. Close relationships: reduce stress hormones, increase immune function, provide tangible help during illness. Superficial connections lack emotional depth and mutual support. <strong>One person who truly cares beats 100 acquaintances.</strong>'
         },
         {
             type: 'tf',
             topic: 'Social',
-            question: 'Social capital refers to the networks, relationships, norms, and trust within a community that enable people to work together effectively, and high social capital has been associated with better health outcomes at both individual and community levels.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Social capital predicts community health outcomes</strong>. Communities with high social capital have: stronger civic engagement, more mutual support networks, greater trust enabling cooperation on health issues, and better collective problem-solving. These communities achieve better vaccination rates, lower crime, and improved health behaviors. Social capital amplifies health benefits beyond individual relationships.'
+            question: 'Social connections only benefit mental health through emotional support; they do not directly affect physical health markers like blood pressure or immune function.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Social connections have direct physical health effects: <strong>lower resting blood pressure, stronger immune response, reduced inflammation, faster wound healing, increased longevity</strong>. These are measurable physiological changes, not just mood improvements. <strong>The mind-body connection through social relationships is biological.</strong> Social support literally makes cells function better through multiple pathways.'
         },
         {
             type: 'tf',
             topic: 'Social',
-            question: 'The health benefits of social connection are primarily due to improved compliance with medical recommendations, since people with strong social networks are more likely to take medications and follow doctor\'s orders.',
+            question: 'Social capital refers to the financial wealth and economic resources that individuals accumulate and use to improve their social status.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While social support can improve medical compliance, that\'s only one mechanism. <strong>Social connection benefits health through multiple pathways</strong>: reducing stress hormones (cortisol), boosting immune function, improving mental health (reducing depression/anxiety), increasing physical activity, improving sleep quality, and promoting healthier eating. These benefits occur independent of healthcare system interactions. Someone socially isolated but compliant with medications still has worse health than someone connected but less compliant.'
+            explanation: 'This is <strong>false</strong>. <strong>Social capital is NOT money</strong>. It refers to <strong>the networks, relationships, trust, and reciprocity norms within communities</strong>. High social capital means: people trust each other, help one another, participate in community, share information. Communities with high social capital have better health outcomes because people support each other. Economic capital and social capital are different things, though they can interact.'
         },
 
         // ==========================================
-        // TOPIC 5: Nutrition Myths - Carbs and Fats (5 questions) - 3T, 2F
+        // TOPIC 5: SOCIAL MEDIA (5 questions) - 2T, 3F
+        // ==========================================
+        {
+            type: 'tf',
+            topic: 'Social Media',
+            question: 'Primary sources are original research studies, while secondary sources interpret or synthesize that research, so secondary sources may be more credible if they synthesize multiple high-quality primary sources.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. Source type matters less than quality of information. <strong>A meta-analysis (secondary) synthesizing 50 rigorous studies is more credible than one peer-reviewed primary study with methodological limitations</strong>. Secondary sources provide context, identify patterns, acknowledge limitations across studies. <strong>Credibility depends on what the source says and how, not its classification.</strong> Good secondary sources can be more credible than weak primary sources.'
+        },
+        {
+            type: 'tf',
+            topic: 'Social Media',
+            question: 'Using electronic devices before bed suppresses melatonin production due to blue light exposure, making it harder to fall asleep.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Blue light signals "daytime" to the brain, suppressing melatonin</strong> (the sleep hormone). Additionally, stimulating screen content activates the mind, raising heart rate and alertness. Both mechanisms interfere with sleep onset and quality. This is why sleep hygiene recommends avoiding screens 1-2 hours before bed. The effect is significant enough that sleep disruption is measurable.'
+        },
+        {
+            type: 'tf',
+            topic: 'Social Media',
+            question: 'Heavy social media use is correlated with increased anxiety and depression in adolescents, which proves that social media causes these mental health problems.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Correlation ≠ causation. <strong>Heavy social media use correlates with mental health problems, but causality isn\'t proven</strong>. Possible explanations: people with depression use social media more (reverse causation), third factors like loneliness drive both, social comparison triggers anxiety. Some research suggests social media can contribute to problems, but the relationship is complex. <strong>Don\'t confuse correlation with cause.</strong>'
+        },
+        {
+            type: 'tf',
+            topic: 'Social Media',
+            question: 'Social media has only negative effects on mental health because it promotes social comparison and reduces real-world social interaction.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Social media has both positive and negative effects. Positive: connects people with support communities (chronic illness, mental health), maintains long-distance relationships, disseminates health information, facilitates activism. Negative: social comparison, cyberbullying, sleep disruption, reduced in-person interaction. <strong>Impact depends on how it\'s used.</strong> Dismissing all effects as negative ignores real benefits for certain populations.'
+        },
+        {
+            type: 'tf',
+            topic: 'Social Media',
+            question: 'A news article about a health study published on a reputable health website is always more accurate than a peer-reviewed primary research paper discussing the same topic.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Credibility depends on specific content, not source type. <strong>A well-written, comprehensive news article can be more accurate than a flawed peer-reviewed study</strong>, but it could also be less accurate if it misrepresents findings. A rigorous primary study is usually more reliable than oversimplified secondary coverage. <strong>Each source must be evaluated individually</strong> for methodology, representation of evidence, and potential bias.'
+        },
+
+        // ==========================================
+        // TOPIC 6: NUTRITION MYTHS (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Nutrition Myths: Carbs and Fats',
-            question: 'Since refined carbohydrates and whole grains both provide glucose to fuel cells, they are nutritionally equivalent in their health effects, and choosing between them is purely a matter of personal preference.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. Though both provide glucose, they have dramatically different health effects. <strong>Whole grains contain fiber, vitamins, minerals, and polyphenols</strong> that slow digestion, prevent blood sugar spikes, feed healthy gut bacteria, and reduce disease risk. <strong>Refined carbs lack these components</strong>, causing rapid glucose spikes, increasing inflammation, and contributing to diabetes and obesity. Nutritionally equivalent is false.'
+            question: 'All carbohydrates are not equivalent to health; complex carbohydrates from whole grains provide fiber, vitamins, and sustained energy, while refined carbohydrates cause blood sugar spikes.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. The "carbs are carbs" myth is dangerous misconception. <strong>Complex carbs (whole grains) retain fiber, B vitamins, minerals, and digest slowly</strong>, maintaining stable energy. <strong>Refined carbs (white bread, sugar) are stripped of nutrients and digest quickly</strong>, causing glucose spikes then crashes. Same macronutrient (carbohydrate), dramatically different physiological effects. The source and structure matter enormously.'
         },
         {
             type: 'tf',
             topic: 'Nutrition Myths: Carbs and Fats',
-            question: 'Unsaturated fats from sources like olive oil, avocados, nuts, and fatty fish are essential for health, whereas trans fats should be avoided and saturated fats should be limited in a healthy diet.',
+            question: 'Some types of fats are essential for good health because unsaturated fats are necessary for brain function, hormone production, and nutrient absorption.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Unsaturated fats support cardiovascular and brain health</strong>, reduce inflammation, and are needed for hormone production and vitamin absorption. <strong>Trans fats actively harm health</strong> by increasing LDL cholesterol and inflammation. <strong>Saturated fats in excess raise disease risk</strong>, though small amounts from whole foods are acceptable. The fat quality matters enormously for health outcomes.'
+            explanation: 'This is <strong>true</strong>. <strong>Healthy fats are essential nutrients</strong>. Unsaturated fats from olive oil, avocados, nuts, and fatty fish are necessary for: brain development and function (DHA), hormone synthesis, absorption of fat-soluble vitamins (A, D, E, K). The brain is 60% fat. <strong>Eliminating all fats harms health.</strong> The myth is "all fats are bad"; reality is "type and amount matter."'
         },
         {
             type: 'tf',
             topic: 'Nutrition Myths: Carbs and Fats',
-            question: 'All carbohydrates are unhealthy and should be avoided for weight loss because they are more likely to be converted to fat than protein or vegetables are.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Complex carbohydrates from whole grains, legumes, and vegetables are healthy</strong>. The body preferentially uses carbohydrates for fuel rather than converting them to fat. Only excess carbohydrates (beyond energy needs) are converted to fat—just as excess protein or fat are. Additionally, fiber-rich carbohydrates actually improve weight management by increasing satiety and improving metabolic health. The key is carbohydrate quality, not elimination.'
+            question: 'Trans fats should be avoided and saturated fats should be limited because both increase risk for cardiovascular disease and are found primarily in processed foods and animal products.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Trans fats should be eliminated, saturated fats limited</strong>. Both increase LDL cholesterol, inflammation, and atherosclerosis risk. Trans fats (industrially produced, hydrogenated oils) are particularly harmful. Saturated fats (butter, cheese, meat) should be limited but aren\'t identical to trans fats. <strong>Replace with unsaturated fats</strong> for cardiovascular health. This distinction guides healthy eating.'
         },
         {
             type: 'tf',
             topic: 'Nutrition Myths: Carbs and Fats',
-            question: 'The Mediterranean diet emphasizes plant foods, olive oil, fish, and moderate wine consumption, and has been shown in large studies to reduce cardiovascular disease and mortality compared to the Standard American Diet.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. The <strong>Mediterranean diet consistently shows superior health outcomes</strong> in rigorous studies. Its combination of unsaturated fats (olive oil), plant compounds (vegetables, nuts), omega-3 fatty acids (fish), and moderate alcohol creates <strong>anti-inflammatory effects that protect cardiovascular health</strong>. Studies show reduced heart attacks, strokes, and all-cause mortality in adherents compared to typical Western diets.'
+            question: 'Artificial sweeteners are always healthier than natural sugars because they contain fewer calories and do not raise blood glucose.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. While artificial sweeteners reduce calories, research shows <strong>they may not be superior for health</strong>. Concerns: may alter gut bacteria composition, may affect metabolism and appetite regulation, some evidence suggests possible metabolic disruption. <strong>Moderation with natural sugars from whole foods (fruit, honey) may be healthier</strong> than assuming artificial alternatives are safe. The evidence doesn\'t support artificial being universally better.'
         },
         {
             type: 'tf',
             topic: 'Nutrition Myths: Carbs and Fats',
-            question: 'Michael Pollan\'s guideline "Eat food, not too much, mostly plants" recommends complete elimination of animal products because plant-based diets are universally superior to all other dietary patterns.',
+            question: 'Whole grains and refined grains have equivalent nutritional value because both break down to glucose in the digestive system.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Pollan\'s "mantra" means: eat <strong>real/whole foods</strong> (not processed), practice <strong>moderation</strong>, and <strong>emphasize plant-based foods</strong> (not exclusively vegan). The guideline allows some animal products and doesn\'t claim plant-only diets are universally superior. The Mediterranean diet (emphasizing plants but including fish and occasional meat) achieves excellent health outcomes. The mantra is about balance and food quality, not dietary dogmatism.'
+            explanation: 'This is <strong>false</strong>. This confuses the end product (glucose) with overall nutrition. <strong>Whole grains retain bran, germ, and endosperm</strong> providing fiber, vitamins, minerals, phytonutrients. Refined grains have these removed, leaving just starch. <strong>Nutritional value depends on what travels WITH the glucose</strong>: the fiber slows digestion, the nutrients support body function. Same end product, entirely different nutritional packages.'
         },
 
         // ==========================================
-        // TOPIC 6: Homeostasis (5 questions) - 3T, 2F
+        // TOPIC 7: MEDITERRANEAN DIET (5 questions) - 3T, 2F
+        // ==========================================
+        {
+            type: 'tf',
+            topic: 'Nutrition: Mediterranean/SAD',
+            question: 'The Mediterranean diet emphasizes plant foods, olive oil, fish, whole grains, and legumes while limiting red meat, and this pattern has been shown to reduce cardiovascular disease risk.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. Large prospective studies demonstrate <strong>Mediterranean diet reduces heart disease, stroke, and mortality</strong>. Benefits come from: monounsaturated fats (olive oil), omega-3 fatty acids (fish), fiber and antioxidants (whole grains, vegetables), plant-based proteins (legumes). <strong>This is one of the most evidence-supported healthy dietary patterns.</strong>'
+        },
+        {
+            type: 'tf',
+            topic: 'Nutrition: Mediterranean/SAD',
+            question: 'The Standard American Diet is associated with higher rates of obesity, diabetes, and cardiovascular disease compared to Mediterranean patterns.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>SAD (high in processed foods, refined grains, added sugars, unhealthy fats) directly contributes to chronic disease</strong>. Processed foods lack fiber and nutrients while providing excess calories. Refined carbs cause metabolic dysfunction. Trans and saturated fats promote inflammation and atherosclerosis. <strong>The dietary pattern itself drives health problems.</strong> Changing from SAD to Mediterranean-style patterns reverses many chronic diseases.'
+        },
+        {
+            type: 'tf',
+            topic: 'Nutrition: Mediterranean/SAD',
+            question: 'Michael Pollan\'s mantra "Eat food, not too much, mostly plants" means eating only vegetables and never consuming animal products.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The mantra means: (1) eat <strong>real/whole foods</strong> not processed, (2) practice <strong>moderation/portion control</strong>, (3) <strong>emphasize plants</strong> but not exclusively. "Mostly plants" allows for fish, eggs, dairy—just make plants the foundation. This is descriptive of Mediterranean eating, not strict vegetarianism. <strong>The insight is about food quality and proportion, not strict categorization.</strong>'
+        },
+        {
+            type: 'tf',
+            topic: 'Nutrition: Mediterranean/SAD',
+            question: 'The Mediterranean diet works primarily because it uses olive oil liberally and includes fish, making these the key protective components.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. This isolates components and misses the <strong>synergistic whole-pattern benefits</strong>. Protection comes from: olive oil AND vegetables AND whole grains AND legumes AND fish AND the cultural context (social meals, portion control, active lifestyle). Taking fish oil supplements while eating processed food ignores the pattern. <strong>The whole is more protective than parts in isolation.</strong> Mediterranean eating is a comprehensive lifestyle, not ingredient substitution.'
+        },
+        {
+            type: 'tf',
+            topic: 'Nutrition: Mediterranean/SAD',
+            question: 'The Standard American Diet contains fewer whole grains and vegetables than the Mediterranean diet, reflecting dietary pattern differences that contribute to health outcome disparities.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. SAD emphasizes processed foods, refined grains, red meat; Mediterranean emphasizes whole grains, abundant vegetables, legumes. <strong>This macroscopic pattern difference explains much of the health outcome difference.</strong> More fiber, more antioxidants, more plant nutrients in Mediterranean. Less inflammation, better blood pressure, better glucose control, less obesity. The dietary patterns are structurally different, producing different health results.'
+        },
+
+        // ==========================================
+        // TOPIC 8: HOMEOSTASIS (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Homeostasis',
-            question: 'Negative feedback loops maintain homeostasis by detecting deviations from the set point and triggering responses that reverse those deviations, while positive feedback loops amplify changes away from the set point.',
+            question: 'Homeostasis is the maintenance of stable internal conditions within narrow ranges despite changes in the external environment through continuous regulation.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Negative feedback</strong> = counteracts changes (maintains stability). When body temperature rises, sweating cools you back down. <strong>Positive feedback</strong> = amplifies changes (rare in the body). During labor, contractions trigger more contractions, amplifying until birth occurs. Understanding this distinction is crucial for predicting how the body responds to disruptions.'
+            explanation: 'This is <strong>true</strong>. <strong>Homeostasis keeps temperature, pH, glucose, blood pressure stable</strong> despite external changes. This stability is <strong>continuously achieved through active regulation, not passive</strong>. If regulation fails, cells malfunction and death results. Homeostasis is dynamic—not a set point, but active maintenance of conditions within functioning ranges.'
         },
         {
             type: 'tf',
             topic: 'Homeostasis',
-            question: 'The endocrine system maintains homeostasis faster than the nervous system because hormones travel through the bloodstream instantaneously.',
+            question: 'Negative feedback loops work by amplifying changes away from the set point, which is why they are called "negative" feedback.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. The <strong>nervous system is actually much faster</strong>. Nervous system responses (electrical signals) occur in milliseconds, while endocrine responses (hormone synthesis and travel) take minutes to hours. The nervous system handles quick adjustments (pain response, fight-or-flight), while the endocrine system handles sustained, longer-term adjustments (growth, metabolism). They\'re complementary systems with different timescales.'
+            explanation: 'This is <strong>false</strong>. <strong>"Negative" refers to the mechanism, not the effect</strong>. Negative feedback OPPOSES and reverses changes (returns to set point). "Negative" means corrective, stabilizing. Positive feedback AMPLIFIES changes away from set point. <strong>This terminology confusion is common but critical</strong>—negative feedback maintains homeostasis; positive feedback destabilizes. The naming refers to direction of response, not value judgment.'
         },
         {
             type: 'tf',
             topic: 'Homeostasis',
-            question: 'The endocrine system maintains homeostasis through negative feedback loops where hormones directly inhibit the gland that produced them, creating a system that self-regulates without requiring constant monitoring by the nervous system.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. While hormones DO inhibit their own production (negative feedback), the statement implies the endocrine system works <strong>independently without nervous system input</strong>, which is incorrect. The nervous system constantly monitors conditions and signals the endocrine system to adjust hormone production. The systems work together—the brain (nervous system) tells glands what to do, not independently.'
+            question: 'In homeostatic feedback loops, receptors detect changes, control centers integrate information and determine responses, and effectors execute those responses.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>All homeostatic loops have three components: detection → processing → response</strong>. Receptors sense deviation, control centers analyze and decide, effectors implement correction. Blood glucose example: pancreas detects high glucose (receptor), determines response needed (control center), secretes insulin (effector). Understanding this three-part system applies to all homeostatic mechanisms.'
         },
         {
             type: 'tf',
             topic: 'Homeostasis',
-            question: 'Negative feedback loops are called "negative" because they slow down or prevent responses to environmental changes, which is why organisms with more negative feedback loops respond more slowly to external threats than organisms with more positive feedback loops.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. The term "negative" does NOT mean slow or inhibitory. <strong>"Negative" means the response opposes (reverses) the change</strong>—it negates the deviation. Negative feedback loops allow RAPID responses (through nervous system) or sustained responses (through endocrine) that maintain stability. Positive feedback loops are rare and used only when amplification is desired. More negative feedback loops make organisms MORE responsive to maintain homeostasis, not less.'
+            question: 'The endocrine system uses hormones to regulate body conditions and maintain homeostasis, but hormones are slower-acting than the nervous system.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Hormones act more slowly than nerves</strong> (seconds/minutes vs milliseconds), but endocrine system is crucial for sustained regulation. Nervous system = rapid emergency responses. Endocrine system = sustained metabolic regulation. Both are essential: nerves handle acute threats, hormones handle ongoing homeostasis. <strong>Speed/duration tradeoff shows how systems specialize.</strong>'
         },
         {
             type: 'tf',
             topic: 'Homeostasis',
-            question: 'In a homeostatic feedback loop, receptors detect changes in the internal environment, control centers interpret that information and determine appropriate responses, and effectors carry out those responses to restore stability.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Homeostatic loops require all three components</strong>: Receptors (thermoreceptors sense temperature change), Control centers (hypothalamus interprets data and decides response), Effectors (sweat glands or muscles execute the response). This architecture allows the body to detect disturbances and automatically restore balance. Understanding this three-part structure explains how diverse homeostatic mechanisms work.'
+            question: 'Positive feedback loops are more common than negative feedback loops in maintaining homeostasis because they amplify responses, creating faster corrections.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. <strong>Negative feedback loops are far more common for homeostasis</strong> because they maintain stability. Positive feedback amplifies changes, which destabilizes systems. Positive feedback is rare and used only in specific situations (childbirth contractions, blood clotting cascade) where temporary amplification is needed. <strong>For stability, you need negative feedback to oppose changes.</strong>'
         },
 
         // ==========================================
-        // TOPIC 7: Blood Glucose Regulation (5 questions) - 3T, 2F
+        // TOPIC 9: BLOOD GLUCOSE (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Blood Glucose Regulation',
-            question: 'Normal fasting blood glucose levels range from 70-100 mg/dL, and levels above 100 mg/dL indicate prediabetes or diabetes, representing a failure of glucose homeostasis.',
+            question: 'Normal fasting blood glucose ranges from 70-100 mg/dL, and maintaining glucose within this narrow range is essential because glucose is the primary fuel for the brain.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The narrow range 70-100 mg/dL represents tight homeostatic control</strong>. Fasting glucose above 100 mg/dL indicates the pancreas cannot maintain homeostasis—the set point has shifted upward. This represents disease: prediabetes (100-125 mg/dL) or diabetes (126+ mg/dL). Even small deviations from the normal range have significant metabolic consequences.'
+            explanation: 'This is <strong>true</strong>. <strong>The brain depends on glucose and cannot switch fuels easily</strong>. Tight glucose regulation (70-100 fasting) is maintained because: too low causes confusion/seizures/death, too high causes inflammation and cellular damage. <strong>The brain represents only 2% of body weight but uses 20% of glucose</strong>. Glucose homeostasis is really about protecting brain function.'
         },
         {
             type: 'tf',
             topic: 'Blood Glucose Regulation',
-            question: 'Blood glucose regulation uses positive feedback to maintain homeostasis.',
+            question: 'Blood glucose regulation uses positive feedback where high glucose triggers insulin, which lowers glucose, amplifying the corrective response.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Blood glucose regulation uses <strong>negative feedback</strong>. When glucose rises, insulin lowers it; when glucose falls, glucagon raises it. These responses reverse changes and maintain homeostasis. If glucose regulation used positive feedback, high glucose would trigger more insulin production, which would trigger even more insulin—creating a dangerous spiral. Negative feedback is essential for glucose stability.'
+            explanation: 'This is <strong>false</strong>. <strong>Blood glucose regulation uses negative feedback, not positive</strong>. High glucose triggers insulin, which lowers glucose back toward normal—this OPPOSES and reverses the original change (negative feedback). <strong>This is foundational: negative feedback maintains homeostasis; positive feedback would create runaway loops.</strong> Confusing feedback types reveals misunderstanding of homeostasis.'
         },
         {
             type: 'tf',
             topic: 'Blood Glucose Regulation',
-            question: 'The pancreas simultaneously functions as a receptor detecting blood glucose levels, a control center interpreting that information, and an effector producing appropriate hormonal responses, making it an unusual organ that embodies all three components of a homeostatic feedback loop.',
+            question: 'When blood glucose rises after eating, the pancreas detects this change and secretes insulin, which promotes glucose uptake into cells and storage as glycogen.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. The pancreas is unique in performing all three feedback loop functions: <strong>receptor</strong> (beta cells detect glucose), <strong>control center</strong> (interprets levels and decides response), and <strong>effector</strong> (secretes insulin or glucagon). Most homeostatic loops involve different structures for each component. The pancreas\'s integrated design makes it highly efficient for glucose regulation.'
+            explanation: 'This is <strong>true</strong>. <strong>This describes the normal postprandial response</strong>. Pancreatic beta cells act as glucose sensors, detecting elevated blood glucose and secreting appropriate insulin amount. Insulin enables cells to absorb glucose, promoting storage as glycogen in liver/muscles or energy production in active cells. <strong>This feedback loop prevents dangerous glucose accumulation.</strong>'
         },
         {
             type: 'tf',
             topic: 'Blood Glucose Regulation',
-            question: 'When blood glucose is high, the hormone glucagon is released to lower it.',
+            question: 'When fasting blood glucose drops below 70 mg/dL, glucagon is secreted and immediately restores normal glucose levels within seconds.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. When blood glucose is high, <strong>insulin</strong> (not glucagon) is released to lower it. Glucagon is released when blood glucose is <strong>low</strong> to raise it back up. Confusing these hormones is a common error. Remember: <strong>Insulin = glucose down, Glucagon = glucose up</strong>. Both are necessary for maintaining the narrow homeostatic range.'
+            explanation: 'This is <strong>false</strong>. While glucagon IS the appropriate response to hypoglycemia, <strong>hormones don\'t work instantaneously</strong>. Glucagon takes several minutes to signal the liver to break down glycogen. If glucose drops very rapidly or very low, glucagon alone may be insufficient before symptoms develop. <strong>Understanding physiological timing matters</strong>—hormonal responses have real latency and limitations.'
         },
         {
             type: 'tf',
             topic: 'Blood Glucose Regulation',
-            question: 'Excess glucose can be stored as glycogen in the liver and muscles, allowing the body to maintain stable blood glucose levels between meals.',
+            question: 'Excess glucose is stored as glycogen in the liver and muscles, and this stored glycogen can be mobilized to maintain blood glucose during fasting or between meals.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. When insulin is present and glucose is abundant, excess glucose is <strong>converted to glycogen</strong> (through glycogenesis) for storage in liver and muscles. This glucose reserve can be broken down when glucose is needed (between meals or during fasting). This glycogen storage system allows the body to maintain stable blood glucose without eating constantly.'
+            explanation: 'This is <strong>true</strong>. <strong>Glycogen storage is the body\'s short-term glucose buffer</strong>. When insulin is present and glucose abundant, excess glucose converts to glycogen via glycogenesis. During fasting, glucagon triggers glycogenolysis (glycogen breakdown) releasing glucose to maintain blood levels. <strong>This mechanism bridges meals and maintains glucose stability.</strong> Glycogen stores last ~12-24 hours before fat metabolism takes over.'
         },
 
         // ==========================================
-        // TOPIC 8: Insulin and Glucagon (5 questions) - 3T, 2F
+        // TOPIC 10: INSULIN AND GLUCAGON (5 questions) - 3T, 2F
         // ==========================================
         {
             type: 'tf',
             topic: 'Insulin and Glucagon',
-            question: 'Insulin and glucagon are considered antagonistic hormones because they produce opposite metabolic effects, with insulin promoting glucose storage and glucagon promoting glucose release, yet both are necessary for maintaining stable blood glucose levels.',
+            question: 'Insulin is produced by pancreatic beta cells and lowers blood glucose by promoting cellular glucose uptake and glycogen storage.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Antagonistic hormones have opposing effects but work together</strong>. Insulin (high glucose) stores glucose as glycogen and promotes anabolic reactions. Glucagon (low glucose) breaks down glycogen and promotes glucose release. Neither alone maintains homeostasis—you need both. This reciprocal regulation creates a balanced system where opposing forces keep glucose stable.'
+            explanation: 'This is <strong>true</strong>. <strong>Beta cells act as glucose sensors and secretion-regulators</strong>. When glucose rises, beta cells release insulin proportionate to the increase. Insulin enables: glucose entry into muscle and fat cells, glycogen synthesis in liver, glucose metabolism. <strong>This is a dose-response relationship</strong>—more glucose triggers more insulin. The mechanism enables precise glucose control.'
         },
         {
             type: 'tf',
             topic: 'Insulin and Glucagon',
-            question: 'Insulin is produced by alpha cells in the pancreas.',
+            question: 'Type 1 diabetes and Type 2 diabetes result from the same underlying pancreatic dysfunction, just manifesting differently.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Beta cells (not alpha cells) in the pancreatic islets of Langerhans produce insulin</strong>. Alpha cells produce glucagon. This distinction matters because: beta cell destruction causes Type 1 diabetes (no insulin production), while alpha cell problems are rare. Understanding which cell type produces which hormone is crucial for understanding diabetes pathology.'
+            explanation: 'This is <strong>false</strong>. <strong>These are fundamentally different diseases with different causes</strong>. <strong>Type 1: immune system destroys beta cells, so pancreas produces little/no insulin (deficiency)</strong>. <strong>Type 2: pancreas produces normal/high insulin, but cells don\'t respond (insulin resistance)</strong>. Different mechanisms require different treatments. Type 1 needs insulin replacement; Type 2 initially needs improved sensitivity. Confusing them leads to treatment errors.'
         },
         {
             type: 'tf',
             topic: 'Insulin and Glucagon',
-            question: 'Glucagon stimulates the liver to break down glycogen and release glucose into the bloodstream when blood glucose is low.',
+            question: 'Glucagon stimulates the liver to perform glycogenolysis (breaking down glycogen) and gluconeogenesis (making new glucose), raising blood glucose during fasting.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Glucagon</strong> triggers glycogenolysis (glycogen breakdown) in the liver and gluconeogenesis (making new glucose), releasing glucose into the blood to raise blood glucose levels when they drop too low. This is how your body maintains glucose between meals and during fasting.'
+            explanation: 'This is <strong>true</strong>. <strong>Glucagon has dual actions to raise glucose</strong>: mobilizes stored glycogen AND creates new glucose from non-carbohydrate sources (amino acids, lactate). This dual approach ensures sustained glucose supply during prolonged fasting when glycogen stores deplete. <strong>Understanding both mechanisms explains how blood glucose stays stable without constant eating.</strong>'
         },
         {
             type: 'tf',
             topic: 'Insulin and Glucagon',
-            question: 'In Type 1 diabetes, the body produces too much insulin.',
+            question: 'In Type 1 diabetes, the body produces too much insulin that cannot function properly, so additional insulin injections are ineffective.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. In Type 1 diabetes, the immune system destroys insulin-producing beta cells, so the body produces <strong>little to no insulin</strong>. People with Type 1 diabetes require insulin injections to survive. This is opposite from Type 2 diabetes, where the body produces adequate insulin but cells become insulin-resistant. The distinction is crucial for treatment.'
+            explanation: 'This is <strong>false</strong>—critical misconception. <strong>Type 1: body produces little/no insulin (not excess nonfunctional insulin)</strong>. This is why insulin injections ARE effective—they replace the missing hormone. The problem is beta cell destruction, not insulin malfunction. People with Type 1 require lifelong insulin because they cannot produce any. Misunderstanding this mechanism leads to incorrect treatment approaches.'
         },
         {
             type: 'tf',
             topic: 'Insulin and Glucagon',
-            question: 'Hypoglycemia refers to abnormally low blood glucose levels that can cause shakiness, sweating, confusion, and potentially seizures or unconsciousness if untreated.',
+            question: 'Hypoglycemia below 70 mg/dL causes shakiness, sweating, and confusion because the brain depends on glucose and low levels impair neurological function.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Hypoglycemia</strong> (blood glucose below 70 mg/dL) is a medical emergency. Low glucose deprives the brain of fuel, causing: shakiness, sweating, anxiety, confusion, impaired thinking, and if severe, seizures, coma, or death. Hyperglycemia (high glucose) develops slowly with less immediate danger, but hypoglycemia can cause rapid, life-threatening symptoms.'
-        },
-
-        // ==========================================
-        // TOPIC 9: Sleep (5 questions) - 2T, 3F
-        // ==========================================
-        {
-            type: 'tf',
-            topic: 'Sleep Facts',
-            question: 'Most teenagers need 8-10 hours of sleep per night for optimal health, yet research shows the average teen gets 6-7 hours due to early school start times and other factors.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The disconnect between sleep need and sleep reality is a major public health issue</strong>. Teens need 8-10 hours but school schedules, social obligations, and technology use prevent this. This chronic sleep debt impairs learning, increases mood disorders, and raises accident risk. Some schools have moved start times later with documented improvements in teen health.'
-        },
-        {
-            type: 'tf',
-            topic: 'Sleep Facts',
-            question: 'Sleep debt can be fully recovered with one long night of sleep.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. While you can partially recover from sleep deprivation, <strong>chronic sleep debt has lasting effects</strong> that can\'t be fully "made up" with occasional long sleep sessions. One night of sleep cannot repair weeks of poor sleep\'s effects on immune function, metabolism, and emotional regulation. Consistent adequate sleep is essential—weekday sleep cannot be replaced by weekend sleep.'
-        },
-        {
-            type: 'tf',
-            topic: 'Sleep Facts',
-            question: 'Since caffeine is eliminated from your system within 2 hours of consumption, having a coffee in the afternoon should not affect evening sleep.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. Caffeine has a <strong>half-life of 3-7 hours</strong>, meaning it can affect your system for 6-8 hours or longer. A 3pm coffee can still impact 10pm sleep. Additionally, individual caffeine metabolism varies dramatically—some people break it down faster than others. Afternoon/evening caffeine use significantly disrupts sleep for most people, particularly those sensitive to caffeine.'
-        },
-        {
-            type: 'tf',
-            topic: 'Sleep Facts',
-            question: 'Short naps of 20-30 minutes taken before mid-afternoon can improve alertness and performance without causing sleep inertia or disrupting nighttime sleep.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Brief naps (20-30 min) before mid-afternoon</strong> boost alertness and performance without negative effects. Longer naps (60-90+ minutes) cause sleep inertia (grogginess upon waking) and can interfere with nighttime sleep. Napping after 3pm can disrupt nighttime sleep by reducing sleep drive. Timing and duration matter crucially for napping benefits.'
-        },
-        {
-            type: 'tf',
-            topic: 'Sleep Facts',
-            question: 'Cortisol levels peak in the evening to promote sleep, which is why cortisol-lowering medications improve sleep quality when taken before bed.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Cortisol peaks in the morning</strong> (cortisol awakening response) to promote wakefulness and alertness. Levels gradually decline during the day and are lowest at night, when melatonin rises. Evening cortisol elevation would disrupt sleep. Cortisol-lowering medications don\'t improve sleep through this mechanism because normal evening cortisol is already low. Confusing cortisol\'s timing disrupts understanding of sleep regulation.'
-        },
-
-        // ==========================================
-        // TOPIC 10: Stress Management (5 questions) - 3T, 2F
-        // ==========================================
-        {
-            type: 'tf',
-            topic: 'Acute Stress Response',
-            question: 'The fight-or-flight response is an adaptive acute stress response that prepares the body for immediate action through sympathetic nervous system activation and adrenaline release.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Fight-or-flight is survival-critical for immediate threats</strong>. It causes: increased heart rate, blood pressure, and glucose release for energy; pupil dilation for better vision; reduced digestion; and increased alertness. This response is adaptive when facing real danger, but problematic when activated chronically by modern stressors (work deadlines, social anxiety).'
-        },
-        {
-            type: 'tf',
-            topic: 'Acute Stress Response',
-            question: 'Since acute stress triggers the sympathetic nervous system, people who experience frequent acute stressors (like combat, emergency medicine, or trauma) have more resilient stress responses than people who experience rare stressors.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Frequent acute stress does not build resilience—it builds chronic stress</strong>. Repeated acute stressors trigger the HPA axis (slower stress response), keeping cortisol chronically elevated. This leads to: immune dysfunction, hypertension, burnout, PTSD, and accelerated aging. Resilience comes from adequate recovery between stressors and supportive environments—not from repeated exposure. Frequent acute stress is harmful.'
-        },
-        {
-            type: 'tf',
-            topic: 'Acute Stress Response',
-            question: 'Chronic stress maintains elevated cortisol levels which suppress immune function, increase inflammation, promote visceral fat accumulation, and increase risk for cardiovascular disease and metabolic disorders.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Chronic stress creates a cascade of harmful physiological changes</strong>. Sustained cortisol elevation: suppresses lymphocytes and antibodies (immunosuppression), increases inflammatory cytokines, promotes abdominal fat storage, increases blood pressure, promotes atherosclerosis, and impairs metabolism. This explains why chronic stress predicts multiple diseases and early mortality.'
-        },
-        {
-            type: 'tf',
-            topic: 'Acute Stress Response',
-            question: 'Adverse Childhood Experiences (ACEs) like trauma, abuse, and household dysfunction affect health only during childhood and do not have lasting effects into adulthood.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>ACEs have profound, lasting effects throughout life</strong>. Childhood trauma alters brain development (hippocampus, amygdala, prefrontal cortex) and dysregulates the HPA axis, causing lifelong hypervigilance and stress reactivity. Higher ACE scores predict chronic disease, mental health disorders, substance abuse, and early death in adulthood. The effects are measurable decades later—ACEs are not just childhood issues.'
-        },
-        {
-            type: 'tf',
-            topic: 'Acute Stress Response',
-            question: 'Exercise, sleep, social connection, and mindfulness practices all reduce cortisol levels and activate the parasympathetic nervous system, countering chronic stress effects and promoting recovery.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>These interventions activate the parasympathetic (rest-and-digest) system</strong>. Exercise increases endorphins and reduces cortisol. Sleep allows HPA axis recovery. Social connection reduces perceived threat. Mindfulness shifts brain activity toward regions associated with calm. Together, these practices create a powerful counterweight to chronic stress, reducing disease risk and improving wellbeing.'
+            explanation: 'This is <strong>true</strong>. <strong>These symptoms reflect acute brain glucose deprivation</strong>. Shakiness = stress hormone response (adrenaline). Sweating = sympathetic activation. Confusion = inadequate glucose for higher brain functions. <strong>The brain is glucose-dependent and highly sensitive to depletion</strong>. These are emergency warning signs that glucose needs immediate restoration. Recognizing symptoms is lifesaving for diabetes management.'
         }
     ]
 };
-
-// Export for StudyPhysio platform
-// Total: 50 questions
-// Distribution: 25 True (50%), 25 False (50%)
-// All questions require deep understanding of course concepts
-// Vocabulary strictly limited to Unit 1 course guide
-// False questions contain plausible reasoning with subtle conceptual flaws
-// Explanations address common misconceptions and reinforce key learning
