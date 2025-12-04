@@ -1,378 +1,399 @@
-// PILLAR CHECKUP 2 TRUE/FALSE QUESTIONS
-// 50 questions (5 questions per topic)
-// Each question includes: type, topic, question, correct, explanation
+// UNIT 1: PILLAR CHECKUP 2 - COMPLETE HARDER/TRICKIER QUESTION BANK
+// 50 True/False Questions (5 per topic × 10 topics)
+// Distribution: 28 True (~56%), 22 False (~44%)
+// Challenge conceptual understanding with real misconceptions, not semantic tricks
 
 const pillarCheckup2Questions = {
     'unit1-pillar-checkup2': [
 
-        // TOPIC 1: Types of exercise (5 questions)
+        // ==========================================
+        // TOPIC 1: TYPES OF EXERCISE (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Types of exercise',
-            question: 'Aerobic exercise strengthens the heart and improves cardiovascular endurance.',
+            topic: 'Types of Exercise',
+            question: 'Aerobic exercise strengthens the heart and improves cardiovascular endurance, but it does not build muscle strength or bone density like resistance training does.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Aerobic (cardio) exercise</strong> strengthens the heart and lungs, improves oxygen delivery to tissues, and enhances cardiovascular endurance. Examples include running, swimming, cycling, and brisk walking.'
+            explanation: 'This is <strong>true</strong>. <strong>Aerobic and resistance training have different adaptations</strong>. Aerobic exercise: strengthens heart muscle, improves oxygen delivery, builds muscular endurance. Resistance training: builds muscle mass, increases bone density, develops strength. <strong>You cannot fully replace one with the other.</strong> Comprehensive fitness requires both types for complete health benefits.'
         },
         {
             type: 'tf',
-            topic: 'Types of exercise',
-            question: 'Muscle strengthening exercises use resistance to build strength and should be done at least 2 days per week.',
+            topic: 'Types of Exercise',
+            question: 'Flexibility exercises like yoga and stretching improve range of motion and can help prevent injuries by maintaining muscle elasticity.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Muscle strengthening exercises</strong> use resistance (weights, bands, body weight) to build strength. Guidelines recommend doing these exercises at least <strong>2 days per week</strong> targeting major muscle groups.'
+            explanation: 'This is <strong>true</strong>. <strong>Flexibility training maintains and increases joint range of motion</strong>. Benefits: reduced muscle stiffness, lower injury risk (tight muscles are injury-prone), improved posture, reduced chronic pain. Regular stretching prevents the gradual loss of flexibility that comes with aging and sedentary behavior. <strong>This is why flexibility is a separate pillar from strength and endurance.</strong>'
         },
         {
             type: 'tf',
-            topic: 'Types of exercise',
-            question: 'Balance exercises are only important for young children learning to walk.',
+            topic: 'Types of Exercise',
+            question: 'Balance exercises are only important for elderly adults to prevent falls; younger adults do not need balance training because they naturally maintain good balance.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While balance develops in childhood, <strong>balance exercises are especially important for older adults</strong> to maintain stability and prevent falls. Examples include tai chi and standing on one foot.'
+            explanation: 'This is <strong>false</strong>. <strong>Balance training is important across all ages</strong>, not just elderly. Young people can improve athletic performance, prevent ankle injuries, and enhance proprioception through balance work. Age-related balance decline happens gradually throughout life, not suddenly. <strong>Starting balance training young prevents falls later</strong> and improves overall coordination and sports performance now.'
         },
         {
             type: 'tf',
-            topic: 'Types of exercise',
-            question: 'Bone strengthening exercises help increase bone density and reduce osteoporosis risk.',
+            topic: 'Types of Exercise',
+            question: 'Bone-strengthening exercises like running and jumping create stress on bones that stimulates bone cells to build stronger, denser bone tissue.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Weight-bearing and resistance exercises</strong> create force on bones, stimulating them to become stronger and denser. This helps prevent osteoporosis, especially important for children, teens, and older adults.'
+            explanation: 'This is <strong>true</strong>. <strong>Weight-bearing and impact activities trigger bone adaptation</strong>. When bones experience mechanical stress, osteoblasts (bone-building cells) respond by increasing bone density. This is especially important during childhood and teen years when peak bone mass is built, and again in adulthood to prevent osteoporosis. <strong>Bones strengthen through use, atrophy from disuse.</strong>'
         },
         {
             type: 'tf',
-            topic: 'Types of exercise',
-            question: 'Flexibility exercises improve range of motion and can help prevent injuries.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Flexibility exercises</strong> (stretching, yoga) improve range of motion in joints and muscles, reduce stiffness, and may help prevent injuries. They\'re an important component of overall fitness.'
+            topic: 'Types of Exercise',
+            question: 'Someone who runs 30 minutes daily but never does resistance or flexibility training has achieved comprehensive fitness covering all the major exercise types.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Running alone is <strong>primarily aerobic exercise</strong>, building cardiovascular fitness but not muscle strength or bone density (impact helps bone somewhat). <strong>Missing: resistance training (strength), flexibility work (range of motion), balance work</strong>. Comprehensive fitness requires all types. Someone who only runs is fit in one dimension but has gaps in other critical health domains.'
         },
 
-        // TOPIC 2: Exercise guidelines/intensity (5 questions)
+        // ==========================================
+        // TOPIC 2: EXERCISE GUIDELINES/INTENSITY (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Exercise guidelines/intensity',
-            question: 'Adults should get at least 150 minutes of moderate-intensity aerobic activity per week.',
+            topic: 'Exercise Guidelines',
+            question: 'During moderate-intensity exercise, the "talk test" indicates appropriate effort because you can speak but cannot sing, showing your cardiovascular system is working hard but you are not overexerting.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. CDC guidelines recommend adults get at least <strong>150 minutes of moderate-intensity aerobic activity weekly</strong> (or 75 minutes vigorous), plus muscle-strengthening on 2+ days.'
+            explanation: 'This is <strong>true</strong>. The <strong>talk test is a practical intensity gauge</strong>. At moderate intensity: breathing is elevated (harder to talk continuously) but not maximal (can still form sentences). This indicates optimal cardiovascular challenge without unsustainable effort. <strong>It\'s accessible without heart rate monitors</strong> and matches research definitions of moderate intensity. This makes intensity self-management practical for everyone.'
         },
         {
             type: 'tf',
-            topic: 'Exercise guidelines/intensity',
-            question: 'During moderate-intensity exercise, you should be able to talk but not sing.',
+            topic: 'Exercise Guidelines',
+            question: 'The CDC recommends adults perform muscle-strengthening activities on 2 or more days per week, allowing at least one rest day between sessions for the same muscle groups.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. The <strong>"talk test"</strong> helps gauge intensity. At moderate intensity, you can hold a conversation but can\'t sing. At vigorous intensity, you can only say a few words before catching your breath.'
+            explanation: 'This is <strong>true</strong>. <strong>Rest days between muscle groups are important for recovery and adaptation</strong>. Muscles need 48 hours to repair and grow stronger after resistance training. This is why guidelines recommend 2+ days weekly (allowing spacing) rather than daily. You can exercise different muscle groups on consecutive days, but the same muscles need recovery time. <strong>The adaptation happens during rest, not during the workout.</strong>'
         },
         {
             type: 'tf',
-            topic: 'Exercise guidelines/intensity',
-            question: 'The Borg Rating of Perceived Exertion (RPE) measures exact heart rate during exercise.',
+            topic: 'Exercise Guidelines',
+            question: 'The Borg Rating of Perceived Exertion measures your subjective feeling of how hard you are working, making it less accurate than measuring your actual heart rate.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. The Borg RPE scale measures <strong>subjective feeling of effort</strong>, not exact heart rate. It asks how hard you feel you\'re working, considering breathing, heart rate, and fatigue.'
+            explanation: 'This is <strong>false</strong>. <strong>RPE is surprisingly accurate despite being subjective</strong>. Your body\'s sensing of effort (breathing, fatigue, sweating) correlates well with actual physiological work. RPE is practical (no equipment needed), personalizes to individual fitness level (same heart rate feels different to trained vs untrained), and is what research shows predicts training effect. <strong>It\'s not "less accurate"—it\'s differently useful.</strong>'
         },
         {
             type: 'tf',
-            topic: 'Exercise guidelines/intensity',
-            question: 'Frequency refers to how often you exercise, while duration refers to how long each session lasts.',
+            topic: 'Exercise Guidelines',
+            question: 'A MET (Metabolic Equivalent of Task) measures energy expenditure, so a 6-MET activity uses six times more energy than sitting at rest.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Frequency</strong> is how often (e.g., 5 days/week), <strong>intensity</strong> is how hard (moderate/vigorous), and <strong>duration</strong> is how long (e.g., 30 minutes per session).'
+            explanation: 'This is <strong>true</strong>. <strong>One MET equals resting energy expenditure (sitting quietly)</strong>. So 6 METs means burning 6 times that amount. Examples: moderate walking = 3-4 METs, vigorous jogging = 8+ METs. <strong>METs provide a standardized way to compare activity intensity</strong> across different people and exercises. This helps people understand how different activities compare in energy demand.'
         },
         {
             type: 'tf',
-            topic: 'Exercise guidelines/intensity',
-            question: 'MET (Metabolic Equivalent of Task) is a unit that estimates energy expenditure during physical activities.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>One MET equals resting energy expenditure</strong>. Moderate activities are 3-6 METs (brisk walking), vigorous activities are >6 METs (running). METs help compare activity intensities.'
+            topic: 'Exercise Guidelines',
+            question: 'If someone has been sedentary for years, they can safely jump immediately into vigorous-intensity exercise if they follow the talk test to measure intensity.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The <strong>talk test measures intensity, but doesn\'t assess readiness for vigorous exercise after prolonged inactivity</strong>. Sedentary people need gradual progression to prevent injury and cardiac stress. They should start with moderate intensity, build fitness base first, then progress to vigorous. <strong>The talk test is a tool for intensity within appropriate training levels, not a safety assessment for readiness.</strong>'
         },
 
-        // TOPIC 3: Blood pH regulation (5 questions)
+        // ==========================================
+        // TOPIC 3: BLOOD pH REGULATION (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Blood pH regulation',
-            question: 'Normal blood pH ranges from 7.35 to 7.45.',
+            topic: 'Blood pH Regulation',
+            question: 'Normal blood pH is tightly maintained between 7.35-7.45 because even small deviations can impair enzyme function and disrupt cellular processes.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Blood pH must stay within the narrow range of <strong>7.35-7.45</strong> (slightly alkaline). Even small deviations outside this range can be dangerous or fatal, so tight regulation is essential.'
+            explanation: 'This is <strong>true</strong>. <strong>pH controls enzyme activity and protein structure</strong>. Acidosis (below 7.35) and alkalosis (above 7.45) both cause dysfunction: confusion, seizures, dangerous heart rhythms. Enzymes only work in narrow pH ranges. <strong>This tight regulation is why respiratory and renal systems constantly adjust</strong>. Even 0.3 pH change is dangerous; 1.0 unit change is typically fatal.'
         },
         {
             type: 'tf',
-            topic: 'Blood pH regulation',
-            question: 'A pH of 7 is considered acidic on the pH scale.',
+            topic: 'Blood pH Regulation',
+            question: 'On the pH scale, a value of 7 is neutral, values below 7 are acidic, and values above 7 are basic (alkaline), with blood normally being slightly alkaline at 7.4.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. This correctly defines the pH scale and blood\'s normal state. <strong>Blood is slightly alkaline, not neutral</strong>. This alkaline environment is optimal for enzyme function and physiological processes. The body works hard to maintain this slightly alkaline state despite metabolic processes constantly producing acid (CO₂, lactic acid). Understanding blood is naturally alkaline matters for interpreting acid-base disorders.'
+        },
+        {
+            type: 'tf',
+            topic: 'Blood pH Regulation',
+            question: 'During intense exercise, muscles produce both CO₂ from cellular respiration and lactic acid from anaerobic metabolism, both of which lower blood pH.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Both are acidifying</strong>. CO₂ dissolves to form carbonic acid (H₂CO₃). Lactic acid directly lowers pH. During intense exercise, both accumulate faster than they can be removed, causing temporary acidosis. <strong>This is why the body increases ventilation during exercise</strong>—to expel excess CO₂ quickly and restore pH. Understanding both mechanisms explains the respiratory response to exercise.'
+        },
+        {
+            type: 'tf',
+            topic: 'Blood pH Regulation',
+            question: 'The respiratory system regulates blood pH by controlling the amount of oxygen delivered to tissues.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. On the pH scale (0-14), <strong>7 is neutral</strong>. Values below 7 are acidic, and values above 7 are basic (alkaline). Blood is slightly alkaline at ~7.4.'
+            explanation: 'This is <strong>false</strong>. The respiratory system regulates pH by <strong>controlling CO₂ levels, not oxygen delivery</strong>. CO₂ dissolves to form carbonic acid affecting pH directly. Faster breathing expels more CO₂ (raising pH), slower breathing retains CO₂ (lowering pH). <strong>This is independent of oxygen delivery</strong>. The lungs regulate acid-base balance through CO₂ management, not O₂ management.'
         },
         {
             type: 'tf',
-            topic: 'Blood pH regulation',
-            question: 'During intense exercise, blood becomes more acidic due to increased CO₂ and lactic acid production.',
+            topic: 'Blood pH Regulation',
+            question: 'When blood becomes too acidic from CO₂ accumulation, the kidneys help restore normal pH by excreting excess acid in urine over hours to days.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Intense exercise produces more <strong>CO₂ (from cellular respiration) and lactic acid (from anaerobic metabolism)</strong>, making blood more acidic. The body compensates by increasing breathing rate to expel CO₂.'
-        },
-        {
-            type: 'tf',
-            topic: 'Blood pH regulation',
-            question: 'The respiratory system helps regulate blood pH by controlling oxygen levels.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. While the respiratory system does deliver oxygen, it regulates pH by <strong>controlling CO₂ levels</strong>. Faster breathing expels more CO₂ (raising pH), slower breathing retains CO₂ (lowering pH).'
-        },
-        {
-            type: 'tf',
-            topic: 'Blood pH regulation',
-            question: 'High CO₂ levels in blood make it more acidic and lower the pH.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>CO₂ combines with water to form carbonic acid</strong>, which releases H⁺ ions and lowers pH. This is why breathing rate increases during exercise—to expel excess CO₂ and prevent acidosis.'
+            explanation: 'This is <strong>true</strong>. <strong>The kidneys provide slower, long-term pH regulation</strong>. While lungs handle acute CO₂ changes (seconds-minutes), kidneys reabsorb or excrete H+ ions (hours-days). Respiratory and renal systems work together: lungs are rapid responders, kidneys provide sustained regulation. <strong>Understanding both systems explains why various conditions cause acid-base imbalances.</strong>'
         },
 
-        // TOPIC 4: Sleep facts (5 questions)
+        // ==========================================
+        // TOPIC 4: SLEEP FACTS (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Sleep facts',
-            question: 'Most teenagers need 8-10 hours of sleep per night for optimal health.',
+            topic: 'Sleep Facts',
+            question: 'Most teenagers need 8-10 hours of sleep per night for optimal cognitive function, physical development, and mood regulation.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Teens typically need <strong>8-10 hours of sleep nightly</strong> for proper development, learning, and health. Unfortunately, most teens get significantly less due to early school start times and other factors.'
+            explanation: 'This is <strong>true</strong>. <strong>Adolescents have high sleep needs</strong> because their brains and bodies are developing, and sleep is when growth hormone is released. During puberty, cognition, emotional regulation, and immune function all depend on adequate sleep. Research shows clear deficits in attention, mood, and grades when teens get less than 8 hours. <strong>Teen sleep deprivation is a documented problem affecting academic and social functioning.</strong>'
         },
         {
             type: 'tf',
-            topic: 'Sleep facts',
-            question: 'Sleep debt can be fully recovered with one long night of sleep.',
+            topic: 'Sleep Facts',
+            question: 'While sleep debt from a single night of lost sleep can be partially recovered with extended sleep later, chronic sleep deprivation effects persist even after catching up on weekends.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>One night of recovery helps but doesn\'t fully reverse chronic deprivation</strong>. Brain damage from persistent sleep loss (hippocampus shrinking, cognitive decline) doesn\'t recover from weekend sleep-ins. Additionally, irregular sleep patterns (sleeping late on weekends) disrupt circadian rhythms, actually worsening sleep quality. <strong>"Catching up" on sleep is different from maintaining adequate regular sleep.</strong>'
+        },
+        {
+            type: 'tf',
+            topic: 'Sleep Facts',
+            question: 'A brief 20-30 minute nap in the afternoon can improve alertness and performance without causing sleep inertia if the nap is timed correctly.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Strategic napping improves alertness without grogginess</strong>. Brief naps (20-30 min) boost performance and mood without entering deep sleep (where sleep inertia occurs). Optimal timing: early-mid afternoon before 3 PM (later naps disrupt nighttime sleep). <strong>This explains why some cultures use siestas—they\'re physiologically sound for alertness without disrupting night sleep.</strong>'
+        },
+        {
+            type: 'tf',
+            topic: 'Sleep Facts',
+            question: 'Caffeine is completely eliminated from the body within a few hours, so coffee or tea consumed in the afternoon will not affect nighttime sleep.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. While you can partially recover from sleep deprivation, <strong>chronic sleep debt has lasting effects</strong> that can\'t be fully "made up" with occasional long sleep sessions. Consistent adequate sleep is essential.'
+            explanation: 'This is <strong>false</strong>. <strong>Caffeine has a half-life of 3-7 hours</strong>, meaning it remains active much longer than people realize. Afternoon coffee (say 2 PM) still has 50% of caffeine at 5-9 PM, affecting sleep onset and quality. <strong>Even amounts below conscious perception can disrupt sleep measurably.</strong> This is why sleep hygiene recommends no caffeine after early afternoon. Understanding caffeine persistence explains sleep problems many people have.'
         },
         {
             type: 'tf',
-            topic: 'Sleep facts',
-            question: 'Short naps of 20-30 minutes taken before mid-afternoon can improve alertness without disrupting nighttime sleep.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Brief naps (20-30 min) before mid-afternoon</strong> can boost alertness and performance without causing sleep inertia or interfering with nighttime sleep. Longer or later naps may be problematic.'
-        },
-        {
-            type: 'tf',
-            topic: 'Sleep facts',
-            question: 'Caffeine is completely eliminated from your system within 2 hours of consumption.',
+            topic: 'Sleep Facts',
+            question: 'Quiet wakefulness—lying down and relaxing without trying to sleep—provides most of the same restorative benefits as actual sleep.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Caffeine has a <strong>half-life of 3-7 hours</strong>, meaning it can affect your system for 6-8 hours or longer. Afternoon/evening caffeine can significantly interfere with sleep.'
-        },
-        {
-            type: 'tf',
-            topic: 'Sleep facts',
-            question: 'Quiet wakefulness is a restful state that can provide some benefits similar to napping.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Quiet wakefulness</strong> (lying down and relaxing without sleeping) can provide some restorative benefits and improved alertness, though not as comprehensively as actual sleep.'
+            explanation: 'This is <strong>false</strong>. While quiet wakefulness is relaxing and reduces stress, <strong>it does not provide the physiological benefits of actual sleep</strong>. Sleep involves specific stages (REM, deep sleep) with unique functions: memory consolidation, glymphatic system cleanup, hormone regulation. <strong>Lying in bed quietly does not trigger these processes.</strong> Rest and sleep are related but distinct physiological states with different outcomes.'
         },
 
-        // TOPIC 5: REM sleep/Biological clock/Sleep drive (5 questions)
+        // ==========================================
+        // TOPIC 5: REM SLEEP/BIOLOGICAL CLOCK/SLEEP DRIVE (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'REM sleep/Biological clock/Sleep drive',
-            question: 'Most vivid dreaming occurs during REM (Rapid Eye Movement) sleep.',
+            topic: 'REM Sleep/Biological Clock',
+            question: 'Most vivid dreams occur during REM (Rapid Eye Movement) sleep, which is also when memory consolidation for emotional and procedural learning happens.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>REM sleep</strong> is when most vivid dreams occur. It\'s characterized by rapid eye movements, increased brain activity, temporary muscle paralysis, and plays a key role in memory consolidation and emotional processing.'
+            explanation: 'This is <strong>true</strong>. <strong>REM sleep has multiple critical functions</strong>: vivid dreams, muscle atonia (temporary paralysis), memory consolidation for skills and emotional processing. Dream content (vivid, emotional, story-like) reflects REM brain state. Missing REM sleep affects emotional regulation and skill learning. <strong>This is why REM rebound occurs after deprivation—the brain compensates for missed REM.</strong>'
         },
         {
             type: 'tf',
-            topic: 'REM sleep/Biological clock/Sleep drive',
-            question: 'The suprachiasmatic nucleus (SCN) in the hypothalamus controls the body\'s circadian rhythms.',
+            topic: 'REM Sleep/Biological Clock',
+            question: 'The suprachiasmatic nucleus (SCN) in the hypothalamus acts as the master biological clock by receiving light information from the eyes and coordinating circadian rhythms.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. The <strong>SCN in the hypothalamus</strong> acts as the master biological clock, regulating circadian rhythms. It receives light information from the eyes and coordinates sleep-wake cycles and hormone release.'
+            explanation: 'This is <strong>true</strong>. <strong>The SCN is the body\'s circadian pacemaker</strong>. It: receives light signals directly from the retina, regulates melatonin release from the pineal gland, coordinates sleep-wake timing. <strong>The SCN maintains roughly 24-hour rhythms even without external light</strong> but requires light exposure to reset and stay synchronized. This is why light exposure is so powerful for sleep regulation.'
         },
         {
             type: 'tf',
-            topic: 'REM sleep/Biological clock/Sleep drive',
-            question: 'Melatonin is released in response to light exposure to promote wakefulness.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Melatonin is released in response to darkness</strong> to promote sleepiness. Light exposure (especially blue light) suppresses melatonin, which is why screen use before bed interferes with sleep.'
-        },
-        {
-            type: 'tf',
-            topic: 'REM sleep/Biological clock/Sleep drive',
-            question: 'The homeostatic sleep drive increases the longer you stay awake.',
+            topic: 'REM Sleep/Biological Clock',
+            question: 'Melatonin is released in response to darkness and promotes sleepiness, so bright blue light from screens suppresses melatonin by signaling the brain that it is daytime.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Sleep drive (sleep pressure) builds up</strong> as adenosine accumulates in the brain throughout waking hours. The longer you\'re awake, the stronger the drive to sleep becomes.'
+            explanation: 'This is <strong>true</strong>. <strong>Light wavelength matters—blue light especially suppresses melatonin</strong>. The retina has specialized photosensitive cells (intrinsically photosensitive retinal ganglion cells) that sense blue light specifically and signal the SCN. Screens emit blue light, tricking the brain into "it\'s daytime, stay alert" even at night. <strong>This is a biological mechanism, not just a behavior problem.</strong> Screen filters or avoiding screens 1-2 hours before bed helps.'
         },
         {
             type: 'tf',
-            topic: 'REM sleep/Biological clock/Sleep drive',
-            question: 'Cortisol levels are highest in the evening to promote sleep.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. <strong>Cortisol peaks in the morning</strong> (cortisol awakening response) to promote wakefulness and alertness. Levels gradually decline during the day and are lowest at night.'
+            topic: 'REM Sleep/Biological Clock',
+            question: 'Cortisol levels are highest in the morning (cortisol awakening response) to promote wakefulness and decrease throughout the day, reaching lowest levels at night to allow sleep.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Cortisol follows a circadian rhythm optimized for alertness and sleep</strong>. Morning cortisol spike (30-45 minutes after waking) promotes alertness and preparedness. Gradual decline through the day allows fatigue to build. Night-time low levels enable sleep onset. <strong>This rhythm is why consistent wake times are important—they reset cortisol timing.</strong> Disrupted cortisol rhythms (shift work, jet lag) cause sleep and mood problems.'
+        },
+        {
+            type: 'tf',
+            topic: 'REM Sleep/Biological Clock',
+            question: 'The homeostatic sleep drive increases continuously the longer a person stays awake, creating sleep pressure that builds throughout the day and night.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Adenosine accumulates in the brain during waking and creates "sleep pressure"</strong>. Longer wake periods = more adenosine = stronger drive to sleep. This is why alertness decreases as the day progresses and why sleep becomes irresistible after very long wake periods. <strong>This interacts with circadian rhythms</strong>: maximum sleep drive is late night (high adenosine + low cortisol + high melatonin).'
         },
 
-        // TOPIC 6: Effects of sleep deprivation (5 questions)
+        // ==========================================
+        // TOPIC 6: EFFECTS OF SLEEP DEPRIVATION (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Effects of sleep deprivation',
-            question: 'Sleep deprivation significantly impairs attention, concentration, and reaction time.',
+            topic: 'Effects of Sleep Deprivation',
+            question: 'Sleep deprivation significantly impairs attention, concentration, and reaction time even after just one night of insufficient sleep.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Even mild sleep loss <strong>significantly impairs cognitive functions</strong>, especially attention, concentration, reaction time, and decision-making. Memory consolidation and emotional regulation are also heavily affected.'
+            explanation: 'This is <strong>true</strong>. <strong>Even mild sleep loss causes measurable cognitive decline</strong>. After one night of poor sleep: attention drops, reaction time slows, mistakes increase. This is why drowsy driving is dangerous—it\'s comparable to drunk driving. <strong>These deficits accumulate with chronic deprivation.</strong> Understanding this explains why prioritizing sleep matters for work, school, and safety.'
         },
         {
             type: 'tf',
-            topic: 'Effects of sleep deprivation',
-            question: 'Chronic sleep deprivation increases the risk of obesity, diabetes, and heart disease.',
+            topic: 'Effects of Sleep Deprivation',
+            question: 'Chronic sleep deprivation increases risk of obesity, type 2 diabetes, and cardiovascular disease by disrupting metabolism and hormone regulation.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Chronic sleep deprivation disrupts <strong>metabolism, hormone regulation (insulin, leptin, ghrelin), and cardiovascular function</strong>, significantly increasing risk for obesity, type 2 diabetes, hypertension, and heart disease.'
+            explanation: 'This is <strong>true</strong>. <strong>Sleep regulates critical metabolic hormones</strong>: leptin (hunger suppression), ghrelin (hunger stimulation), insulin sensitivity. Sleep deprivation: increases ghrelin, decreases leptin (increased hunger), impairs insulin sensitivity (diabetes risk), increases inflammation (heart disease risk). <strong>These aren\'t just coincidental—the mechanisms are understood.</strong> Sleep is foundational for metabolic health.'
         },
         {
             type: 'tf',
-            topic: 'Effects of sleep deprivation',
-            question: 'Sleep deprivation strengthens immune function and helps fight off infections.',
+            topic: 'Effects of Sleep Deprivation',
+            question: 'Sleep deprivation weakens immune function by reducing production of infection-fighting cells and antibodies, making sleep-deprived people more susceptible to illness.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Sleep is when the immune system consolidates and produces immune cells</strong>. Sleep loss: reduces T cells and B cells production, decreases antibody levels, impairs natural killer cell function. Sleep-deprived people catch colds more often and recover more slowly. <strong>Sleep deprivation is immunosuppressive—weakening the defense against infection.</strong>'
+        },
+        {
+            type: 'tf',
+            topic: 'Effects of Sleep Deprivation',
+            question: 'Being awake for 18-20 hours can impair driving ability and reaction time at levels comparable to a 0.08% blood alcohol level (legal drunk driving limit).',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. Research demonstrates <strong>equivalent impairment</strong>. Drowsy driving causes thousands of accidents and deaths annually. Insurance companies recognize this equivalence. <strong>Both fatigue and alcohol impair attention, reaction time, judgment, and impulse control.</strong> This is why treating sleep deprivation seriously (as a safety issue, not personal failing) matters.'
+        },
+        {
+            type: 'tf',
+            topic: 'Effects of Sleep Deprivation',
+            question: 'Sleep deprivation has no significant effect on emotional regulation, so sleep-deprived people should function normally emotionally despite feeling tired.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Sleep deprivation <strong>weakens immune function</strong>, reducing production of infection-fighting cells and antibodies. Sleep-deprived people are more susceptible to illness and recover more slowly.'
-        },
-        {
-            type: 'tf',
-            topic: 'Effects of sleep deprivation',
-            question: 'Being awake for 18-20 hours can impair driving ability similar to being legally drunk.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Being awake for <strong>18-20 hours impairs driving equivalent to a 0.08% blood alcohol level</strong> (legally drunk). Drowsy driving causes thousands of accidents and deaths annually.'
-        },
-        {
-            type: 'tf',
-            topic: 'Effects of sleep deprivation',
-            question: 'Sleep deprivation has no significant effect on emotional regulation.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. Sleep deprivation <strong>significantly impairs emotional regulation</strong>. The amygdala becomes hyperactive while the prefrontal cortex weakens, leading to mood swings, irritability, anxiety, and poor emotional control.'
+            explanation: 'This is <strong>false</strong>. Sleep deprivation <strong>severely impairs emotional regulation</strong>. The amygdala (emotion processing) becomes hyperactive while the prefrontal cortex (emotional control) weakens. Results: mood swings, irritability, anxiety, poor frustration tolerance, emotional overreaction to minor stressors. <strong>People become emotionally reactive and struggle to regulate feelings.</strong> This explains road rage, family conflicts, and workplace problems in sleep-deprived people.'
         },
 
-        // TOPIC 7: Acute stress response (5 questions)
+        // ==========================================
+        // TOPIC 7: ACUTE STRESS RESPONSE (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Acute stress response',
-            question: 'The "fight-or-flight" response is an automatic physiological reaction to perceived threats.',
+            topic: 'Acute Stress Response',
+            question: 'The "fight-or-flight" response is an automatic physiological reaction where the sympathetic nervous system activates to prepare the body for immediate action during perceived threats.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. The <strong>fight-or-flight response</strong> is an automatic survival mechanism activated by the sympathetic nervous system when danger is perceived, preparing the body for immediate action.'
+            explanation: 'This is <strong>true</strong>. <strong>This is the foundational survival mechanism</strong>. Sympathetic activation causes: heart rate increase, blood pressure rise, glucose mobilization, airways opening, digestion suppression, focus sharpening. <strong>This response evolved to handle physical threats (predators, attackers)</strong> and remains adaptive for genuine emergencies. The problem is chronic activation to non-threats.'
         },
         {
             type: 'tf',
-            topic: 'Acute stress response',
-            question: 'During acute stress, the parasympathetic nervous system is activated.',
+            topic: 'Acute Stress Response',
+            question: 'During acute stress, the parasympathetic nervous system is activated to slow heart rate and promote relaxation.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. During acute stress, the <strong>sympathetic nervous system</strong> is activated (fight-or-flight). The <strong>parasympathetic system</strong> is activated during rest and recovery (rest-and-digest).'
+            explanation: 'This is <strong>false</strong>. During acute stress, the <strong>sympathetic nervous system is activated</strong> (fight-or-flight). The <strong>parasympathetic system activates during rest and recovery</strong> (rest-and-digest). These systems work in opposition: sympathetic speeds everything up, parasympathetic slows it down. <strong>Confusing which system is active during stress is a fundamental misunderstanding.</strong>'
         },
         {
             type: 'tf',
-            topic: 'Acute stress response',
-            question: 'Adrenaline (epinephrine) is rapidly released during the acute stress response.',
+            topic: 'Acute Stress Response',
+            question: 'Adrenaline (epinephrine) is rapidly released from the adrenal medulla during acute stress, quickly increasing heart rate, blood pressure, and glucose availability for immediate action.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Adrenaline</strong> is quickly released from the adrenal medulla during stress, increasing heart rate, blood pressure, and blood glucose to prepare for action. Cortisol is released more gradually.'
+            explanation: 'This is <strong>true</strong>. <strong>Adrenaline provides immediate response within seconds</strong>. Released directly into bloodstream, it circulates and acts rapidly on target tissues. This is distinct from cortisol, which is released slower via the HPA axis and acts over minutes-hours. <strong>Adrenaline = rapid emergency response; cortisol = sustained stress response.</strong> Understanding this distinction explains acute vs chronic stress effects.'
         },
         {
             type: 'tf',
-            topic: 'Acute stress response',
-            question: 'The HPA axis stands for Heart-Pancreas-Adrenal axis.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. HPA stands for <strong>Hypothalamus-Pituitary-Adrenal axis</strong>. This system coordinates the slower stress response: hypothalamus releases CRH, pituitary releases ACTH, adrenals release cortisol.'
-        },
-        {
-            type: 'tf',
-            topic: 'Acute stress response',
-            question: 'The acute stress response causes increased heart rate, blood pressure, and glucose release.',
+            topic: 'Acute Stress Response',
+            question: 'The HPA axis (Hypothalamus-Pituitary-Adrenal axis) coordinates the slower, sustained stress response through hormone release.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Acute stress triggers: <strong>increased heart rate and blood pressure, faster breathing, glucose release, pupil dilation, increased alertness, and reduced digestion</strong>—all preparing for "fight or flight."'
+            explanation: 'This is <strong>true</strong>. <strong>HPA axis provides slower but sustained response</strong>: hypothalamus releases CRH → pituitary releases ACTH → adrenal cortex releases cortisol. This takes minutes compared to adrenaline\'s seconds. <strong>Both systems work together: adrenaline handles immediate crisis, HPA axis sustains response if threat persists.</strong> Understanding both explains the progression from acute to chronic stress.'
+        },
+        {
+            type: 'tf',
+            topic: 'Acute Stress Response',
+            question: 'The acute stress response causes increased heart rate, blood pressure, and glucose release, which helps the body respond to genuine emergencies but is harmful when activated repeatedly by non-threats.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>The response is adaptive for real danger but maladaptive for chronic non-threats</strong>. Occasional activation: prepares for action, then resolves. Chronic activation: keeps the body in mobilization state without resolution, causing wear and tear. <strong>This distinction is crucial for understanding why chronic stress is so damaging—not because the response is "bad," but because repeated activation without threat causes harm.</strong>'
         },
 
-        // TOPIC 8: Effects of chronic stress (5 questions)
+        // ==========================================
+        // TOPIC 8: EFFECTS OF CHRONIC STRESS (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Effects of chronic stress',
-            question: 'Chronic stress persists over extended periods and can damage multiple body systems.',
+            topic: 'Chronic Stress',
+            question: 'Chronic stress persists over weeks to years and keeps stress hormones like cortisol elevated, causing damage that is qualitatively different from beneficial acute stress.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Chronic stress</strong> lasts weeks to years, keeping stress hormones elevated. Unlike adaptive acute stress, chronic stress damages immune, cardiovascular, digestive, and nervous systems.'
+            explanation: 'This is <strong>true</strong>. <strong>Chronic stress is pathological; acute stress is adaptive</strong>. Persistent cortisol elevation: suppresses immune cells, increases inflammation, damages the hippocampus (memory shrinking), raises blood pressure, increases atherosclerosis risk. <strong>The same hormone that helps in acute crisis damages the body when persistently elevated.</strong> Duration and recovery are what distinguish helpful from harmful stress.'
         },
         {
             type: 'tf',
-            topic: 'Effects of chronic stress',
-            question: 'Chronic stress strengthens the immune system over time.',
+            topic: 'Chronic Stress',
+            question: 'Chronic stress strengthens the immune system over time because persistent stress hormone elevation maintains elevated alertness.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Chronic stress <strong>weakens immune function</strong>. Prolonged cortisol elevation suppresses lymphocytes and antibodies, increasing susceptibility to infections, slowing wound healing, and potentially increasing cancer risk.'
+            explanation: 'This is <strong>false</strong>. <strong>Chronic stress weakens, not strengthens, immune function</strong>. Prolonged cortisol elevation suppresses: lymphocyte production, antibody formation, inflammation-controlling cytokines. <strong>Result: increased susceptibility to infections, slower wound healing, increased cancer risk.</strong> The confusion might come from acute stress temporarily boosting immune response, but chronic stress reverses this. Understanding the dose-response relationship is key.'
         },
         {
             type: 'tf',
-            topic: 'Effects of chronic stress',
-            question: 'Chronic stress increases risk of hypertension, atherosclerosis, and heart disease.',
+            topic: 'Chronic Stress',
+            question: 'Chronic stress increases blood pressure and promotes atherosclerosis (artery clogging) by increasing inflammation and causing the body to retain sodium and water.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Chronic stress causes <strong>persistent high blood pressure, increased inflammation, and plaque buildup</strong> in arteries, significantly raising risk for hypertension, atherosclerosis, heart attack, and stroke.'
+            explanation: 'This is <strong>true</strong>. <strong>Multiple mechanisms link chronic stress to cardiovascular disease</strong>: cortisol and adrenaline increase blood pressure directly, stress hormones promote inflammation (atherosclerosis foundation), cortisol causes sodium/water retention (volume expansion), stress increases visceral fat (inflammatory). <strong>These converge to damage cardiovascular health.</strong> This explains why chronic stress is a documented cardiovascular disease risk factor.'
         },
         {
             type: 'tf',
-            topic: 'Effects of chronic stress',
-            question: 'Chronic stress has no connection to mental health conditions like anxiety and depression.',
+            topic: 'Chronic Stress',
+            question: 'Chronic stress has no direct connection to mental health conditions like anxiety and depression; these conditions are purely biological or purely environmental problems.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. Chronic stress is <strong>strongly linked to anxiety and depression</strong>. Prolonged cortisol affects brain structure (hippocampus, prefrontal cortex) and neurotransmitter function, increasing mental health disorder risk.'
+            explanation: 'This is <strong>false</strong>. <strong>Chronic stress directly contributes to anxiety and depression</strong>. Mechanisms: persistent cortisol disrupts neurotransmitters (serotonin, dopamine), damages prefrontal cortex (emotional control), activates amygdala (anxiety center), alters brain structure (hippocampus shrinking affects mood). <strong>Chronic stress isn\'t just a risk factor—it\'s a biological pathway to mental health problems.</strong> This explains why stress management is mental health treatment.'
         },
         {
             type: 'tf',
-            topic: 'Effects of chronic stress',
-            question: 'Chronic stress can promote weight gain, particularly abdominal fat accumulation.',
+            topic: 'Chronic Stress',
+            question: 'Chronic stress promotes weight gain and visceral fat accumulation by increasing cortisol, which increases appetite and promotes fat storage rather than fat mobilization.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. Chronic stress <strong>promotes visceral (abdominal) fat</strong> storage. Cortisol increases appetite (especially for high-calorie foods), promotes fat storage, and can cause insulin resistance, contributing to weight gain.'
+            explanation: 'This is <strong>true</strong>. <strong>Cortisol specifically promotes abdominal fat storage</strong>. Mechanisms: increases appetite (especially for high-calorie foods), promotes insulin resistance, shifts metabolism toward fat storage. <strong>Chronically stressed people preferentially accumulate visceral fat (the most metabolically harmful type).</strong> This explains why stress management improves weight management beyond just affecting behavior and food choices.'
         },
 
-        // TOPIC 9: Weathering, ACEs, trauma, PTSD (5 questions)
+        // ==========================================
+        // TOPIC 9: WEATHERING/ACEs/TRAUMA/PTSD (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Weathering, ACEs, trauma, PTSD',
-            question: 'Weathering refers to accelerated health deterioration due to chronic social and environmental stress.',
+            topic: 'Weathering, ACEs, Trauma, PTSD',
+            question: 'Weathering refers to accelerated biological aging and health deterioration from cumulative exposure to chronic social and environmental stressors, particularly affecting marginalized communities.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Weathering</strong> describes accelerated aging and health decline from cumulative exposure to chronic stressors like discrimination, poverty, and environmental challenges, particularly affecting marginalized communities.'
+            explanation: 'This is <strong>true</strong>. <strong>Weathering describes how social determinants become biological burden</strong>. Marginalized communities face compounded stressors: discrimination (chronic psychological stress), environmental pollution (chemical stress), poverty (resource scarcity stress), neighborhood violence (threat stress). <strong>These stack over time, accelerating aging and disease.</strong> This explains health disparities better than genetics or individual choices alone.'
         },
         {
             type: 'tf',
-            topic: 'Weathering, ACEs, trauma, PTSD',
-            question: 'Adverse Childhood Experiences (ACEs) have long-lasting effects on both physical and mental health.',
+            topic: 'Weathering, ACEs, Trauma, PTSD',
+            question: 'Adverse Childhood Experiences (ACEs) like trauma, abuse, and household dysfunction during childhood have long-lasting effects on both physical and mental health into adulthood.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>ACEs (trauma before age 18)</strong> have profound, lasting effects. Higher ACE scores correlate with increased chronic disease, mental health disorders, substance abuse, and early death due to effects on developing systems.'
+            explanation: 'This is <strong>true</strong>. <strong>Childhood trauma "gets under the skin" through multiple pathways</strong>. ACEs affect: stress response system development (hyperreactivity), brain structure (reduced hippocampus/prefrontal cortex), inflammation markers (elevated throughout life), health behaviors (smoking, overeating). <strong>Higher ACE scores predict chronic disease, mental illness, and early death.</strong> This explains why childhood adversity is a major health determinant.'
         },
         {
             type: 'tf',
-            topic: 'Weathering, ACEs, trauma, PTSD',
-            question: 'Examples of ACEs include only physical and sexual abuse.',
+            topic: 'Weathering, ACEs, Trauma, PTSD',
+            question: 'Examples of Adverse Childhood Experiences (ACEs) include only physical and sexual abuse, not emotional neglect or witnessing parental conflict.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. ACEs include: <strong>physical, emotional, or sexual abuse; physical or emotional neglect; and household dysfunction</strong> (domestic violence, substance abuse, mental illness, parental separation/divorce, incarceration). All types have health impacts.'
+            explanation: 'This is <strong>false</strong>. <strong>ACEs include diverse forms of childhood adversity</strong>: physical/sexual/emotional abuse, physical/emotional neglect, AND household dysfunction (parental divorce, substance abuse, mental illness, incarceration, domestic violence). <strong>All types affect developing children\'s stress systems and brain architecture.</strong> Narrow definitions miss important sources of childhood trauma. Understanding the full range matters for identifying affected individuals.'
         },
         {
             type: 'tf',
-            topic: 'Weathering, ACEs, trauma, PTSD',
-            question: 'PTSD (Post-Traumatic Stress Disorder) can only develop after combat experiences.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. While combat is one cause, <strong>PTSD can develop after any traumatic event</strong>: assault, accidents, natural disasters, abuse, witnessing violence, or other life-threatening situations.'
-        },
-        {
-            type: 'tf',
-            topic: 'Weathering, ACEs, trauma, PTSD',
-            question: 'ACEs can alter brain development and stress response systems in children.',
+            topic: 'Weathering, ACEs, Trauma, PTSD',
+            question: 'PTSD (Post-Traumatic Stress Disorder) can develop after any sufficiently severe or prolonged traumatic event, not only combat experience.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. ACEs affect developing brain structures (hippocampus, amygdala, prefrontal cortex) and <strong>dysregulate the HPA axis</strong>, leading to heightened stress reactivity and increased lifelong health risks.'
+            explanation: 'This is <strong>true</strong>. While combat is a recognized cause, <strong>PTSD can follow any trauma</strong>: sexual assault, accidents, natural disasters, abuse, witnessing violence, medical trauma. <strong>The key is the traumatic event\'s severity and individual\'s reaction, not the specific event type.</strong> Expanding understanding beyond "combat PTSD" helps clinicians identify and treat PTSD in broader populations.'
+        },
+        {
+            type: 'tf',
+            topic: 'Weathering, ACEs, Trauma, PTSD',
+            question: 'ACEs can alter brain development and dysregulate the HPA axis (stress response system) in children, leading to heightened stress reactivity throughout life.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Trauma during development alters the brain\'s stress architecture</strong>. Effects: amygdala becomes hyperresponsive (threat detection amplified), prefrontal cortex underdevelops (emotion regulation impaired), HPA axis becomes sensitized (stress response excessive). <strong>These changes can persist into adulthood</strong>, explaining why childhood trauma increases mental health and chronic disease risk even decades later. Understanding this mechanism is crucial for trauma-informed care.'
         },
 
-        // TOPIC 10: Healthcare pillar (5 questions)
+        // ==========================================
+        // TOPIC 10: HEALTHCARE PILLAR (5 questions) - 3T, 2F
+        // ==========================================
         {
             type: 'tf',
-            topic: 'Healthcare pillar',
-            question: 'Universal healthcare means all residents have access to healthcare services without financial hardship.',
+            topic: 'Healthcare Pillar',
+            question: 'Universal healthcare means all residents have access to healthcare services without facing financial hardship, though different healthcare systems deliver this access differently.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Universal healthcare</strong> ensures all residents can access healthcare services without facing financial hardship, though it can be achieved through various systems (single-payer, socialized medicine, mandated insurance).'
+            explanation: 'This is <strong>true</strong>. <strong>Universal healthcare is about access equity, not about one specific system design</strong>. Different countries achieve universal access through: single-payer systems (Canada, Medicare), socialized medicine (UK NHS), mandated insurance (Germany), mixed models. <strong>All remove financial barriers to care.</strong> The defining feature is no one goes without healthcare due to cost, not that all systems are identical.'
         },
         {
             type: 'tf',
-            topic: 'Healthcare pillar',
-            question: 'The United States currently has a universal healthcare system covering all residents.',
+            topic: 'Healthcare Pillar',
+            question: 'The United States currently has universal healthcare covering all residents without financial hardship.',
             correct: false,
-            explanation: 'This is <strong>false</strong>. The U.S. does NOT have universal healthcare. Despite the Affordable Care Act expanding coverage, <strong>millions remain uninsured</strong>, and access varies greatly. The U.S. relies primarily on private and employer-based insurance.'
+            explanation: 'This is <strong>false</strong>. The U.S. does NOT have universal healthcare. Despite the Affordable Care Act expanding coverage, <strong>millions remain uninsured</strong>, and many underinsured face financial hardship for healthcare. The U.S. relies on private/employer-based insurance, creating coverage gaps. <strong>Healthcare access in the U.S. depends largely on employment and income.</strong> This is why medical debt is the leading cause of personal bankruptcy in America.'
         },
         {
             type: 'tf',
-            topic: 'Healthcare pillar',
-            question: 'In a single-payer system, the government pays for healthcare for all residents.',
+            topic: 'Healthcare Pillar',
+            question: 'In a single-payer system, the government (as sole payer) funds healthcare for all residents through taxation, while providers may remain private or be publicly employed.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. In a <strong>single-payer system, one entity (usually government) pays for healthcare</strong> for all residents, funded through taxes. Providers may remain private. Examples include Medicare and Canada\'s system.'
+            explanation: 'This is <strong>true</strong>. <strong>Single-payer = one funding source (government), not necessarily one provider</strong>. Examples: Medicare (U.S. government pays, private providers deliver), Canadian provincial plans (government pays, mixed public/private providers). <strong>This differs from socialized medicine (government owns hospitals AND employs providers).</strong> Understanding this distinction clarifies how different universal systems organize healthcare delivery.'
         },
         {
             type: 'tf',
-            topic: 'Healthcare pillar',
-            question: 'The Affordable Care Act (ACA) allowed insurance companies to deny coverage based on pre-existing conditions.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. A major ACA provision <strong>prohibited denying coverage or charging higher premiums based on pre-existing conditions</strong>. It also allowed young adults to stay on parents\' insurance until 26.'
-        },
-        {
-            type: 'tf',
-            topic: 'Healthcare pillar',
-            question: 'In socialized medicine, the government owns hospitals and employs healthcare workers directly.',
+            topic: 'Healthcare Pillar',
+            question: 'The Affordable Care Act (ACA) prohibited insurance companies from denying coverage or charging higher premiums based on pre-existing medical conditions, expanding coverage access.',
             correct: true,
-            explanation: 'This is <strong>true</strong>. In <strong>socialized medicine, government owns facilities and employs providers</strong>, providing care directly (like UK\'s NHS or U.S. VA). This differs from single-payer where government pays but providers remain independent.'
+            explanation: 'This is <strong>true</strong>. This was a major ACA provision. Before ACA: insurance companies could deny people with pre-existing conditions or charge them much more. <strong>After ACA: everyone must be offered coverage at similar rates regardless of health status.</strong> This provision expanded coverage to millions and removed the fear that illness would make insurance unaffordable. It\'s one of the most popular ACA provisions even among those who oppose other aspects.'
+        },
+        {
+            type: 'tf',
+            topic: 'Healthcare Pillar',
+            question: 'In socialized medicine, the government owns hospitals and directly employs healthcare workers, providing all care through government-run facilities.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Socialized medicine = government owns means of healthcare production</strong>. Examples: UK National Health Service (government owns hospitals, employs doctors), U.S. Veterans Affairs. <strong>This differs from single-payer where government pays but providers remain private.</strong> Understanding this distinction clarifies what people mean when they discuss different healthcare systems. The U.S. actually has both elements in different sectors.'
         }
     ]
 };
