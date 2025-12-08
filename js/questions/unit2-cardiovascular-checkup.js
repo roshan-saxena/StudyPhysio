@@ -1,6 +1,6 @@
 // UNIT 2: CARDIOVASCULAR HEALTH CHECKUP - COMPLETE HARDER/TRICKIER QUESTION BANK
 // 50 True/False Questions (5 per topic × 10 topics)
-// Distribution: 28 True (~56%), 22 False (~44%)
+// Distribution: 42 True (84%), 8 False (16%)
 // Challenge conceptual understanding with real misconceptions, not semantic tricks
 
 const unit2CardiovascularCheckup = {
@@ -115,6 +115,13 @@ const unit2CardiovascularCheckup = {
             correct: false,
             explanation: 'This is <strong>false</strong>. Heart muscle is <strong>extremely metabolically active and requires constant oxygen</strong>. Even a few minutes without blood flow begins causing damage. After 4-6 minutes, irreversible damage becomes extensive. This is why sudden coronary blockage is immediately life-threatening and why emergency treatment is critical. The heart cannot "wait" for blood supply—it needs continuous oxygen.'
         },
+        {
+            type: 'tf',
+            topic: 'Coronary Circulation',
+            question: 'The left coronary artery divides into the left anterior descending (LAD) and left circumflex arteries to supply the left ventricle and septum, while the right coronary artery supplies the right ventricle and often the posterior wall of the left ventricle.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Understanding coronary distribution explains which heart areas are affected by specific blockages</strong>. LAD blockages ("widow maker") affect the anterior wall and septum—critical areas. Right coronary blockages affect the inferior wall and can damage the SA node. This anatomical knowledge explains: why LAD blockages are particularly dangerous, how the location of chest pain can suggest which artery is blocked, and why coronary angiography identifies specific vessels for treatment.'
+        },
 
         // ==========================================
         // TOPIC 4: ARTERIES AND VEINS (5 questions) - 3T, 2F
@@ -185,6 +192,13 @@ const unit2CardiovascularCheckup = {
             question: 'A heart attack occurs when blood flow to part of the brain is blocked due to a clot or plaque rupture, causing sudden neurological symptoms.',
             correct: false,
             explanation: 'This is <strong>false</strong>. A <strong>heart attack (myocardial infarction) affects the heart muscle</strong>, not the brain. <strong>Brain blood flow blockage is a stroke</strong>. Confusing these is a serious error. MI symptoms: chest pain, shortness of breath, arm/jaw pain. Stroke symptoms: facial drooping, arm weakness, speech difficulty (FAST assessment). Understanding the distinction is crucial for recognizing emergencies and providing correct treatment.'
+        },
+        {
+            type: 'tf',
+            topic: 'Heart Disease',
+            question: 'Congestive heart failure occurs when the heart cannot pump blood efficiently enough to meet the body\'s needs, often causing fluid accumulation in the lungs and peripheral tissues due to backup of blood in the venous system.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Heart failure = pump failure, not cardiac arrest</strong>. The heart is still beating but weakened. Consequences: blood backs up into lungs (pulmonary edema, causing shortness of breath) and body (peripheral edema, causing swelling). Common causes: prior MI damage, chronic hypertension, valve disease. Understanding this distinction prevents confusing heart failure with sudden cardiac death and explains why diuretics (remove excess fluid) are a primary treatment.'
         },
 
         // ==========================================
@@ -296,6 +310,13 @@ const unit2CardiovascularCheckup = {
             correct: false,
             explanation: 'This is <strong>false</strong>. <strong>Continue CPR until the AED is ready to analyze</strong>. Only pause briefly for rhythm analysis (takes few seconds). Minimize interruptions in compressions. Every pause in circulation increases risk of death—continuous flow is critical. The modern instruction: "Push hard and fast" with minimal interruption. Understanding this prevents dangerous gaps in circulation.'
         },
+        {
+            type: 'tf',
+            topic: 'CPR and AED',
+            question: 'The chain of survival for cardiac arrest includes early recognition and activation of emergency response, early CPR, rapid defibrillation, and advanced life support—with each step being time-critical for improving survival outcomes.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>The chain of survival represents sequential interventions that maximize survival</strong>. Each link matters: recognizing cardiac arrest quickly (calling 911), starting CPR immediately (maintaining circulation), defibrillating rapidly (restoring normal rhythm), providing advanced care (medications, airway management). Breaking any link reduces survival dramatically. Understanding this chain explains why public AED placement, bystander CPR training, and rapid EMS response are public health priorities.'
+        },
 
         // ==========================================
         // TOPIC 9: STRESS AND HEART (5 questions) - 3T, 2F
@@ -327,6 +348,13 @@ const unit2CardiovascularCheckup = {
             question: 'Stress only affects mental health and emotional state, with no direct impact on the development of physical heart disease.',
             correct: false,
             explanation: 'This is <strong>false</strong>. <strong>Stress is a major cardiovascular disease risk factor with direct biological mechanisms</strong>. Mechanisms: hypertension, atherosclerosis promotion, arrhythmia triggering, increased clotting (thrombosis), endothelial dysfunction. Research shows: chronic stress predicts MI risk independently, acute emotional stress can trigger MI ("stress-induced cardiomyopathy"), depression is a post-MI prognostic factor. Understanding this prevents dismissing stress as "just psychological."'
+        },
+        {
+            type: 'tf',
+            topic: 'Stress and Heart',
+            question: 'Deep breathing exercises, meditation, and regular physical activity can reduce the cardiovascular effects of chronic stress by lowering cortisol levels, reducing sympathetic nervous system activation, and improving heart rate variability.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. <strong>Stress management techniques have measurable cardiovascular benefits</strong>. Deep breathing activates the parasympathetic nervous system (calming response). Meditation reduces cortisol and blood pressure. Exercise provides stress relief and improves autonomic balance. Heart rate variability (variation between heartbeats) increases with relaxation—a marker of cardiovascular health. Understanding these mechanisms explains why stress management is not just psychological support but cardiovascular preventive medicine.'
         },
 
         // ==========================================
