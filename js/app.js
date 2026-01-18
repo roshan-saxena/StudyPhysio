@@ -123,6 +123,11 @@ function init() {
         Object.assign(questionBank, unit3SelfDefenseCheckup2);
     }
 
+    // Merge unit 4 brain on drugs checkup questions
+    if (typeof unit4BrainOnDrugsCheckup !== 'undefined') {
+        Object.assign(questionBank, unit4BrainOnDrugsCheckup);
+    }
+
     loadProgress();
     setupEventListeners();
     updateScoreDisplay();
@@ -220,8 +225,8 @@ function loadSection(section) {
     appState.examSubmitted = false;
     appState.examSummary = null;
 
-    // Check if this is a checkup (pillar checkup, cardiovascular checkup, or self defense checkup)
-    if (section.includes('pillar-checkup') || section.includes('cardiovascular-checkup') || section.includes('self-defense-checkup')) {
+    // Check if this is a checkup (pillar checkup, cardiovascular checkup, self defense checkup, or brain on drugs checkup)
+    if (section.includes('pillar-checkup') || section.includes('cardiovascular-checkup') || section.includes('self-defense-checkup') || section.includes('brain-on-drugs-checkup')) {
         showCheckupSetup(section);
         return;
     }
@@ -254,6 +259,7 @@ function formatSectionName(section) {
     if (section === 'unit2-cardiovascular-checkup') return 'Cardiovascular Health Checkup';
     if (section === 'unit3-self-defense-checkup1') return 'Self Defense Checkup 1';
     if (section === 'unit3-self-defense-checkup2') return 'Self Defense Checkup 2';
+    if (section === 'unit4-brain-on-drugs-checkup') return 'Your Brain on Drugs Checkup';
 
     // Default formatting for other sections
     const map = {
@@ -1557,6 +1563,8 @@ function showCheckupSetup(section) {
         checkupName = 'Self Defense Checkup 1';
     } else if (section.includes('self-defense-checkup2')) {
         checkupName = 'Self Defense Checkup 2';
+    } else if (section.includes('brain-on-drugs-checkup')) {
+        checkupName = 'Your Brain on Drugs Checkup';
     }
     elements.checkupTitle.textContent = checkupName;
     elements.totalAvailableQuestions.textContent = appState.checkupConfig.allQuestions.length;
@@ -1607,6 +1615,13 @@ function parseTopicsFromQuestions(questions) {
         'Vaccines', 'Herd Immunity', 'Immune Disorders', 'Allergies', 'Cancer'
     ];
 
+    // For Brain on Drugs Checkup
+    const brainOnDrugsTopics = [
+        'Nervous System Organization', 'Brain Structure & Function', 'Limbic System',
+        'Adolescent Brain Development', 'Neurotransmitter Communication',
+        'Drugs & the Brain', 'Addiction Models', 'Harm Reduction', 'Cannabis', 'Drug Policy & Legalization'
+    ];
+
     // Determine which topic set to use based on section
     let names = topicNames;
     if (appState.currentSection.includes('pillar-checkup2')) {
@@ -1617,6 +1632,8 @@ function parseTopicsFromQuestions(questions) {
         names = selfDefense1Topics;
     } else if (appState.currentSection.includes('self-defense-checkup2')) {
         names = selfDefense2Topics;
+    } else if (appState.currentSection.includes('brain-on-drugs-checkup')) {
+        names = brainOnDrugsTopics;
     }
 
     // Group questions into topics (5 questions each)
