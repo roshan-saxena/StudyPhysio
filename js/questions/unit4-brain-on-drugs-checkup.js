@@ -349,9 +349,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Drug Policy & Legalization',
-            question: 'Portugal decriminalized all drugs in 2001 and saw significant reductions in drug-related deaths and HIV infections.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Portugal\'s approach combined decriminalization with treatment and harm reduction, yielding positive public health outcomes.'
+            question: 'Decriminalization and legalization both create regulated legal markets for drug supply, but decriminalization achieves this through criminal law reform while legalization does so through commercial licensing.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>—decriminalization does NOT create legal markets. <strong>Decriminalization removes criminal penalties for possession but leaves supply illegal, so no regulated legal market develops</strong>. Only legalization creates legal supply markets with regulation and licensing. Portugal decriminalized possession but drug supply remains illegal—users don\'t have legal access points. Understanding that decriminalization addresses demand-side penalties while leaving supply illegal explains why decriminalization doesn\'t generate tax revenue or quality control like legalization does, and why both approaches can coexist (some drugs decriminalized, others legalized).'
         },
         {
             type: 'tf',
