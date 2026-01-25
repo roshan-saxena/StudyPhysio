@@ -2,10 +2,6 @@
 
 Interactive physiology practice questions with instant feedback and progress tracking.
 
-## Quick Start
-
-Open `index.html` in your browser. That's it!
-
 ## Features
 
 - Multiple units covering health and physiology topics
@@ -34,34 +30,7 @@ StudyPhysio/
 └── README.md
 ```
 
-## Customizing Questions
 
-Edit files in `js/questions/` to add or modify questions. Each question follows this format:
-
-```javascript
-{
-    type: 'mcq',  // or 'tf', 'fill', 'short', 'matching'
-    question: 'Your question text?',
-    options: ['Option A', 'Option B', 'Option C', 'Option D'],
-    correct: 0,  // index of correct answer
-    explanation: 'Explanation text here'
-}
-```
-
-For checkup exams, questions are automatically randomized so that topics are mixed throughout the test.
-
-## Changing Colors
-
-Edit CSS variables in `css/styles.css`:
-
-```css
---primary-color: #dc2626;
---secondary-color: #e11d48;
-```
-
-## Deploy
-
-Push to GitHub and enable GitHub Pages in repository settings.
 
 ---
 
