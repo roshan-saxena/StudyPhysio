@@ -128,6 +128,11 @@ function init() {
         Object.assign(questionBank, unit4BrainOnDrugsCheckup);
     }
 
+    // Merge unit 7 sexual health and relationships checkup questions
+    if (typeof unit7SexualHealthAndRelationshipsCheckup !== 'undefined') {
+        Object.assign(questionBank, unit7SexualHealthAndRelationshipsCheckup);
+    }
+
     loadProgress();
     setupEventListeners();
     updateScoreDisplay();
@@ -226,7 +231,7 @@ function loadSection(section) {
     appState.examSummary = null;
 
     // Check if this is a checkup (pillar checkup, cardiovascular checkup, self defense checkup, or brain on drugs checkup)
-    if (section.includes('pillar-checkup') || section.includes('cardiovascular-checkup') || section.includes('self-defense-checkup') || section.includes('brain-on-drugs-checkup')) {
+    if (section.includes('pillar-checkup') || section.includes('cardiovascular-checkup') || section.includes('self-defense-checkup') || section.includes('brain-on-drugs-checkup') || section.includes('sexual-health-and-relationships-checkup')) {
         showCheckupSetup(section);
         return;
     }
@@ -260,6 +265,7 @@ function formatSectionName(section) {
     if (section === 'unit3-self-defense-checkup1') return 'Self Defense Checkup 1';
     if (section === 'unit3-self-defense-checkup2') return 'Self Defense Checkup 2';
     if (section === 'unit4-brain-on-drugs-checkup') return 'Your Brain on Drugs Checkup';
+    if (section === 'unit7-sexual-health-and-relationships-checkup') return 'Sexual Health and Relationships Checkup';
 
     // Default formatting for other sections
     const map = {
@@ -1565,6 +1571,8 @@ function showCheckupSetup(section) {
         checkupName = 'Self Defense Checkup 2';
     } else if (section.includes('brain-on-drugs-checkup')) {
         checkupName = 'Your Brain on Drugs Checkup';
+    } else if (section.includes('sexual-health-and-relationships-checkup')) {
+        checkupName = 'Sexual Health and Relationships Checkup';
     }
     elements.checkupTitle.textContent = checkupName;
     elements.totalAvailableQuestions.textContent = appState.checkupConfig.allQuestions.length;
@@ -1622,6 +1630,12 @@ function parseTopicsFromQuestions(questions) {
         'Drugs & the Brain', 'Addiction Models', 'Harm Reduction', 'Cannabis', 'Drug Policy & Legalization'
     ];
 
+    // For Sexual Health and Relationships Checkup
+    const sexualHealthTopics = [
+        'Bodies', 'Wired for Sex', 'Sexual Desire', 'Contraception', 'Sexual Orientation',
+        'Gender Identity and Expression', 'Of Boys and Men', 'Consent', 'Dating Abuse', 'Communication and Conflict Resolution'
+    ];
+
     // Determine which topic set to use based on section
     let names = topicNames;
     if (appState.currentSection.includes('pillar-checkup2')) {
@@ -1634,6 +1648,8 @@ function parseTopicsFromQuestions(questions) {
         names = selfDefense2Topics;
     } else if (appState.currentSection.includes('brain-on-drugs-checkup')) {
         names = brainOnDrugsTopics;
+    } else if (appState.currentSection.includes('sexual-health-and-relationships-checkup')) {
+        names = sexualHealthTopics;
     }
 
     // Group questions into topics (5 questions each)
