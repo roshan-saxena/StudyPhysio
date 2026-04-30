@@ -265,7 +265,7 @@ function formatSectionName(section) {
     if (section === 'unit3-self-defense-checkup1') return 'Self Defense Checkup 1';
     if (section === 'unit3-self-defense-checkup2') return 'Self Defense Checkup 2';
     if (section === 'unit4-brain-on-drugs-checkup') return 'Your Brain on Drugs Checkup';
-    if (section === 'unit7-sexual-health-and-relationships-checkup') return 'Sexual Health and Relationships Checkup';
+    if (section === 'unit7-sexual-health-and-relationships-checkup') return 'SHARE Checkup';
 
     // Default formatting for other sections
     const map = {
@@ -1572,7 +1572,7 @@ function showCheckupSetup(section) {
     } else if (section.includes('brain-on-drugs-checkup')) {
         checkupName = 'Your Brain on Drugs Checkup';
     } else if (section.includes('sexual-health-and-relationships-checkup')) {
-        checkupName = 'Sexual Health and Relationships Checkup';
+        checkupName = 'SHARE Checkup';
     }
     elements.checkupTitle.textContent = checkupName;
     elements.totalAvailableQuestions.textContent = appState.checkupConfig.allQuestions.length;
@@ -1630,7 +1630,7 @@ function parseTopicsFromQuestions(questions) {
         'Drugs & the Brain', 'Addiction Models', 'Harm Reduction', 'Cannabis', 'Drug Policy & Legalization'
     ];
 
-    // For Sexual Health and Relationships Checkup
+    // For SHARE Checkup
     const sexualHealthTopics = [
         'Bodies', 'Wired for Sex', 'Sexual Desire', 'Contraception', 'Sexual Orientation',
         'Gender Identity and Expression', 'Of Boys and Men', 'Consent', 'Dating Abuse', 'Communication and Conflict Resolution'
