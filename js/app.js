@@ -128,6 +128,11 @@ function init() {
         Object.assign(questionBank, unit4BrainOnDrugsCheckup);
     }
 
+    // Merge unit 6 human performance checkup questions
+    if (typeof unit6HumanPerformanceCheckup !== 'undefined') {
+        Object.assign(questionBank, unit6HumanPerformanceCheckup);
+    }
+
     // Merge unit 7 sexual health and relationships checkup questions
     if (typeof unit7SexualHealthAndRelationshipsCheckup !== 'undefined') {
         Object.assign(questionBank, unit7SexualHealthAndRelationshipsCheckup);
@@ -265,6 +270,7 @@ function formatSectionName(section) {
     if (section === 'unit3-self-defense-checkup1') return 'Self Defense Checkup 1';
     if (section === 'unit3-self-defense-checkup2') return 'Self Defense Checkup 2';
     if (section === 'unit4-brain-on-drugs-checkup') return 'Your Brain on Drugs Checkup';
+    if (section === 'unit6-human-performance-checkup') return 'Human Performance Checkup';
     if (section === 'unit7-sexual-health-and-relationships-checkup') return 'SHARE Checkup';
 
     // Default formatting for other sections
@@ -1571,6 +1577,8 @@ function showCheckupSetup(section) {
         checkupName = 'Self Defense Checkup 2';
     } else if (section.includes('brain-on-drugs-checkup')) {
         checkupName = 'Your Brain on Drugs Checkup';
+    } else if (section.includes('human-performance-checkup')) {
+        checkupName = 'Human Performance Checkup';
     } else if (section.includes('sexual-health-and-relationships-checkup')) {
         checkupName = 'SHARE Checkup';
     }
@@ -1630,6 +1638,14 @@ function parseTopicsFromQuestions(questions) {
         'Drugs & the Brain', 'Addiction Models', 'Harm Reduction', 'Cannabis', 'Drug Policy & Legalization'
     ];
 
+    // For Human Performance Checkup
+    const humanPerformanceTopics = [
+        'Bone Remodeling/Bone Cells', 'Blood Calcium Homeostasis', 'Bone Density/Osteoporosis',
+        'Muscle Structure/Contraction', 'Movement', 'Joint Structure',
+        'Muscle Function and Health', 'Joint Health/Arthritis',
+        'Musculoskeletal Injuries', 'Performance Enhancement'
+    ];
+
     // For SHARE Checkup
     const sexualHealthTopics = [
         'Bodies', 'Wired for Sex', 'Sexual Desire', 'Contraception', 'Sexual Orientation',
@@ -1648,6 +1664,8 @@ function parseTopicsFromQuestions(questions) {
         names = selfDefense2Topics;
     } else if (appState.currentSection.includes('brain-on-drugs-checkup')) {
         names = brainOnDrugsTopics;
+    } else if (appState.currentSection.includes('human-performance-checkup')) {
+        names = humanPerformanceTopics;
     } else if (appState.currentSection.includes('sexual-health-and-relationships-checkup')) {
         names = sexualHealthTopics;
     }
