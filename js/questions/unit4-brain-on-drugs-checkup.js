@@ -53,9 +53,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Brain Structure & Function',
-            question: 'The brainstem regulates vital functions such as breathing, heart rate, and consciousness.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. The brainstem controls automatic life-sustaining processes and connects the brain to the spinal cord.'
+            question: 'The brainstem regulates breathing and heart rate, but consciousness depends entirely on the cerebral cortex, so brainstem damage cannot affect wakefulness.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The brainstem supports automatic life-sustaining functions and also contributes to arousal and consciousness. The cortex is important for conscious experience, but wakefulness does not depend on the cortex alone. <strong>The misconception assigns a complex function exclusively to one brain region.</strong>'
         },
         {
             type: 'tf',
@@ -90,9 +90,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Limbic System',
-            question: 'The hippocampus is essential for forming new long-term memories.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. The hippocampus converts short-term memories into long-term storage and is critical for spatial memory.'
+            question: 'The hippocampus serves as the permanent storage site for all long-term memories rather than helping form and organize new long-term memories.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The hippocampus is critical for forming new long-term memories and supporting spatial memory, but describing it as the permanent warehouse for every long-term memory oversimplifies its role. <strong>The misconception confuses memory formation with permanent storage.</strong>'
         },
         {
             type: 'tf',
@@ -104,9 +104,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Limbic System',
-            question: 'The nucleus accumbens is known as the brain\'s "reward center" and plays a role in motivation and pleasure.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. The nucleus accumbens processes rewarding stimuli and reinforces behaviors tied to survival and pleasure.'
+            question: 'The nucleus accumbens processes pleasure but has little role in motivation or reinforcement, so reward signals do not influence whether a behavior is repeated.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The nucleus accumbens participates in reward, motivation, and reinforcement, helping rewarding outcomes influence future behavior. <strong>The misconception treats pleasure as a passive sensation disconnected from learning and behavioral repetition.</strong>'
         },
         {
             type: 'tf',
@@ -171,9 +171,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Neurotransmitter Communication',
-            question: 'Serotonin primarily regulates mood, sleep, and appetite.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Serotonin influences emotional well-being, circadian rhythms, and hunger signals.'
+            question: 'Serotonin regulates mood but has little connection to sleep or appetite because those functions use entirely separate signaling systems.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Serotonin influences emotional well-being as well as sleep-related rhythms and hunger signals. Physiological functions can involve overlapping neurotransmitter systems rather than one exclusive chemical for each function. <strong>The misconception imposes a one-neurotransmitter, one-function model.</strong>'
         },
         {
             type: 'tf',
@@ -201,9 +201,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Drugs & the Brain',
-            question: 'Stimulants like cocaine and methamphetamine increase dopamine levels in the brain\'s reward pathways.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Stimulants boost dopamine, producing euphoria but also increasing addiction risk.'
+            question: 'Cocaine and methamphetamine produce stimulant effects mainly by reducing dopamine signaling in reward pathways, which the brain experiences as euphoria.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. These stimulants increase dopamine signaling in reward pathways, contributing to euphoria and addiction risk. <strong>The misconception correctly connects stimulants to dopamine but reverses the direction of the drug effect.</strong>'
         },
         {
             type: 'tf',
@@ -222,9 +222,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Drugs & the Brain',
-            question: 'Hallucinogens like LSD and psilocybin primarily affect serotonin receptors, altering perception and mood.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Hallucinogens activate serotonin 2A receptors, causing changes in sensory processing and consciousness.'
+            question: 'LSD and psilocybin alter perception through the same primary dopamine mechanism as stimulants, with serotonin receptors playing only a secondary role.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. These hallucinogens primarily act through serotonin receptors, producing changes in sensory processing, mood, and consciousness. <strong>The misconception groups drugs by their ability to change experience while ignoring that different drug classes act through different neurotransmitter systems.</strong>'
         },
 
         // Topic 7: Addiction Models (5 questions: 2 True / 3 False)
@@ -282,9 +282,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Harm Reduction',
-            question: 'Naloxone (Narcan) is a medication that can reverse opioid overdoses by blocking opioid receptors.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Naloxone rapidly reverses respiratory depression caused by opioid overdose, saving lives.'
+            question: 'Naloxone reverses an opioid overdose by rapidly breaking down the opioid in the bloodstream and permanently restoring damaged opioid receptors.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Naloxone works by blocking opioid receptors, rapidly reversing dangerous opioid effects such as respiratory depression. It does not metabolize the opioid or permanently repair receptors. <strong>The misconception confuses receptor competition with removal of the drug from the body.</strong>'
         },
         {
             type: 'tf',
@@ -296,9 +296,9 @@ const unit4BrainOnDrugsCheckup = {
         {
             type: 'tf',
             topic: 'Harm Reduction',
-            question: 'Medication-assisted treatment (MAT) for opioid addiction using methadone or buprenorphine is considered a form of harm reduction.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. MAT reduces cravings and withdrawal, allowing stabilization and reducing risky behaviors.'
+            question: 'Methadone or buprenorphine treatment cannot be considered harm reduction because using a medication that acts on opioid pathways simply replaces one addiction with another without reducing risk.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Medication-assisted treatment can reduce cravings, withdrawal, and risky opioid use while supporting stabilization. A controlled treatment that lowers harm is not equivalent to uncontrolled use solely because both involve opioid pathways. <strong>The misconception ignores differences in dose, supervision, function, and health outcome.</strong>'
         },
 
         // Topic 9: Cannabis (5 questions: 2 True / 3 False)

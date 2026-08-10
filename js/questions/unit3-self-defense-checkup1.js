@@ -1,18 +1,18 @@
 // Self Defense Checkup 1 - Complete Question Bank
 // 50 Questions Total: 10 Topics × 5 Questions per Topic
-// Target distribution: ~50-60% True, ~40-50% False
+// Distribution: 25 True / 25 False
 
 const unit3SelfDefenseCheckup1 = {
     'unit3-self-defense-checkup1': [
         // ==========================================
-        // TOPIC 1: Pathogens (5 questions) - 3T, 2F
+        // TOPIC 1: Pathogens (5 questions)
         // ==========================================
         {
             type: 'tf',
             topic: 'Pathogens',
-            question: 'Since antibiotics target bacterial cell walls, they would also be effective against fungi because fungi also have cell walls to protect themselves.',
-            correct: false,
-            explanation: 'This is <strong>false</strong>. While it\'s true that both bacteria and fungi have cell walls, the trick is that their cell walls are made of <strong>different materials</strong>. Bacterial cell walls contain <strong>peptidoglycan</strong>, which is what antibiotics target. Fungal cell walls are made of <strong>chitin</strong> (the same material in insect exoskeletons), which antibiotics cannot break down. This is why you cannot treat a fungal infection with antibiotics—the cell wall composition is completely different despite both having walls.'
+            question: 'Although bacteria and fungi can both have cell walls, an antibiotic that targets bacterial cell-wall material is not automatically effective against a fungal cell wall.',
+            correct: true,
+            explanation: 'This is <strong>true</strong>. Sharing the general feature of a cell wall does not mean the walls have the same composition or respond to the same treatment. Antibiotics directed at bacterial structures do not therefore become antifungal drugs. <strong>This requires distinguishing a broad structural similarity from the specific biological target of a treatment.</strong>'
         },
         {
             type: 'tf',
@@ -44,7 +44,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 2: Infection Sites (5 questions) - 2T, 3F
+        // TOPIC 2: Infection Sites (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -83,7 +83,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 3: Outbreak Types (5 questions) - 3T, 2F
+        // TOPIC 3: Outbreak Types (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -116,13 +116,13 @@ const unit3SelfDefenseCheckup1 = {
         {
             type: 'tf',
             topic: 'Outbreak Types',
-            question: 'Understanding whether a disease is endemic, epidemic, or pandemic helps public health officials determine appropriate response strategies and resource allocation.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Classification guides public health response</strong>. Endemic diseases need sustainable prevention/treatment infrastructure. Epidemics require rapid response, contact tracing, and surge resources. Pandemics demand international coordination, travel restrictions, and massive resource mobilization. Proper classification ensures proportionate, effective response matching the disease pattern and scale.'
+            question: 'Endemic, epidemic, and pandemic classifications describe only how deadly a disease is, so they do not affect the geographic scale of public-health coordination or resource allocation.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. These classifications describe patterns and scale of disease occurrence, not simply severity. An endemic condition requires sustained management, an epidemic requires a concentrated response to cases above expectation, and a pandemic requires broad coordination across regions or countries. <strong>The misconception substitutes death rate for distribution and scope.</strong>'
         },
 
         // ==========================================
-        // TOPIC 4: Latent Infections (5 questions) - 3T, 2F
+        // TOPIC 4: Latent Infections (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -161,7 +161,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 5: STIs (5 questions) - 3T, 2F
+        // TOPIC 5: STIs (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -200,7 +200,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 6: Lymphatic System (5 questions) - 3T, 2F
+        // TOPIC 6: Lymphatic System (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -239,7 +239,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 7: Blood Cells (5 questions) - 3T, 2F
+        // TOPIC 7: Blood Cells (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -278,7 +278,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 8: Blood Disorders (5 questions) - 3T, 2F
+        // TOPIC 8: Blood Disorders (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -297,9 +297,9 @@ const unit3SelfDefenseCheckup1 = {
         {
             type: 'tf',
             topic: 'Blood Disorders',
-            question: 'Sickle cell anemia causes red blood cells to become abnormally shaped (crescent/sickle), which can block blood flow in small vessels and cause painful crises.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Sickle cell is a genetic hemoglobin disorder</strong>. Abnormal hemoglobin causes RBCs to become rigid, sticky, and sickle-shaped when deoxygenated. These cells block capillaries (vaso-occlusive crises) causing severe pain, organ damage, and stroke risk. Sickled cells also break down prematurely, causing chronic anemia. It\'s inherited recessively.'
+            question: 'In sickle cell anemia, the altered red-cell shape affects appearance and lifespan but does not obstruct small vessels; painful crises result only from having fewer red blood cells.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Sickled cells can become rigid and obstruct small vessels, producing vaso-occlusive pain and tissue injury in addition to breaking down early and contributing to anemia. <strong>The misconception separates cell shape from blood flow and reduces a multi-mechanism disorder to low cell count alone.</strong>'
         },
         {
             type: 'tf',
@@ -317,7 +317,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 9: Reading a CBC (5 questions) - 2T, 3F
+        // TOPIC 9: Reading a CBC (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -356,7 +356,7 @@ const unit3SelfDefenseCheckup1 = {
         },
 
         // ==========================================
-        // TOPIC 10: CBC/Differential (5 questions) - 3T, 2F
+        // TOPIC 10: CBC/Differential (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -382,9 +382,9 @@ const unit3SelfDefenseCheckup1 = {
         {
             type: 'tf',
             topic: 'CBC/Differential',
-            question: 'The pattern of elevated white blood cell types in a differential can help clinicians distinguish between bacterial infections (typically elevated neutrophils) and viral infections (typically elevated lymphocytes).',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The differential pattern guides diagnosis</strong>. <strong>Bacterial infections</strong> usually cause neutrophilia with a "left shift" (immature neutrophils). <strong>Viral infections</strong> typically cause lymphocytosis, sometimes with atypical lymphocytes. <strong>Parasites</strong> cause eosinophilia. This pattern helps determine if antibiotics are needed or if the infection will self-resolve, improving antibiotic stewardship.'
+            question: 'An elevated lymphocyte count by itself proves a viral infection and rules out bacterial infection, so the rest of the CBC and clinical pattern are unnecessary.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Differential patterns can support a diagnosis—neutrophils commonly rise with bacterial infections and lymphocytes with viral infections—but they are not absolute proof in isolation. Clinicians interpret the complete pattern and patient context. <strong>The misconception turns a useful tendency into a definitive one-value diagnosis.</strong>'
         },
         {
             type: 'tf',

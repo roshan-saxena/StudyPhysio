@@ -1,13 +1,13 @@
 // UNIT 1: PILLAR CHECKUP 1 - COMPLETE HARDER/TRICKIER QUESTION BANK
 // 50 True/False Questions (5 per topic × 10 topics)
-// Distribution: 28 True (~56%), 22 False (~44%)
+// Distribution: 25 True / 25 False
 // Challenge conceptual understanding with tricky logic, misconceptions, and nuanced distinctions
 
 const pillarCheckup1Questions = {
     'unit1-pillar-checkup1': [
 
         // ==========================================
-        // TOPIC 1: HEALTH (5 questions) - 3T, 2F
+        // TOPIC 1: HEALTH (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -46,7 +46,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 2: SIGNS AND SYMPTOMS (5 questions) - 3T, 2F
+        // TOPIC 2: SIGNS AND SYMPTOMS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -85,7 +85,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 3: SOCIAL DETERMINANTS (5 questions) - 3T, 2F
+        // TOPIC 3: SOCIAL DETERMINANTS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -124,7 +124,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 4: SOCIAL CONNECTIONS (5 questions) - 3T, 2F
+        // TOPIC 4: SOCIAL CONNECTIONS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -163,7 +163,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 5: SOCIAL MEDIA (5 questions) - 2T, 3F
+        // TOPIC 5: SOCIAL MEDIA (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -202,7 +202,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 6: NUTRITION MYTHS (5 questions) - 3T, 2F
+        // TOPIC 6: NUTRITION MYTHS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -241,7 +241,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 7: MEDITERRANEAN DIET (5 questions) - 3T, 2F
+        // TOPIC 7: MEDITERRANEAN DIET (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -280,7 +280,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 8: HOMEOSTASIS (5 questions) - 3T, 2F
+        // TOPIC 8: HOMEOSTASIS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -306,9 +306,9 @@ const pillarCheckup1Questions = {
         {
             type: 'tf',
             topic: 'Homeostasis',
-            question: 'The endocrine system uses hormones to regulate body conditions and maintain homeostasis, but hormones are slower-acting than the nervous system.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Hormones act more slowly than nerves</strong> (seconds/minutes vs milliseconds), but endocrine system is crucial for sustained regulation. Nervous system = rapid emergency responses. Endocrine system = sustained metabolic regulation. Both are essential: nerves handle acute threats, hormones handle ongoing homeostasis. <strong>Speed/duration tradeoff shows how systems specialize.</strong>'
+            question: 'Because hormones act more slowly than nerve signals, the endocrine system begins regulating homeostasis only after the nervous system has finished responding.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The nervous and endocrine systems can operate at the same time; their major difference is the speed and duration of their signals. Neural responses are generally rapid and brief, while hormones act more slowly and can sustain regulation. <strong>Slower signaling does not mean delayed participation or dependence on the nervous system finishing first.</strong>'
         },
         {
             type: 'tf',
@@ -319,7 +319,7 @@ const pillarCheckup1Questions = {
         },
 
         // ==========================================
-        // TOPIC 9: BLOOD GLUCOSE (5 questions) - 3T, 2F
+        // TOPIC 9: BLOOD GLUCOSE (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -352,13 +352,13 @@ const pillarCheckup1Questions = {
         {
             type: 'tf',
             topic: 'Blood Glucose Regulation',
-            question: 'Excess glucose is stored as glycogen in the liver and muscles, and this stored glycogen can be mobilized to maintain blood glucose during fasting or between meals.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Glycogen storage is the body\'s short-term glucose buffer</strong>. When insulin is present and glucose abundant, excess glucose converts to glycogen via glycogenesis. During fasting, glucagon triggers glycogenolysis (glycogen breakdown) releasing glucose to maintain blood levels. <strong>This mechanism bridges meals and maintains glucose stability.</strong> Glycogen stores last ~12-24 hours before fat metabolism takes over.'
+            question: 'Once excess glucose has been stored as glycogen, it remains unavailable until circulating glucose is completely depleted, so glycogen does not help stabilize blood glucose between meals.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Glycogen is a short-term glucose reserve that can be mobilized as blood glucose begins to fall during fasting or between meals. Glucagon promotes glycogen breakdown before circulating glucose is exhausted. <strong>The misconception is treating glycogen as inaccessible long-term storage rather than a readily regulated buffer.</strong>'
         },
 
         // ==========================================
-        // TOPIC 10: INSULIN AND GLUCAGON (5 questions) - 3T, 2F
+        // TOPIC 10: INSULIN AND GLUCAGON (5 questions)
         // ==========================================
         {
             type: 'tf',

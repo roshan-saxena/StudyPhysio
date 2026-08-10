@@ -1,10 +1,10 @@
 {
   "name": "studyphysio",
   "version": "1.0.0",
-  "description": "Interactive physiology practice questions with instant feedback and progress tracking.",
-  "main": "index.js",
+  "description": "Interactive true/false physiology checkups with configurable topics and detailed review.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test tests/*.test.js",
+    "check": "node --check js/app.js && node --check js/exam-engine.js && node --check js/checkup-config.js"
   },
   "repository": {
     "type": "git",
@@ -13,12 +13,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/roshan-saxena/StudyPhysio/issues"
   },
-  "homepage": "https://github.com/roshan-saxena/StudyPhysio#readme",
-  "dependencies": {
-    "@vercel/analytics": "^1.5.0"
-  }
+  "homepage": "https://github.com/roshan-saxena/StudyPhysio#readme"
 }

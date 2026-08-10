@@ -36,4 +36,6 @@ Temporary Items
 
 # Node
 node_modules/
-package-lock.json
+
+# Course guides, source exports, and other non-deployable materials
+/local-materials/

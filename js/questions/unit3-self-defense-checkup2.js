@@ -1,11 +1,11 @@
 // Self Defense Checkup 2 - Complete Question Bank
 // 50 Questions Total: 10 Topics × 5 Questions per Topic
-// Target distribution: ~50-60% True, ~40-50% False
+// Distribution: 25 True / 25 False
 
 const unit3SelfDefenseCheckup2 = {
     'unit3-self-defense-checkup2': [
         // ==========================================
-        // TOPIC 1: Physical Barriers (5 questions) - 3T, 2F
+        // TOPIC 1: Physical Barriers (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -44,7 +44,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 2: Inflammation (5 questions) - 3T, 2F
+        // TOPIC 2: Inflammation (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -56,9 +56,9 @@ const unit3SelfDefenseCheckup2 = {
         {
             type: 'tf',
             topic: 'Inflammation',
-            question: 'Vasodilation during inflammation increases blood flow to the affected area, delivering more oxygen, nutrients, immune cells, and chemical mediators needed to fight infection.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Vasodilation (blood vessel widening) is crucial for inflammatory response</strong>. Increased blood flow brings: oxygen and nutrients for tissue repair, white blood cells (neutrophils, macrophages) to fight infection, antibodies and complement proteins, clotting factors to prevent bleeding, and removes waste products. The increased blood flow also causes the warmth and redness characteristic of inflammation.'
+            question: 'Vasodilation explains the warmth and redness of inflammation but reduces delivery of immune cells because widened vessels move blood away from the affected tissue.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Vasodilation increases local blood flow, helping deliver immune cells, oxygen, nutrients, and chemical mediators to the affected area. The same increased flow contributes to warmth and redness. <strong>The misconception correctly recognizes visible signs but reverses the functional consequence of increased local circulation.</strong>'
         },
         {
             type: 'tf',
@@ -70,9 +70,9 @@ const unit3SelfDefenseCheckup2 = {
         {
             type: 'tf',
             topic: 'Inflammation',
-            question: 'Phagocytes such as neutrophils and macrophages perform phagocytosis, engulfing and digesting pathogens, dead cells, and tissue debris during the inflammatory response.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Phagocytosis is critical for clearing infections</strong>. <strong>Neutrophils</strong> (first responders) and <strong>macrophages</strong> (arrive later, live longer) engulf pathogens via pseudopodia, enclose them in phagosomes, fuse with lysosomes containing digestive enzymes, and destroy the contents. They also present antigens to activate adaptive immunity. Pus consists of dead phagocytes, bacteria, and debris.'
+            question: 'Neutrophils and macrophages engulf pathogens during inflammation but leave dead cells and tissue debris for the adaptive immune response to remove.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Phagocytes help clear pathogens as well as dead cells and tissue debris. Their cleanup function supports resolution and tissue repair, while some phagocytes also help activate adaptive immunity through antigen presentation. <strong>The misconception divides cleanup and pathogen defense into separate immune systems when phagocytosis contributes to both.</strong>'
         },
         {
             type: 'tf',
@@ -83,7 +83,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 3: T Cells and B Cells (5 questions) - 3T, 2F
+        // TOPIC 3: T Cells and B Cells (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -109,9 +109,9 @@ const unit3SelfDefenseCheckup2 = {
         {
             type: 'tf',
             topic: 'T Cells and B Cells',
-            question: 'Cytotoxic T cells destroy the body\'s own cells when they become infected with viruses or become cancerous, preventing spread to healthy cells.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Cytotoxic T cells (CD8+) kill compromised self-cells</strong>. They recognize foreign antigens (viral proteins, tumor antigens) displayed on MHC class I molecules on infected or cancerous cells. They release perforins (creating pores) and granzymes (triggering apoptosis) to destroy target cells. This eliminates infection sources and prevents cancer spread, though it causes tissue damage.'
+            question: 'Cytotoxic T cells protect against viral infection mainly by destroying free virus particles in the blood rather than the body cells producing those viruses.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Cytotoxic T cells recognize and destroy infected or cancerous body cells displaying abnormal antigens. Eliminating those compromised cells removes a source of viral production or malignant growth. <strong>The misconception assigns cytotoxic T cells the job of directly neutralizing free particles instead of targeting altered self-cells.</strong>'
         },
         {
             type: 'tf',
@@ -122,7 +122,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 4: Immune Responses (5 questions) - 3T, 2F
+        // TOPIC 4: Immune Responses (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -141,9 +141,9 @@ const unit3SelfDefenseCheckup2 = {
         {
             type: 'tf',
             topic: 'Immune Responses',
-            question: 'Memory cells produced during the primary immune response can persist for years or even a lifetime, providing long-term protection against specific pathogens.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Memory cells are long-lived sentinels</strong>. After initial infection/vaccination, some activated lymphocytes become memory B and T cells instead of effector cells. These circulate for years to decades (sometimes life), maintained by: periodic re-exposure to antigen, cytokine signals, and slow self-renewal. They enable rapid response to re-infection, providing durable immunity without repeated vaccination for many diseases.'
+            question: 'Long-lived memory cells provide broad protection against unrelated pathogens because immune memory becomes less antigen-specific as it persists.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Memory B and T cells support a faster response when the specific antigen they recognize returns. Their long lifespan does not convert that acquired immunity into nonspecific protection against unrelated pathogens. <strong>The misconception confuses durability with breadth.</strong>'
         },
         {
             type: 'tf',
@@ -161,7 +161,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 5: Active vs Passive Immunity (5 questions) - 2T, 3F
+        // TOPIC 5: Active vs Passive Immunity (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -200,7 +200,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 6: Vaccines (5 questions) - 3T, 2F
+        // TOPIC 6: Vaccines (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -219,9 +219,9 @@ const unit3SelfDefenseCheckup2 = {
         {
             type: 'tf',
             topic: 'Vaccines',
-            question: 'Vaccines can sometimes fail to provide protection if the individual is immunocompromised, doesn\'t complete the vaccine series, or if the pathogen mutates significantly.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Vaccine effectiveness depends on multiple factors</strong>: (1) <strong>Immunocompromised individuals</strong> (HIV, chemotherapy, immunosuppressants) may not mount adequate response, (2) <strong>Incomplete series</strong> doesn\'t generate sufficient memory, (3) <strong>Pathogen mutation</strong> (antigenic drift/shift) can evade vaccine-induced immunity (why flu vaccines need annual updates), (4) waning immunity over time may require boosters.'
+            question: 'Once a vaccine series is completed, protection cannot be reduced by immune suppression or major pathogen mutation because memory cells respond equally under all conditions.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Protection depends on the person mounting and maintaining an adequate immune response and on the pathogen retaining recognizable antigens. Immune suppression can weaken the response, and substantial mutation can reduce recognition. <strong>The misconception treats immune memory as guaranteed and unaffected by either host or pathogen variation.</strong>'
         },
         {
             type: 'tf',
@@ -239,7 +239,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 7: Herd Immunity (5 questions) - 3T, 2F
+        // TOPIC 7: Herd Immunity (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -278,7 +278,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 8: Immune Disorders (5 questions) - 3T, 2F
+        // TOPIC 8: Immune Disorders (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -297,9 +297,9 @@ const unit3SelfDefenseCheckup2 = {
         {
             type: 'tf',
             topic: 'Immune Disorders',
-            question: 'HIV (Human Immunodeficiency Virus) primarily attacks and destroys helper T cells (CD4+ cells), progressively weakening the immune system and eventually causing AIDS if untreated.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>HIV specifically targets CD4+ helper T cells</strong>. The virus binds CD4 receptors, enters cells, integrates into DNA, and produces more viruses, killing host cells. As helper T cell counts drop (normal: 500-1500 cells/μL), immune coordination collapses. AIDS develops when CD4+ count drops below 200 or opportunistic infections occur. Modern antiretroviral therapy suppresses viral replication, preventing AIDS.'
+            question: 'HIV primarily destroys antibody-producing B cells, while helper T-cell numbers remain stable until after AIDS has developed.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. HIV primarily targets CD4+ helper T cells. Their progressive loss weakens coordination of immune responses and is central to the development of AIDS when untreated. <strong>The misconception assigns HIV\'s main target to a different lymphocyte and reverses the order of immune decline and disease progression.</strong>'
         },
         {
             type: 'tf',
@@ -317,7 +317,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 9: Allergic Reactions (5 questions) - 3T, 2F
+        // TOPIC 9: Allergic Reactions (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -336,9 +336,9 @@ const unit3SelfDefenseCheckup2 = {
         {
             type: 'tf',
             topic: 'Allergic Reactions',
-            question: 'Epinephrine (adrenaline) is the first-line emergency treatment for anaphylaxis because it reverses the life-threatening cardiovascular and respiratory symptoms.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Epinephrine is life-saving in anaphylaxis</strong>. It counters allergic reaction by: constricting blood vessels (raising blood pressure), relaxing bronchial smooth muscle (opening airways), reducing swelling, stabilizing mast cells (preventing further mediator release). Auto-injectors (EpiPen) allow immediate administration. Antihistamines help but aren\'t sufficient for anaphylaxis—epinephrine is critical. People with severe allergies must carry epinephrine.'
+            question: 'Antihistamines are the first-line treatment for anaphylactic airway and blood-pressure changes, while epinephrine is reserved mainly for persistent skin symptoms.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Epinephrine is the first-line emergency treatment because it addresses life-threatening airway narrowing, swelling, and cardiovascular collapse. Antihistamines may help some allergic symptoms but are not an adequate substitute during anaphylaxis. <strong>The misconception reverses the urgency and physiological roles of the treatments.</strong>'
         },
         {
             type: 'tf',
@@ -356,7 +356,7 @@ const unit3SelfDefenseCheckup2 = {
         },
 
         // ==========================================
-        // TOPIC 10: Cancer (5 questions) - 2T, 3F
+        // TOPIC 10: Cancer (5 questions)
         // ==========================================
         {
             type: 'tf',

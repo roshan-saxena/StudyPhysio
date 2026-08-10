@@ -1,13 +1,13 @@
 // UNIT 2: CARDIOVASCULAR HEALTH CHECKUP - COMPLETE HARDER/TRICKIER QUESTION BANK
 // 50 True/False Questions (5 per topic × 10 topics)
-// Distribution: 42 True (84%), 8 False (16%)
+// Distribution: 25 True / 25 False
 // Challenge conceptual understanding with real misconceptions, not semantic tricks
 
 const unit2CardiovascularCheckup = {
     'unit2-cardiovascular-checkup': [
 
         // ==========================================
-        // TOPIC 1: DIRECTIONAL TERMS (5 questions) - 3T, 2F
+        // TOPIC 1: DIRECTIONAL TERMS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -19,9 +19,9 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Directional Terms',
-            question: 'Superior refers to toward the head and inferior toward the feet, which is why the superior vena cava collects blood from the upper body while the inferior vena cava collects from the lower body.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. The vessel names directly reflect their positions. <strong>Superior = upper, Inferior = lower</strong>. Both return deoxygenated blood to the right atrium but from different body regions. This naming convention helps remember their functions. Understanding positional terminology prevents confusion when learning blood flow pathways.'
+            question: 'Superior and inferior reverse when a person lies down, so the vena cava draining the upper body becomes anatomically inferior in a horizontal position.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Anatomical directional terms are based on the standard anatomical position, not on how the body happens to be oriented. Superior remains toward the head and inferior toward the feet. <strong>Lying down changes orientation relative to the room, not the anatomical relationship between the venae cavae and the body regions they drain.</strong>'
         },
         {
             type: 'tf',
@@ -40,13 +40,13 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Directional Terms',
-            question: 'Proximal means closer to a limb\'s attachment point to the body while distal means farther away, so the elbow is proximal to the wrist and the foot is distal to the knee.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. These terms apply to limbs specifically. Proximal = closer to trunk, distal = farther from trunk. Understanding this helps when describing vascular anatomy in limbs—for example, the femoral artery is proximal (in the thigh) while the dorsalis pedis artery is distal (on the foot). This prevents confusion when describing where blockages occur in limb vessels.'
+            question: 'Proximal and distal describe distance from the body\'s midline, which is why the elbow is proximal to the wrist because it is more medial.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Proximal and distal describe distance from a limb\'s attachment to the trunk; medial and lateral describe distance from the midline. The elbow is proximal to the wrist because it is closer to the arm\'s attachment point. <strong>The misconception combines two different directional axes.</strong>'
         },
 
         // ==========================================
-        // TOPIC 2: HEART BLOOD FLOW (5 questions) - 3T, 2F
+        // TOPIC 2: HEART BLOOD FLOW (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -65,16 +65,16 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Heart Blood Flow',
-            question: 'The right ventricle pumps blood to the lungs while the left ventricle pumps blood to the body, so the left ventricle\'s wall is thicker because it must generate higher pressure to overcome resistance in the systemic circulation.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Systemic circulation (all body organs) has much greater resistance than pulmonary circulation (lungs)</strong>. The left ventricle must develop much higher pressure to overcome this resistance, so it has thicker muscular walls. This structural adaptation matches functional demands. Understanding why the left ventricle is stronger prevents confusion about why left ventricular damage is more serious than right ventricular damage.'
+            question: 'The left ventricle has a thicker wall mainly because oxygenated blood is harder to move than deoxygenated blood, not because systemic circulation has greater resistance.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Wall thickness reflects the pressure required to move blood through the circuit. The left ventricle pumps through the higher-resistance systemic circulation, whereas the right ventricle pumps through the lower-resistance pulmonary circuit. <strong>Oxygen content does not make blood intrinsically harder to pump.</strong>'
         },
         {
             type: 'tf',
             topic: 'Heart Blood Flow',
-            question: 'The interventricular septum completely separates blood in the left ventricle from blood in the right ventricle, preventing any mixing of oxygenated and deoxygenated blood.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Complete separation is essential</strong>—mixing would reduce oxygen delivery to tissues. The septum is muscular and solid in healthy hearts. Understanding this separation explains why holes in the septum (septal defects) cause mixing and reduced oxygenation. This is foundational for understanding how normal circulation maintains oxygen delivery versus what happens when flow is disrupted.'
+            question: 'Because the interventricular septum separates the two ventricles, it alone prevents oxygenated and deoxygenated blood from mixing throughout all four chambers of the heart.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The interventricular septum specifically separates the left and right ventricles. Normal separation of the complete right- and left-sided pathways also depends on the atrial separation and correctly directed valve flow. <strong>A structure can be essential without being solely responsible for the entire heart\'s separation.</strong>'
         },
         {
             type: 'tf',
@@ -85,7 +85,7 @@ const unit2CardiovascularCheckup = {
         },
 
         // ==========================================
-        // TOPIC 3: CORONARY CIRCULATION (5 questions) - 3T, 2F
+        // TOPIC 3: CORONARY CIRCULATION (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -104,9 +104,9 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Coronary Circulation',
-            question: 'Blockage of a coronary artery leads to myocardial infarction because the heart muscle downstream of the blockage becomes oxygen-deprived and tissue dies in that region.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Coronary blockage → ischemia (low oxygen) → infarction (tissue death)</strong>. The area affected depends on which artery is blocked and available collateral circulation. Understanding this causal chain explains: why time-to-treatment matters (more tissue dies the longer ischemia lasts), why thrombolytics/angioplasty are emergency treatments, and why scar tissue remains after MI.'
+            question: 'A coronary artery blockage causes immediate death of the entire heart muscle because all myocardial regions receive oxygen from the blocked vessel after coronary blood mixes.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. A blockage deprives the downstream region supplied by that coronary artery, producing ischemia and, if prolonged, infarction in that territory. The affected area depends on the vessel and available circulation. <strong>The misconception turns a regional blood-supply problem into uniform, instantaneous injury to the entire heart.</strong>'
         },
         {
             type: 'tf',
@@ -124,7 +124,7 @@ const unit2CardiovascularCheckup = {
         },
 
         // ==========================================
-        // TOPIC 4: ARTERIES AND VEINS (5 questions) - 3T, 2F
+        // TOPIC 4: ARTERIES AND VEINS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -136,9 +136,9 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Arteries and Veins',
-            question: 'Arteries have thick muscular walls with elastic fibers to withstand high blood pressure from the heart\'s pumping force, while veins have thin walls because blood pressure is much lower after flowing through capillaries.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Structure directly reflects pressure gradients</strong>. Arteries: thick muscle (high pressure), elastic fibers (stretch during systole, recoil during diastole). Veins: thin walls (low pressure), larger diameter (accommodate more blood volume). Understanding this structure-function relationship explains: why hypertension damages arteries, why veins don\'t rupture from high pressure, and why vessel location matters for surgery.'
+            question: 'Veins can have thinner walls than arteries because their valves absorb the high-pressure pulse that remains after blood passes through capillaries.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Pressure is already much lower after blood passes through the capillary network. Vein walls therefore do not need the thick muscular and elastic structure of arteries. Valves help prevent backflow; they do not absorb an arterial-level pressure pulse. <strong>The misconception assigns valves the pressure-handling role of arterial walls.</strong>'
         },
         {
             type: 'tf',
@@ -150,9 +150,9 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Arteries and Veins',
-            question: 'Capillaries are the smallest blood vessels where gas exchange and nutrient transfer occur, with walls only one cell thick to allow substances to diffuse between blood and tissues.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Capillary structure enables function</strong>. Thin walls (one endothelial cell layer) + slow flow = optimal for diffusion. Large surface area from numerous capillaries ensures efficient exchange. Understanding capillary function explains: how oxygen gets to tissues, why some drugs are given IV (direct capillary access), and how inflammation increases capillary permeability (swelling).'
+            question: 'Capillary exchange is driven mainly by contractions of a muscular capillary wall that actively pumps oxygen and nutrients into surrounding tissues.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Capillaries have extremely thin walls that support diffusion and exchange; they do not use a thick muscular layer to pump substances into tissues. Slow flow, large surface area, and one-cell-thick walls enable transfer. <strong>The misconception applies the pumping structure of larger vessels to vessels specialized for exchange.</strong>'
         },
         {
             type: 'tf',
@@ -163,7 +163,7 @@ const unit2CardiovascularCheckup = {
         },
 
         // ==========================================
-        // TOPIC 5: HEART DISEASE (5 questions) - 3T, 2F
+        // TOPIC 5: HEART DISEASE (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -196,13 +196,13 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Heart Disease',
-            question: 'Congestive heart failure occurs when the heart cannot pump blood efficiently enough to meet the body\'s needs, often causing fluid accumulation in the lungs and peripheral tissues due to backup of blood in the venous system.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Heart failure = pump failure, not cardiac arrest</strong>. The heart is still beating but weakened. Consequences: blood backs up into lungs (pulmonary edema, causing shortness of breath) and body (peripheral edema, causing swelling). Common causes: prior MI damage, chronic hypertension, valve disease. Understanding this distinction prevents confusing heart failure with sudden cardiac death and explains why diuretics (remove excess fluid) are a primary treatment.'
+            question: 'Congestive heart failure reduces forward pumping but does not cause fluid accumulation because venous blood flow remains independent of the heart\'s pumping efficiency.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. When the heart cannot pump efficiently, blood can back up in the venous circulation, contributing to fluid accumulation in the lungs or peripheral tissues. The heart may still beat, but impaired forward flow affects the pressures behind it. <strong>The misconception separates venous backup from the pump that normally moves venous return forward.</strong>'
         },
 
         // ==========================================
-        // TOPIC 6: HEART ELECTRICAL SYSTEM (5 questions) - 3T, 2F
+        // TOPIC 6: HEART ELECTRICAL SYSTEM (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -214,9 +214,9 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Heart Electrical System',
-            question: 'The atrioventricular (AV) node briefly delays the electrical signal before it spreads to ventricles, allowing the atria to fully contract and empty blood into ventricles before ventricular contraction begins.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The delay is functionally crucial</strong>. Without it, atria and ventricles would contract simultaneously, preventing effective blood movement through the heart. The delay ensures: atrial contraction completes first (atrial kick contributes ~20% of ventricular fill), then ventricles contract with full blood volume. Understanding this explains why heart blocks (AV node dysfunction) cause inefficient pumping.'
+            question: 'The AV node speeds the electrical signal so the ventricles begin contracting before the atria finish, which prevents blood from backing up into the atria.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The AV node briefly delays the signal so atrial contraction can finish and the ventricles can fill before ventricular contraction begins. <strong>Efficient sequencing depends on delay, not acceleration.</strong> Making the chambers contract simultaneously would reduce effective filling rather than prevent backup.'
         },
         {
             type: 'tf',
@@ -228,20 +228,20 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Heart Electrical System',
-            question: 'Tachycardia refers to an abnormally fast resting heart rate (typically over 100 bpm), while bradycardia refers to an abnormally slow resting heart rate (typically under 60 bpm).',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. These terms describe rate abnormalities. <strong>Normal resting: 60-100 bpm</strong>. Tachycardia can result from: fever, stress, caffeine, hyperThyroidism, or arrhythmias. Bradycardia can result from: athletic conditioning (benign), hypothyroidism, medications, or conduction disease. Understanding these distinctions helps identify when abnormal rates indicate disease versus normal variation.'
+            question: 'A resting rate classified as tachycardia or bradycardia is necessarily a dangerous arrhythmia, regardless of exercise conditioning, medication, stress, or illness.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Tachycardia and bradycardia describe rate, but context determines whether the rate is dangerous, expected, or benign. Stress and illness can raise rate, while athletic conditioning or medication can lower it. <strong>A numerical category does not by itself establish the cause or clinical significance of a rhythm.</strong>'
         },
         {
             type: 'tf',
             topic: 'Heart Electrical System',
-            question: 'An electrocardiogram (EKG) measures the electrical activity of the heart and can detect arrhythmias, ischemia, and past heart damage by showing abnormal patterns in the electrical signal.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. The EKG records electrical signals from outside the body. <strong>Different waves represent different events</strong>: P wave (atrial depolarization), QRS complex (ventricular depolarization), T wave (ventricular repolarization). Abnormalities reveal: rhythm problems (arrhythmias), structural disease (hypertrophy), ischemia (ST changes), or past infarction (pathological Q waves). Understanding EKG basics helps interpret cardiac assessment findings.'
+            question: 'An EKG directly measures the force of cardiac contraction and the volume of blood pumped, so weak EKG waves necessarily mean low cardiac output.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. An EKG records the heart\'s electrical activity, not contraction force or blood volume directly. Electrical patterns can reveal rhythm abnormalities and signs associated with ischemia or prior damage, but they are not a direct measurement of cardiac output. <strong>The misconception treats an electrical recording as a mechanical pumping measurement.</strong>'
         },
 
         // ==========================================
-        // TOPIC 7: HEART ATTACKS (5 questions) - 3T, 2F
+        // TOPIC 7: HEART ATTACKS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -267,9 +267,9 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Heart Attacks',
-            question: 'Coronary angioplasty is a procedure where a balloon catheter is inserted into a blocked coronary artery to widen it and restore blood flow, often followed by placing a stent to keep the artery open.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Angioplasty is a catheter-based intervention</strong>. Process: balloon expands narrowed segment, stent (mesh tube) holds it open. Advantages: less invasive than bypass surgery, can be done during acute MI (percutaneous coronary intervention). Understanding this explains: why it\'s an emergency treatment during MI, how it differs from bypass surgery, and why post-stent medications prevent clot formation.'
+            question: 'During coronary angioplasty, the balloon remains inflated inside the artery to hold it open permanently, while a stent is used only temporarily during the procedure.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The balloon is inflated temporarily to widen the narrowed segment and then removed. A stent may remain in place to help keep the artery open. <strong>The misconception reverses the temporary role of the balloon and the continuing structural role of the stent.</strong>'
         },
         {
             type: 'tf',
@@ -280,7 +280,7 @@ const unit2CardiovascularCheckup = {
         },
 
         // ==========================================
-        // TOPIC 8: CPR AND AED (5 questions) - 3T, 2F
+        // TOPIC 8: CPR AND AED (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -292,9 +292,9 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'CPR and AED',
-            question: 'An Automated External Defibrillator (AED) can detect life-threatening arrhythmias like ventricular fibrillation and deliver an electrical shock to stop the abnormal rhythm, allowing the heart to restart with normal rhythm.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>AED is designed for public use with voice prompts</strong>. It analyzes rhythm (if shockable, it charges and delivers shock). The shock stops disorganized electrical activity, allowing normal rhythm to restart. Understanding this explains: why AEDs are in public places, why time to defibrillation is critical (few minutes available before permanent brain damage), and why AED + CPR together save lives.'
+            question: 'An AED should deliver a shock during any cardiac arrest, including when it detects no electrical activity, because the shock directly restarts a stopped heart.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. An AED analyzes the rhythm and shocks only certain life-threatening electrical patterns, such as ventricular fibrillation. It does not shock every cardiac arrest rhythm or directly act as a universal restart button. <strong>The misconception confuses stopping disorganized electrical activity with creating activity when no shockable rhythm is present.</strong>'
         },
         {
             type: 'tf',
@@ -313,13 +313,13 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'CPR and AED',
-            question: 'The chain of survival for cardiac arrest includes early recognition and activation of emergency response, early CPR, rapid defibrillation, and advanced life support—with each step being time-critical for improving survival outcomes.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The chain of survival represents sequential interventions that maximize survival</strong>. Each link matters: recognizing cardiac arrest quickly (calling 911), starting CPR immediately (maintaining circulation), defibrillating rapidly (restoring normal rhythm), providing advanced care (medications, airway management). Breaking any link reduces survival dramatically. Understanding this chain explains why public AED placement, bystander CPR training, and rapid EMS response are public health priorities.'
+            question: 'The steps in the cardiac-arrest chain of survival are interchangeable because advanced life support can compensate fully for delays in CPR or defibrillation.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Early recognition, CPR, rapid defibrillation when appropriate, and advanced care form a time-sensitive sequence. Later care cannot fully restore the circulation and time lost when early links are delayed. <strong>The chain model emphasizes that each link supports the next rather than substituting for it.</strong>'
         },
 
         // ==========================================
-        // TOPIC 9: STRESS AND HEART (5 questions) - 3T, 2F
+        // TOPIC 9: STRESS AND HEART (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -352,13 +352,13 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Stress and Heart',
-            question: 'Deep breathing exercises, meditation, and regular physical activity can reduce the cardiovascular effects of chronic stress by lowering cortisol levels, reducing sympathetic nervous system activation, and improving heart rate variability.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Stress management techniques have measurable cardiovascular benefits</strong>. Deep breathing activates the parasympathetic nervous system (calming response). Meditation reduces cortisol and blood pressure. Exercise provides stress relief and improves autonomic balance. Heart rate variability (variation between heartbeats) increases with relaxation—a marker of cardiovascular health. Understanding these mechanisms explains why stress management is not just psychological support but cardiovascular preventive medicine.'
+            question: 'Deep breathing, meditation, and physical activity may change how stress feels but cannot affect sympathetic activation, cortisol, or heart-rate variability.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Stress-management practices can produce measurable physiological effects, including reduced sympathetic activation, changes in cortisol and blood pressure, and improved autonomic balance. <strong>The misconception treats psychological experience and cardiovascular physiology as separate even though the stress response connects them.</strong>'
         },
 
         // ==========================================
-        // TOPIC 10: HEART HEALTH (5 questions) - 3T, 2F
+        // TOPIC 10: HEART HEALTH (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -377,16 +377,16 @@ const unit2CardiovascularCheckup = {
         {
             type: 'tf',
             topic: 'Heart Health',
-            question: 'Smoking is a major modifiable risk factor for cardiovascular disease because tobacco damages blood vessel linings, promotes atherosclerosis, increases thrombosis risk, and significantly increases MI and stroke risk.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Smoking causes direct cardiovascular damage</strong>. Mechanisms: endothelial damage (atherosclerosis initiation), increased platelet activation (clotting risk), increased LDL oxidation (more atherogenic), increased blood viscosity, reduced oxygen availability. Quitting provides rapid benefits: within weeks, blood pressure drops; within months, atherosclerosis progression slows; cardiovascular risk decreases substantially. Understanding this explains why smoking cessation is priority cardiovascular intervention.'
+            question: 'Smoking raises cardiovascular risk mainly through a temporary increase in heart rate, so stopping has little effect once blood-vessel damage and clotting risk have begun.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Smoking contributes to endothelial damage, atherosclerosis, platelet activation, and reduced oxygen availability—not merely a temporary heart-rate increase. Quitting can reduce ongoing damage and cardiovascular risk. <strong>The misconception both narrows the mechanism and treats a modifiable exposure as irreversible.</strong>'
         },
         {
             type: 'tf',
             topic: 'Heart Health',
-            question: 'The Mediterranean diet has been shown to reduce cardiovascular disease risk more effectively than most other dietary patterns due to its emphasis on unsaturated fats, fruits, vegetables, and whole grains.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Research confirms Mediterranean diet benefits. <strong>Components: olive oil (unsaturated fats), fish (omega-3), vegetables (antioxidants, fiber), whole grains (fiber), limited red meat</strong>. Mechanisms: reduces inflammation, improves cholesterol, reduces atherosclerosis progression. Understanding the dietary components explains which elements are protective and why—it\'s not just a diet but a pattern addressing multiple risk factors.'
+            question: 'The cardiovascular benefit of a Mediterranean diet comes almost entirely from unsaturated fat, so fruits, vegetables, whole grains, and the overall dietary pattern add little protection.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Unsaturated fats contribute, but the pattern also combines fruits, vegetables, whole grains, fish, fiber, and reduced reliance on highly processed foods or red meat. These components influence inflammation, cholesterol, and atherosclerosis through multiple pathways. <strong>The misconception isolates one useful component and mistakes it for the whole pattern.</strong>'
         },
         {
             type: 'tf',

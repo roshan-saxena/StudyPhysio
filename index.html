@@ -11,15 +11,13 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <button class="menu-toggle" id="menuToggle">
+            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open course navigation">
                 <i class="fas fa-bars"></i>
             </button>
-            <h1 class="site-title" id="siteTitle" style="cursor: pointer;">
+            <button type="button" class="site-title" id="siteTitle" aria-label="Return to the StudyPhysio homepage">
                 <i class="fas fa-brain"></i>
                 <span class="title-text"><span class="title-study">Study</span><span class="title-physio">Physio</span></span>
-            </h1>
-            <div class="header-right">
-            </div>
+            </button>
         </div>
     </header>
 
@@ -27,7 +25,7 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h2>Course Units</h2>
-            <button class="close-sidebar" id="closeSidebar">
+            <button type="button" class="close-sidebar" id="closeSidebar" aria-label="Close course navigation">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -127,19 +125,19 @@
                         <p>Study anywhere, anytime on any device. Access your practice materials on desktop, tablet, or phone with a fully responsive design.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Instant Feedback</h3>
-                        <p>Get immediate explanations for every answer you submit. Learn from your mistakes and reinforce correct understanding in real-time.</p>
+                        <h3>Detailed Review</h3>
+                        <p>Review every answer after submitting, with explanations that reinforce the course concept and address common misconceptions.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Practice Resources For All Units</h3>
-                        <p>We've created an expanse of practice resources for all the units that you'll cover in Physiology.</p>
+                        <h3>Course-Aligned Practice</h3>
+                        <p>Choose the topics you want to review from each available physiology unit and build a focused practice exam.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Interactive Practice Quizzes & Exams</h3>
-                        <p>Get ready for exam day with resources spanning multiple question formats: multiple-choice, true-or-false, and fill-in-the-blank.</p>
+                        <h3>Conceptual True/False Questions</h3>
+                        <p>Prepare for exam day with challenging statements designed around mechanisms, relationships, and realistic misconceptions.</p>
                     </div>
                 </div>
-                <button class="cta-button" onclick="document.querySelector('.nav-item').click()">
+                <button type="button" class="cta-button" id="startLearningBtn">
                     Start Learning
                 </button>
             </div>
@@ -157,6 +155,7 @@
                         <p class="info-total">In total, we have <span class="highlight" id="totalAvailableQuestions">50</span> questions available for you.</p>
                         <p class="info-current">Currently, your practice exam will feature <span class="highlight" id="currentQuestionCount">0</span> question(s).</p>
                         <p class="info-instruction">If you'd like to, you may unselect topics that you wouldn't like to be quizzed on.</p>
+                        <p class="setup-message hidden" id="setupMessage" role="status"></p>
                     </div>
 
                     <div class="topics-pills" id="topicsPills">
@@ -169,16 +168,16 @@
                         <p class="section-prompt">Choose the number of questions focused on each topic.</p>
 
                         <div class="number-selector">
-                            <button class="number-btn" data-count="1">1</button>
-                            <button class="number-btn" data-count="2">2</button>
-                            <button class="number-btn" data-count="3">3</button>
-                            <button class="number-btn" data-count="4">4</button>
-                            <button class="number-btn" data-count="5">5</button>
+                            <button type="button" class="number-btn" data-count="1">1</button>
+                            <button type="button" class="number-btn" data-count="2">2</button>
+                            <button type="button" class="number-btn" data-count="3">3</button>
+                            <button type="button" class="number-btn" data-count="4">4</button>
+                            <button type="button" class="number-btn" data-count="5">5</button>
                         </div>
 
                     </div>
 
-                    <button class="btn-start-exam" id="startCheckupBtn" disabled>
+                    <button type="button" class="btn-start-exam" id="startCheckupBtn" disabled>
                         Start Exam
                     </button>
                 </div>
@@ -204,29 +203,8 @@
                 <div class="question-content">
                     <p class="question-text" id="questionText"></p>
 
-                    <!-- Multiple Choice Options -->
+                    <!-- True/False Options -->
                     <div class="options-container" id="optionsContainer"></div>
-
-                    <!-- Fill in the Blank -->
-                    <div class="fill-blank-container hidden" id="fillBlankContainer">
-                        <input type="text" class="fill-blank-input" id="fillBlankInput" placeholder="Type your answer here...">
-                    </div>
-
-                    <!-- Short Answer -->
-                    <div class="short-answer-container hidden" id="shortAnswerContainer">
-                        <textarea class="short-answer-input" id="shortAnswerInput" placeholder="Type your detailed answer here..." rows="4"></textarea>
-                    </div>
-
-                    <!-- Matching -->
-                    <div class="matching-container hidden" id="matchingContainer">
-                        <div class="matching-grid" id="matchingGrid"></div>
-                    </div>
-                </div>
-
-                <!-- Feedback -->
-                <div class="feedback-container hidden" id="feedbackContainer">
-                    <div class="feedback-message" id="feedbackMessage"></div>
-                    <div class="explanation" id="explanation"></div>
                 </div>
 
                 <!-- Question Navigation -->
@@ -234,7 +212,7 @@
                     <div class="nav-numbers" id="navNumbers">
                         <!-- Question number buttons will be dynamically added here -->
                     </div>
-                    <button class="btn btn-submit-final" id="submitBtnBottom" disabled>
+                    <button type="button" class="btn btn-submit-final" id="submitBtnBottom" disabled>
                         <i class="fas fa-flag-checkered"></i>
                         Submit Exam
                     </button>
@@ -253,11 +231,11 @@
                 </div>
 
                 <div class="review-actions">
-                    <button class="btn btn-primary" id="tryAgainBtn">
+                    <button type="button" class="btn btn-primary" id="tryAgainBtn">
                         <i class="fas fa-redo"></i>
                         Try Again
                     </button>
-                    <button class="btn btn-secondary" id="backToHomeBtn">
+                    <button type="button" class="btn btn-secondary" id="backToHomeBtn">
                         <i class="fas fa-home"></i>
                         Back to Home
                     </button>
@@ -272,21 +250,23 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <p>&copy; 2025 StudyPhysio | Created by Roshan Saxena | Updated <span id="lastUpdated">08/09/2026</span> | <a href="mailto:roshandsaxena@gmail.com">Contact</a></p>
+        <p>&copy; 2025–2026 StudyPhysio | Created by Roshan Saxena | Updated 08/09/2026 | <a href="mailto:roshandsaxena@gmail.com">Contact</a></p>
     </footer>
 
     <!-- Overlay for mobile menu -->
     <div class="overlay" id="overlay"></div>
 
-    <script src="js/questions/unit1-pillar-checkup1.js?v=4"></script>
-    <script src="js/questions/unit1-pillar-checkup2.js?v=4"></script>
-    <script src="js/questions/unit2-cardiovascular-checkup.js?v=5"></script>
-    <script src="js/questions/unit3-self-defense-checkup1.js?v=4"></script>
-    <script src="js/questions/unit3-self-defense-checkup2.js?v=4"></script>
-    <script src="js/questions/unit4-brain-on-drugs-checkup.js?v=1"></script>
-    <script src="js/questions/unit6-human-performance-checkup.js?v=1"></script>
-    <script src="js/questions/unit7-sexual-health-and-relationships-checkup.js?v=1"></script>
-    <script src="js/app.js?v=4"></script>
+    <script src="js/questions/unit1-pillar-checkup1.js"></script>
+    <script src="js/questions/unit1-pillar-checkup2.js"></script>
+    <script src="js/questions/unit2-cardiovascular-checkup.js"></script>
+    <script src="js/questions/unit3-self-defense-checkup1.js"></script>
+    <script src="js/questions/unit3-self-defense-checkup2.js"></script>
+    <script src="js/questions/unit4-brain-on-drugs-checkup.js"></script>
+    <script src="js/questions/unit6-human-performance-checkup.js"></script>
+    <script src="js/questions/unit7-sexual-health-and-relationships-checkup.js"></script>
+    <script src="js/exam-engine.js"></script>
+    <script src="js/checkup-config.js"></script>
+    <script src="js/app.js"></script>
 
     <!-- Vercel Analytics -->
     <script>

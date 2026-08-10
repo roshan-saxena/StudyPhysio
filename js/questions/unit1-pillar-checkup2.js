@@ -1,13 +1,13 @@
 // UNIT 1: PILLAR CHECKUP 2 - COMPLETE HARDER/TRICKIER QUESTION BANK
 // 50 True/False Questions (5 per topic × 10 topics)
-// Distribution: 28 True (~56%), 22 False (~44%)
+// Distribution: 25 True / 25 False
 // Challenge conceptual understanding with real misconceptions, not semantic tricks
 
 const pillarCheckup2Questions = {
     'unit1-pillar-checkup2': [
 
         // ==========================================
-        // TOPIC 1: TYPES OF EXERCISE (5 questions) - 3T, 2F
+        // TOPIC 1: TYPES OF EXERCISE (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -46,7 +46,7 @@ const pillarCheckup2Questions = {
         },
 
         // ==========================================
-        // TOPIC 2: EXERCISE GUIDELINES/INTENSITY (5 questions) - 3T, 2F
+        // TOPIC 2: EXERCISE GUIDELINES/INTENSITY (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -58,9 +58,9 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Exercise Guidelines',
-            question: 'The CDC recommends adults perform muscle-strengthening activities on 2 or more days per week, allowing at least one rest day between sessions for the same muscle groups.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Rest days between muscle groups are important for recovery and adaptation</strong>. Muscles need 48 hours to repair and grow stronger after resistance training. This is why guidelines recommend 2+ days weekly (allowing spacing) rather than daily. You can exercise different muscle groups on consecutive days, but the same muscles need recovery time. <strong>The adaptation happens during rest, not during the workout.</strong>'
+            question: 'Adults can meet muscle-strengthening guidelines by training the same muscle groups on consecutive days because recovery matters only after vigorous aerobic exercise.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Muscle-strengthening guidelines include recovery time because challenged muscle groups need time to repair and adapt. Different muscle groups may be trained on consecutive days, but repeatedly loading the same groups without recovery is not equivalent. <strong>The misconception is assigning recovery needs only to aerobic exercise.</strong>'
         },
         {
             type: 'tf',
@@ -85,7 +85,7 @@ const pillarCheckup2Questions = {
         },
 
         // ==========================================
-        // TOPIC 3: BLOOD pH REGULATION (5 questions) - 3T, 2F
+        // TOPIC 3: BLOOD pH REGULATION (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -118,13 +118,13 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Blood pH Regulation',
-            question: 'When blood becomes too acidic from CO₂ accumulation, the kidneys help restore normal pH by excreting excess acid in urine over hours to days.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The kidneys provide slower, long-term pH regulation</strong>. While lungs handle acute CO₂ changes (seconds-minutes), kidneys reabsorb or excrete H+ ions (hours-days). Respiratory and renal systems work together: lungs are rapid responders, kidneys provide sustained regulation. <strong>Understanding both systems explains why various conditions cause acid-base imbalances.</strong>'
+            question: 'When CO₂ makes blood too acidic, the kidneys provide the first correction within seconds, while the lungs take hours to days to change blood pH.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The timing is reversed. The lungs can change CO₂ levels within seconds to minutes, whereas the kidneys provide slower, sustained regulation by altering acid excretion and reabsorption over hours to days. <strong>Both systems contribute, but rapid respiratory regulation should not be confused with slower renal regulation.</strong>'
         },
 
         // ==========================================
-        // TOPIC 4: SLEEP FACTS (5 questions) - 3T, 2F
+        // TOPIC 4: SLEEP FACTS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -143,9 +143,9 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Sleep Facts',
-            question: 'A brief 20-30 minute nap in the afternoon can improve alertness and performance without causing sleep inertia if the nap is timed correctly.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Strategic napping improves alertness without grogginess</strong>. Brief naps (20-30 min) boost performance and mood without entering deep sleep (where sleep inertia occurs). Optimal timing: early-mid afternoon before 3 PM (later naps disrupt nighttime sleep). <strong>This explains why some cultures use siestas—they\'re physiologically sound for alertness without disrupting night sleep.</strong>'
+            question: 'A 20-30 minute afternoon nap generally produces more sleep inertia than a long nap because short naps enter deep sleep more quickly.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Brief, appropriately timed naps can improve alertness while reducing the chance of entering the deeper sleep associated with pronounced sleep inertia. Longer naps are more likely to reach deep sleep. <strong>The misconception reverses how nap duration relates to sleep depth and post-nap grogginess.</strong>'
         },
         {
             type: 'tf',
@@ -163,7 +163,7 @@ const pillarCheckup2Questions = {
         },
 
         // ==========================================
-        // TOPIC 5: REM SLEEP/BIOLOGICAL CLOCK/SLEEP DRIVE (5 questions) - 3T, 2F
+        // TOPIC 5: REM SLEEP/BIOLOGICAL CLOCK/SLEEP DRIVE (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -175,9 +175,9 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'REM Sleep/Biological Clock',
-            question: 'The suprachiasmatic nucleus (SCN) in the hypothalamus acts as the master biological clock by receiving light information from the eyes and coordinating circadian rhythms.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The SCN is the body\'s circadian pacemaker</strong>. It: receives light signals directly from the retina, regulates melatonin release from the pineal gland, coordinates sleep-wake timing. <strong>The SCN maintains roughly 24-hour rhythms even without external light</strong> but requires light exposure to reset and stay synchronized. This is why light exposure is so powerful for sleep regulation.'
+            question: 'The suprachiasmatic nucleus coordinates circadian rhythms by producing melatonin itself whenever retinal light signals reach the hypothalamus.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The SCN receives light information and coordinates circadian timing, but melatonin is released by the pineal gland under that regulatory system. <strong>Coordinating a hormone\'s release is not the same as producing the hormone.</strong> This distinction connects the master clock to, rather than merges it with, its downstream signal.'
         },
         {
             type: 'tf',
@@ -189,9 +189,9 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'REM Sleep/Biological Clock',
-            question: 'Cortisol levels are highest in the morning (cortisol awakening response) to promote wakefulness and decrease throughout the day, reaching lowest levels at night to allow sleep.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Cortisol follows a circadian rhythm optimized for alertness and sleep</strong>. Morning cortisol spike (30-45 minutes after waking) promotes alertness and preparedness. Gradual decline through the day allows fatigue to build. Night-time low levels enable sleep onset. <strong>This rhythm is why consistent wake times are important—they reset cortisol timing.</strong> Disrupted cortisol rhythms (shift work, jet lag) cause sleep and mood problems.'
+            question: 'Because cortisol promotes wakefulness, it normally remains near its morning peak throughout the day and falls only after sleep has begun.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Cortisol normally peaks around waking and then declines across the day, reaching low levels at night that support sleep. It does not remain near its morning peak until sleep begins. <strong>The misconception treats a wake-promoting hormone as an on/off switch rather than a circadian signal that changes gradually.</strong>'
         },
         {
             type: 'tf',
@@ -202,7 +202,7 @@ const pillarCheckup2Questions = {
         },
 
         // ==========================================
-        // TOPIC 6: EFFECTS OF SLEEP DEPRIVATION (5 questions) - 3T, 2F
+        // TOPIC 6: EFFECTS OF SLEEP DEPRIVATION (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -214,9 +214,9 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Effects of Sleep Deprivation',
-            question: 'Chronic sleep deprivation increases risk of obesity, type 2 diabetes, and cardiovascular disease by disrupting metabolism and hormone regulation.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Sleep regulates critical metabolic hormones</strong>: leptin (hunger suppression), ghrelin (hunger stimulation), insulin sensitivity. Sleep deprivation: increases ghrelin, decreases leptin (increased hunger), impairs insulin sensitivity (diabetes risk), increases inflammation (heart disease risk). <strong>These aren\'t just coincidental—the mechanisms are understood.</strong> Sleep is foundational for metabolic health.'
+            question: 'The metabolic risks associated with chronic sleep deprivation come only from having more time to eat; disrupted sleep does not itself affect appetite hormones or insulin sensitivity.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Extra opportunities to eat can matter, but sleep loss also disrupts appetite regulation, insulin sensitivity, and inflammation. Those physiological effects help connect chronic sleep deprivation with obesity, type 2 diabetes, and cardiovascular disease. <strong>The misconception reduces a hormonal and metabolic problem to behavior alone.</strong>'
         },
         {
             type: 'tf',
@@ -228,9 +228,9 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Effects of Sleep Deprivation',
-            question: 'Being awake for 18-20 hours can impair driving ability and reaction time at levels comparable to a 0.08% blood alcohol level (legal drunk driving limit).',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. Research demonstrates <strong>equivalent impairment</strong>. Drowsy driving causes thousands of accidents and deaths annually. Insurance companies recognize this equivalence. <strong>Both fatigue and alcohol impair attention, reaction time, judgment, and impulse control.</strong> This is why treating sleep deprivation seriously (as a safety issue, not personal failing) matters.'
+            question: 'After 18-20 hours awake, drivers can reliably overcome impaired reaction time by rating their own alertness before driving, unlike alcohol-related impairment.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Extended wakefulness can impair attention, judgment, and reaction time at levels comparable to alcohol impairment, and subjective confidence does not reliably restore those abilities. <strong>Feeling capable is not a physiological countermeasure to sleep loss.</strong> The statement underestimates drowsy-driving risk by treating self-assessment as compensation.'
         },
         {
             type: 'tf',
@@ -241,7 +241,7 @@ const pillarCheckup2Questions = {
         },
 
         // ==========================================
-        // TOPIC 7: ACUTE STRESS RESPONSE (5 questions) - 3T, 2F
+        // TOPIC 7: ACUTE STRESS RESPONSE (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -274,13 +274,13 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Acute Stress Response',
-            question: 'The acute stress response causes increased heart rate, blood pressure, and glucose release, which helps the body respond to genuine emergencies but is harmful when activated repeatedly by non-threats.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>The response is adaptive for real danger but maladaptive for chronic non-threats</strong>. Occasional activation: prepares for action, then resolves. Chronic activation: keeps the body in mobilization state without resolution, causing wear and tear. <strong>This distinction is crucial for understanding why chronic stress is so damaging—not because the response is "bad," but because repeated activation without threat causes harm.</strong>'
+            question: 'Repeated activation of the acute stress response by non-threats remains beneficial as long as each episode raises heart rate, blood pressure, and glucose only temporarily.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Temporary mobilization is useful during genuine emergencies, but repeated activation without a real physical need creates cumulative wear even when individual episodes end. <strong>The misconception assumes that recovery after each episode erases the effects of frequent stress activation.</strong> Frequency and context help determine whether the response is adaptive or harmful.'
         },
 
         // ==========================================
-        // TOPIC 8: EFFECTS OF CHRONIC STRESS (5 questions) - 3T, 2F
+        // TOPIC 8: EFFECTS OF CHRONIC STRESS (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -313,13 +313,13 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Chronic Stress',
-            question: 'Chronic stress promotes weight gain and visceral fat accumulation by increasing cortisol, which increases appetite and promotes fat storage rather than fat mobilization.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Cortisol specifically promotes abdominal fat storage</strong>. Mechanisms: increases appetite (especially for high-calorie foods), promotes insulin resistance, shifts metabolism toward fat storage. <strong>Chronically stressed people preferentially accumulate visceral fat (the most metabolically harmful type).</strong> This explains why stress management improves weight management beyond just affecting behavior and food choices.'
+            question: 'Because cortisol can mobilize energy during acute stress, persistently elevated cortisol generally prevents visceral fat accumulation even when it increases appetite.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. An acute energy-mobilizing role does not mean chronic cortisol elevation prevents fat storage. Chronic stress can increase appetite, impair metabolic regulation, and promote visceral fat accumulation. <strong>The misconception applies a short-term stress effect to prolonged exposure without considering how duration changes the outcome.</strong>'
         },
 
         // ==========================================
-        // TOPIC 9: WEATHERING/ACEs/TRAUMA/PTSD (5 questions) - 3T, 2F
+        // TOPIC 9: WEATHERING/ACEs/TRAUMA/PTSD (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -352,13 +352,13 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Weathering, ACEs, Trauma, PTSD',
-            question: 'ACEs can alter brain development and dysregulate the HPA axis (stress response system) in children, leading to heightened stress reactivity throughout life.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Trauma during development alters the brain\'s stress architecture</strong>. Effects: amygdala becomes hyperresponsive (threat detection amplified), prefrontal cortex underdevelops (emotion regulation impaired), HPA axis becomes sensitized (stress response excessive). <strong>These changes can persist into adulthood</strong>, explaining why childhood trauma increases mental health and chronic disease risk even decades later. Understanding this mechanism is crucial for trauma-informed care.'
+            question: 'ACEs may heighten HPA-axis reactivity during childhood, but the stress-response system automatically returns to a typical pattern in adulthood once the original adversity has ended.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Adversity during development can produce lasting changes in stress reactivity and brain development that persist after the original circumstances end. Improvement is possible, but it is not an automatic consequence of reaching adulthood. <strong>The misconception confuses removal of a stressor with immediate reversal of its developmental effects.</strong>'
         },
 
         // ==========================================
-        // TOPIC 10: HEALTHCARE PILLAR (5 questions) - 3T, 2F
+        // TOPIC 10: HEALTHCARE PILLAR (5 questions)
         // ==========================================
         {
             type: 'tf',
@@ -384,16 +384,16 @@ const pillarCheckup2Questions = {
         {
             type: 'tf',
             topic: 'Healthcare Pillar',
-            question: 'The Affordable Care Act (ACA) prohibited insurance companies from denying coverage or charging higher premiums based on pre-existing medical conditions, expanding coverage access.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. This was a major ACA provision. Before ACA: insurance companies could deny people with pre-existing conditions or charge them much more. <strong>After ACA: everyone must be offered coverage at similar rates regardless of health status.</strong> This provision expanded coverage to millions and removed the fear that illness would make insurance unaffordable. It\'s one of the most popular ACA provisions even among those who oppose other aspects.'
+            question: 'The Affordable Care Act stopped insurers from denying coverage for pre-existing conditions but still allowed premiums to be increased solely because an applicant already had an illness.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. The protection addressed both denial of coverage and health-based premium increases tied solely to pre-existing conditions. <strong>Access would remain severely restricted if insurers had to offer a plan but could price it according to an applicant\'s illness.</strong> The misconception separates two connected parts of the same coverage protection.'
         },
         {
             type: 'tf',
             topic: 'Healthcare Pillar',
-            question: 'In socialized medicine, the government owns hospitals and directly employs healthcare workers, providing all care through government-run facilities.',
-            correct: true,
-            explanation: 'This is <strong>true</strong>. <strong>Socialized medicine = government owns means of healthcare production</strong>. Examples: UK National Health Service (government owns hospitals, employs doctors), U.S. Veterans Affairs. <strong>This differs from single-payer where government pays but providers remain private.</strong> Understanding this distinction clarifies what people mean when they discuss different healthcare systems. The U.S. actually has both elements in different sectors.'
+            question: 'A healthcare system is socialized medicine whenever government funds care, even if hospitals remain privately owned and healthcare workers are privately employed.',
+            correct: false,
+            explanation: 'This is <strong>false</strong>. Government financing alone can describe a single-payer arrangement. Socialized medicine additionally involves government ownership of facilities and direct employment of healthcare workers. <strong>The misconception collapses who pays for care and who owns or delivers care into the same feature.</strong>'
         }
     ]
 };
