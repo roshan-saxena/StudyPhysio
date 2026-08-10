@@ -235,8 +235,8 @@ function loadSection(section) {
     appState.examSubmitted = false;
     appState.examSummary = null;
 
-    // Check if this is a checkup (pillar checkup, cardiovascular checkup, self defense checkup, or brain on drugs checkup)
-    if (section.includes('pillar-checkup') || section.includes('cardiovascular-checkup') || section.includes('self-defense-checkup') || section.includes('brain-on-drugs-checkup') || section.includes('sexual-health-and-relationships-checkup')) {
+    // Check whether this section uses the configurable checkup setup screen
+    if (section.includes('pillar-checkup') || section.includes('cardiovascular-checkup') || section.includes('self-defense-checkup') || section.includes('brain-on-drugs-checkup') || section.includes('human-performance-checkup') || section.includes('sexual-health-and-relationships-checkup')) {
         showCheckupSetup(section);
         return;
     }
