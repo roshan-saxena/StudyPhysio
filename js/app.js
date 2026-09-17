@@ -7,6 +7,7 @@ const appState = {
     answers: {},
     submitted: false,
     results: null,
+    loadRequestId: 0,
     setup: {
         selectedTopics: new Set(),
         questionsPerTopic: 1
@@ -101,7 +102,7 @@ function toggleUnit(event) {
     content?.classList.toggle('collapsed');
 }
 
-function handleNavigation(event) {
+async function handleNavigation(event) {
     event.preventDefault();
     const section = event.currentTarget.dataset.section;
     if (!checkupRegistry[section]) {
@@ -110,11 +111,37 @@ function handleNavigation(event) {
 
     elements.navItems.forEach((item) => item.classList.toggle('active', item === event.currentTarget));
     appState.currentSection = section;
+    const loadRequestId = ++appState.loadRequestId;
+    showCheckupLoading(checkupRegistry[section]);
+
+    const result = await StudyPhysioQuestionSource.loadCheckup(
+        section,
+        checkupRegistry[section].fallbackQuestions
+    );
+    if (loadRequestId !== appState.loadRequestId || appState.currentSection !== section) {
+        return;
+    }
+
+    checkupRegistry[section].questions = result.questions;
+    checkupRegistry[section].questionSource = result.source;
+    checkupRegistry[section].questionVersion = result.version;
     showSetup();
 
     if (window.innerWidth <= 1024) {
         closeSidebar();
     }
+}
+
+function showCheckupLoading(checkup) {
+    resetExamState();
+    elements.checkupTitle.textContent = checkup.title;
+    elements.totalAvailableQuestions.textContent = '…';
+    elements.currentQuestionCount.textContent = '0';
+    elements.topicsPills.replaceChildren();
+    elements.startCheckupBtn.disabled = true;
+    elements.setupMessage.textContent = 'Loading the latest questions…';
+    elements.setupMessage.classList.remove('hidden');
+    showSection(elements.checkupSetupSection);
 }
 
 function showSection(sectionToShow) {
@@ -450,7 +477,7 @@ function renderReviewQuestions() {
         heading.textContent = 'Explanation';
         const content = document.createElement('div');
         content.className = 'review-explanation-text';
-        content.innerHTML = question.explanation;
+        content.innerHTML = StudyPhysioQuestionSource.sanitizeExplanation(question.explanation);
         explanation.append(heading, content);
         card.appendChild(explanation);
         elements.reviewAllQuestions.appendChild(card);
@@ -471,6 +498,7 @@ function createAnswerSection(labelText, answerText, resultClass) {
 }
 
 function goHome() {
+    appState.loadRequestId += 1;
     resetExamState();
     appState.currentSection = null;
     appState.setup.selectedTopics = new Set();

@@ -35,3 +35,9 @@ const checkupRegistry = {
         exactBalance: true
     }
 };
+
+Object.values(checkupRegistry).forEach((checkup) => {
+    checkup.fallbackQuestions = checkup.questions;
+    checkup.questionSource = 'backup';
+    checkup.questionVersion = null;
+});
