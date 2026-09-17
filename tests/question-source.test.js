@@ -38,10 +38,10 @@ test('unsafe explanation markup is rejected', () => {
     assert.equal(questionSource.validateQuestionBank(bank.checkupId, bank.questions).valid, false);
 });
 
-test('safe explanation rendering preserves strong tags and escapes other markup', () => {
+test('plain-text explanation rendering does not interpret markup', () => {
     assert.equal(
         questionSource.sanitizeExplanation('Use <strong>this</strong> <script>bad()</script>'),
-        'Use <strong>this</strong> &lt;script&gt;bad()&lt;/script&gt;'
+        'Use <strong>this</strong> <script>bad()</script>'
     );
 });
 

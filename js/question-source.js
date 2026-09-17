@@ -10,20 +10,10 @@
 
     function explanationHtmlError(value) {
         const explanation = String(value || '');
-        const withoutAllowedTags = explanation.replace(/<\/?strong>/g, '');
-        if (/<[^>]*>/.test(withoutAllowedTags)) {
-            return 'Explanations may use only <strong> formatting.';
+        if (/<[^>]*>/.test(explanation)) {
+            return 'Explanations must be written as plain text without HTML tags.';
         }
-
-        let depth = 0;
-        const tags = explanation.match(/<\/?strong>/g) || [];
-        for (const tag of tags) {
-            depth += tag === '<strong>' ? 1 : -1;
-            if (depth < 0) {
-                return 'An explanation contains an unmatched </strong> tag.';
-            }
-        }
-        return depth === 0 ? null : 'An explanation contains an unmatched <strong> tag.';
+        return null;
     }
 
     function validateQuestionBank(checkupId, questions) {
@@ -96,14 +86,7 @@
     }
 
     function sanitizeExplanation(value) {
-        return String(value || '')
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#039;')
-            .replace(/&lt;strong&gt;/g, '<strong>')
-            .replace(/&lt;\/strong&gt;/g, '</strong>');
+        return String(value || '');
     }
 
     async function loadCheckup(checkupId, fallbackQuestions, options = {}) {

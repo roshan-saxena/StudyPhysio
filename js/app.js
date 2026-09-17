@@ -477,7 +477,7 @@ function renderReviewQuestions() {
         heading.textContent = 'Explanation';
         const content = document.createElement('div');
         content.className = 'review-explanation-text';
-        content.innerHTML = StudyPhysioQuestionSource.sanitizeExplanation(question.explanation);
+        content.textContent = StudyPhysioQuestionSource.sanitizeExplanation(question.explanation);
         explanation.append(heading, content);
         card.appendChild(explanation);
         elements.reviewAllQuestions.appendChild(card);

@@ -8,7 +8,6 @@ const STUDYPHYSIO = Object.freeze({
   firstQuestionRow: 7,
   expectedQuestions: 400,
   schemaVersion: 1,
-  allowedExplanationTags: /<\/?strong>/g,
 });
 
 function onOpen() {
@@ -164,6 +163,29 @@ function restorePreviousPublication() {
   } finally {
     lock.releaseLock();
   }
+}
+
+function convertExplanationsToPlainText() {
+  const targets = [
+    { sheet: STUDYPHYSIO.questionsSheet, firstRow: STUDYPHYSIO.firstQuestionRow, column: 6 },
+    { sheet: STUDYPHYSIO.publishedSheet, firstRow: 2, column: 6 },
+    { sheet: STUDYPHYSIO.archiveSheet, firstRow: 2, column: 7 },
+  ];
+
+  targets.forEach(function (target) {
+    const sheet = getSheet_(target.sheet);
+    const rowCount = Math.max(0, sheet.getLastRow() - target.firstRow + 1);
+    if (rowCount === 0) return;
+    const range = sheet.getRange(target.firstRow, target.column, rowCount, 1);
+    const values = range.getValues().map(function (row) {
+      return [String(row[0] || '').replace(/<\/?strong>/g, '')];
+    });
+    range.setValues(values);
+  });
+
+  getSheet_(STUDYPHYSIO.historySheet).getRange('B7').setValue('Connected and healthy');
+  clearQuestionCache_();
+  SpreadsheetApp.flush();
 }
 
 function doGet(event) {
@@ -439,16 +461,7 @@ function parseBoolean_(value) {
 
 function explanationHtmlError_(value) {
   const explanation = String(value || '');
-  const withoutAllowed = explanation.replace(STUDYPHYSIO.allowedExplanationTags, '');
-  if (/<[^>]*>/.test(withoutAllowed)) return 'explanations may use only <strong> formatting.';
-
-  let depth = 0;
-  const tags = explanation.match(STUDYPHYSIO.allowedExplanationTags) || [];
-  for (let index = 0; index < tags.length; index += 1) {
-    depth += tags[index] === '<strong>' ? 1 : -1;
-    if (depth < 0) return 'contains an unmatched </strong> tag.';
-  }
-  return depth === 0 ? '' : 'contains an unmatched <strong> tag.';
+  return /<[^>]*>/.test(explanation) ? 'explanations must be written as plain text without HTML tags.' : '';
 }
 
 function normalizeText_(value) {
