@@ -89,6 +89,44 @@
         return String(value || '');
     }
 
+    function wait(milliseconds) {
+        return new Promise((resolve) => setTimeout(resolve, milliseconds));
+    }
+
+    function questionServiceError(message, retryable) {
+        const error = new Error(message);
+        error.retryable = retryable;
+        return error;
+    }
+
+    async function fetchQuestionPayload(url, fetchImpl, timeoutMs) {
+        const controller = typeof globalScope.AbortController === 'function'
+            ? new globalScope.AbortController()
+            : null;
+        const timer = controller && timeoutMs > 0
+            ? setTimeout(() => controller.abort(), timeoutMs)
+            : null;
+
+        try {
+            const response = await fetchImpl(url.toString(), {
+                cache: 'no-store',
+                redirect: 'follow',
+                ...(controller ? { signal: controller.signal } : {})
+            });
+            if (!response.ok) {
+                throw questionServiceError(
+                    `Question service returned ${response.status}.`,
+                    response.status === 404 || response.status >= 500
+                );
+            }
+            return await response.json();
+        } finally {
+            if (timer) {
+                clearTimeout(timer);
+            }
+        }
+    }
+
     async function loadCheckup(checkupId, fallbackQuestions, options = {}) {
         const endpoint = options.endpoint === undefined ? DEFAULT_ENDPOINT : options.endpoint;
         const fetchImpl = options.fetchImpl || globalScope.fetch;
@@ -96,48 +134,55 @@
             return { questions: fallbackQuestions, source: 'backup', version: null, error: null };
         }
 
-        try {
-            const url = new URL(endpoint);
-            url.searchParams.set('checkup', checkupId);
-            url.searchParams.set('_', String(Date.now()));
-            const response = await fetchImpl(url.toString(), {
-                cache: 'no-store',
-                redirect: 'follow'
-            });
-            if (!response.ok) {
-                throw new Error(`Question service returned ${response.status}.`);
+        const retryDelays = options.retryDelays || [0, 750, 1500];
+        const timeoutMs = options.timeoutMs === undefined ? 15000 : options.timeoutMs;
+        let lastError = null;
+
+        for (let attempt = 0; attempt < retryDelays.length; attempt += 1) {
+            if (retryDelays[attempt] > 0) {
+                await wait(retryDelays[attempt]);
             }
 
-            const payload = await response.json();
-            if (payload.error) {
-                throw new Error(payload.error);
-            }
-            if (payload.schemaVersion !== 1 || payload.checkupId !== checkupId) {
-                throw new Error('Question service returned an incompatible response.');
-            }
+            try {
+                const url = new URL(endpoint);
+                url.searchParams.set('checkup', checkupId);
+                url.searchParams.set('_', String(Date.now()));
+                const payload = await fetchQuestionPayload(url, fetchImpl, timeoutMs);
+                if (payload.error) {
+                    throw questionServiceError(payload.error, false);
+                }
+                if (payload.schemaVersion !== 1 || payload.checkupId !== checkupId) {
+                    throw questionServiceError('Question service returned an incompatible response.', false);
+                }
 
-            const validation = validateQuestionBank(checkupId, payload.questions);
-            if (!validation.valid) {
-                throw new Error(validation.error);
-            }
+                const validation = validateQuestionBank(checkupId, payload.questions);
+                if (!validation.valid) {
+                    throw questionServiceError(validation.error, false);
+                }
 
-            return {
-                questions: payload.questions,
-                source: 'google-sheet',
-                version: payload.version || null,
-                error: null
-            };
-        } catch (error) {
-            if (globalScope.console && typeof globalScope.console.warn === 'function') {
-                globalScope.console.warn('Using the bundled StudyPhysio question backup.', error);
+                return {
+                    questions: payload.questions,
+                    source: 'google-sheet',
+                    version: payload.version || null,
+                    error: null
+                };
+            } catch (error) {
+                lastError = error;
+                if (error && error.retryable === false) {
+                    break;
+                }
             }
-            return {
-                questions: fallbackQuestions,
-                source: 'backup',
-                version: null,
-                error: error instanceof Error ? error.message : String(error)
-            };
         }
+
+        if (!options.silent && globalScope.console && typeof globalScope.console.warn === 'function') {
+            globalScope.console.warn('Using the bundled StudyPhysio question backup.', lastError);
+        }
+        return {
+            questions: fallbackQuestions,
+            source: 'backup',
+            version: null,
+            error: lastError instanceof Error ? lastError.message : String(lastError)
+        };
     }
 
     const questionSource = {

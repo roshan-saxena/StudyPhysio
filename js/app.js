@@ -54,11 +54,33 @@ const elements = {
 function initialize() {
     attachEventListeners();
     updateNumberSelection();
+    initializeRemoteOnlyCheckups();
 
     const firstUnit = document.querySelector('.unit-content');
     if (firstUnit) {
         firstUnit.classList.remove('collapsed');
     }
+}
+
+async function initializeRemoteOnlyCheckups() {
+    const remoteCheckups = Object.entries(checkupRegistry)
+        .filter(([, checkup]) => checkup.remoteOnly);
+
+    await Promise.all(remoteCheckups.map(async ([checkupId, checkup]) => {
+        const result = await StudyPhysioQuestionSource.loadCheckup(checkupId, [], { silent: true });
+        if (result.source !== 'google-sheet') {
+            return;
+        }
+
+        checkup.questions = result.questions;
+        checkup.fallbackQuestions = result.questions;
+        checkup.questionSource = result.source;
+        checkup.questionVersion = result.version;
+        const section = document.querySelector(`[data-remote-checkup="${checkupId}"]`);
+        if (section) {
+            section.hidden = false;
+        }
+    }));
 }
 
 function attachEventListeners() {
@@ -111,6 +133,15 @@ async function handleNavigation(event) {
 
     elements.navItems.forEach((item) => item.classList.toggle('active', item === event.currentTarget));
     appState.currentSection = section;
+    if (checkupRegistry[section].remoteOnly && checkupRegistry[section].questions.length === 50) {
+        recordQuestionSource(checkupRegistry[section]);
+        showSetup();
+        if (window.innerWidth <= 1024) {
+            closeSidebar();
+        }
+        return;
+    }
+
     const loadRequestId = ++appState.loadRequestId;
     showCheckupLoading(checkupRegistry[section]);
 
@@ -125,11 +156,17 @@ async function handleNavigation(event) {
     checkupRegistry[section].questions = result.questions;
     checkupRegistry[section].questionSource = result.source;
     checkupRegistry[section].questionVersion = result.version;
+    recordQuestionSource(checkupRegistry[section]);
     showSetup();
 
     if (window.innerWidth <= 1024) {
         closeSidebar();
     }
+}
+
+function recordQuestionSource(checkup) {
+    elements.checkupSetupSection.dataset.questionSource = checkup.questionSource || '';
+    elements.checkupSetupSection.dataset.questionVersion = checkup.questionVersion || '';
 }
 
 function showCheckupLoading(checkup) {

@@ -25,6 +25,11 @@ const checkupRegistry = {
         title: 'Your Brain on Drugs Checkup',
         questions: unit4BrainOnDrugsCheckup['unit4-brain-on-drugs-checkup']
     },
+    'unit5-checkup': {
+        title: 'Unit 5 Checkup',
+        questions: [],
+        remoteOnly: true
+    },
     'unit6-human-performance-checkup': {
         title: 'Human Performance Checkup',
         questions: unit6HumanPerformanceCheckup['unit6-human-performance-checkup']

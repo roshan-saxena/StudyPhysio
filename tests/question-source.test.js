@@ -49,8 +49,38 @@ test('the bundled bank is used when the remote service fails', async () => {
     const fallback = [{ question: 'backup' }];
     const result = await questionSource.loadCheckup('unit2-cardiovascular-checkup', fallback, {
         endpoint: 'https://example.invalid/questions',
-        fetchImpl: async () => { throw new Error('offline'); }
+        fetchImpl: async () => { throw new Error('offline'); },
+        retryDelays: [0]
     });
     assert.equal(result.source, 'backup');
     assert.equal(result.questions, fallback);
+});
+
+test('a transient 404 is retried before using the backup', async () => {
+    const bank = loadBank('unit2-cardiovascular-checkup.js');
+    let attempts = 0;
+    const result = await questionSource.loadCheckup(bank.checkupId, [], {
+        endpoint: 'https://example.com/questions',
+        retryDelays: [0, 0],
+        fetchImpl: async () => {
+            attempts += 1;
+            if (attempts === 1) {
+                return { ok: false, status: 404 };
+            }
+            return {
+                ok: true,
+                json: async () => ({
+                    schemaVersion: 1,
+                    version: 'test-version',
+                    checkupId: bank.checkupId,
+                    questions: bank.questions
+                })
+            };
+        }
+    });
+
+    assert.equal(attempts, 2);
+    assert.equal(result.source, 'google-sheet');
+    assert.equal(result.version, 'test-version');
+    assert.equal(result.questions.length, 50);
 });
