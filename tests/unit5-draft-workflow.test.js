@@ -13,7 +13,7 @@ const scriptSource = fs.readFileSync(
 const context = {};
 vm.createContext(context);
 vm.runInContext(
-    `${scriptSource};globalThis.__workflow = {buildCandidateFromData_, validateQuestionSet_};`,
+    `${scriptSource};globalThis.__workflow = {buildCandidateFromData_, validateQuestionSet_, orderQuestionRowsByConfig_};`,
     context
 );
 const workflow = context.__workflow;
@@ -30,12 +30,21 @@ const existingCheckupIds = [
 ];
 
 const config = [
-    ...existingCheckupIds.map((id, index) => ({
+    ...existingCheckupIds.map((id) => ({
         id,
         title: id,
         exactBalance: id === 'unit7-sexual-health-and-relationships-checkup',
         active: true,
-        order: index + 1
+        order: {
+            'unit1-pillar-checkup1': 1,
+            'unit1-pillar-checkup2': 2,
+            'unit2-cardiovascular-checkup': 3,
+            'unit3-self-defense-checkup1': 4,
+            'unit3-self-defense-checkup2': 5,
+            'unit4-brain-on-drugs-checkup': 6,
+            'unit6-human-performance-checkup': 8,
+            'unit7-sexual-health-and-relationships-checkup': 9
+        }[id]
     })),
     {
         id: 'unit5-checkup',
@@ -79,6 +88,27 @@ function questionToRow(question, ready) {
 
 const published = existingCheckupIds.flatMap(makeBank);
 const unit5 = makeBank('unit5-checkup');
+
+test('the workflow starts below the native Questions table header', () => {
+    assert.match(scriptSource, /firstQuestionRow:\s*8/);
+});
+
+test('question rows place Unit 5 between Units 4 and 6 without changing row order inside a checkup', () => {
+    const rows = [
+        ['unit4-q001', 'unit4-brain-on-drugs-checkup'],
+        ['unit6-q001', 'unit6-human-performance-checkup'],
+        ['unit7-q001', 'unit7-sexual-health-and-relationships-checkup'],
+        ['unit5-q001', 'unit5-checkup'],
+        ['unit5-q002', 'unit5-checkup']
+    ];
+
+    const ordered = workflow.orderQuestionRowsByConfig_(rows, config);
+
+    assert.deepEqual(
+        Array.from(ordered, (row) => row[0]),
+        ['unit4-q001', 'unit5-q001', 'unit5-q002', 'unit6-q001', 'unit7-q001']
+    );
+});
 
 test('the current 400-question publication remains valid with Unit 5 inactive', () => {
     assert.deepEqual(

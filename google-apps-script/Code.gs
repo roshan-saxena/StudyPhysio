@@ -5,7 +5,7 @@ const STUDYPHYSIO = Object.freeze({
   configSheet: '_Config',
   publishedSheet: '_Published',
   archiveSheet: '_Archive',
-  firstQuestionRow: 7,
+  firstQuestionRow: 8,
   questionsPerCheckup: 50,
   unit5CheckupId: 'unit5-checkup',
   unit5Title: 'Unit 5 Checkup',
@@ -256,6 +256,7 @@ function setupUnit5DraftWorkspace() {
       configRows[index] = row;
     });
     configSheet.getRange(2, 1, configRows.length, 5).setValues(configRows);
+    config = getCheckupConfig_();
 
     const questionsSheet = getSheet_(STUDYPHYSIO.questionsSheet);
     const existingRowCount = Math.max(0, questionsSheet.getLastRow() - STUDYPHYSIO.firstQuestionRow + 1);
@@ -294,6 +295,29 @@ function setupUnit5DraftWorkspace() {
       );
     } else if (existingUnit5Rows.length !== STUDYPHYSIO.questionsPerCheckup) {
       throw new Error('Unit 5 draft setup is incomplete: expected 50 prepared rows, found ' + existingUnit5Rows.length + '.');
+    }
+
+    const questionRowCount = Math.max(0, questionsSheet.getLastRow() - STUDYPHYSIO.firstQuestionRow + 1);
+    const questionRows = questionRowCount === 0
+      ? []
+      : questionsSheet.getRange(STUDYPHYSIO.firstQuestionRow, 1, questionRowCount, 10).getValues();
+    const orderedQuestionRows = orderQuestionRowsByConfig_(questionRows, config);
+    const orderChanged = questionRows.some(function (row, index) {
+      return row !== orderedQuestionRows[index];
+    });
+    if (orderChanged) {
+      questionsSheet
+        .getRange(STUDYPHYSIO.firstQuestionRow, 1, orderedQuestionRows.length, 10)
+        .setValues(orderedQuestionRows);
+    }
+
+    const unit5FirstIndex = orderedQuestionRows.findIndex(function (row) {
+      return String(row[1]).trim() === STUDYPHYSIO.unit5CheckupId;
+    });
+    if (unit5FirstIndex >= 0) {
+      questionsSheet
+        .getRange(STUDYPHYSIO.firstQuestionRow + unit5FirstIndex, 3)
+        .setNote('Start here: enter the Unit 5 topic. Complete all 50 rows before marking them Ready to Publish.');
     }
 
     questionsSheet.getRange('A2').setValue(
@@ -663,6 +687,28 @@ function getCheckupConfig_() {
         order: Number(row[4]),
       };
     });
+}
+
+function orderQuestionRowsByConfig_(rows, config) {
+  const orderByCheckupId = new Map(config.map(function (item) {
+    return [item.id, Number(item.order)];
+  }));
+
+  return rows
+    .map(function (row, index) {
+      const checkupId = String(row[1]).trim();
+      return {
+        row: row,
+        originalIndex: index,
+        order: orderByCheckupId.has(checkupId)
+          ? orderByCheckupId.get(checkupId)
+          : Number.MAX_SAFE_INTEGER,
+      };
+    })
+    .sort(function (left, right) {
+      return left.order - right.order || left.originalIndex - right.originalIndex;
+    })
+    .map(function (item) { return item.row; });
 }
 
 function rowToQuestion_(row) {
