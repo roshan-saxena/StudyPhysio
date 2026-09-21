@@ -1,16 +1,35 @@
-# StudyPhysio
+<div align="center">
+  <h1>StudyPhysio</h1>
+  <p>Course-aligned physiology practice through interactive true/false checkups.</p>
+  <p>
+    <a href="https://studyphysio.org">Open StudyPhysio</a> ·
+    <a href="https://github.com/roshan-saxena/StudyPhysio/issues">Report a problem</a>
+  </p>
+</div>
 
-Interactive physiology practice built around course-aligned true/false checkups.
+![StudyPhysio homepage preview](assets/studyphysio-preview.svg)
 
-**Open StudyPhysio:** [studyphysio.org](https://studyphysio.org)
+## What is StudyPhysio?
+
+StudyPhysio makes physiology review more active and focused. It uses conceptual true/false questions to test mechanisms, relationships, and common misconceptions—not just isolated fact recall.
+
+## How to use it
+
+1. Open [studyphysio.org](https://studyphysio.org).
+2. Choose a unit, select the topics you want to review, and choose the number of questions.
+3. Complete the checkup, then review your score, topic performance, and explanations.
 
 ## What it offers
 
-- Practice across eight physiology checkups
-- Choose the topics and number of questions you want to review
-- Work through randomized questions focused on concepts and common misconceptions
-- Review your score, topic performance, and detailed explanations after each checkup
+- Eight physiology checkups
+- Topic-focused practice with randomized question selection
+- Questions designed around conceptual understanding
+- Detailed explanations after every checkup
 
-StudyPhysio is designed to make physiology review more active, focused, and useful than memorizing isolated facts.
+## Feedback
 
-Created by [Roshan Saxena](https://github.com/roshan-saxena).
+Found a problem or have a suggestion? [Open an issue on GitHub](https://github.com/roshan-saxena/StudyPhysio/issues).
+
+## Maintainer
+
+StudyPhysio is created and maintained by [Roshan Saxena](https://github.com/roshan-saxena).
