@@ -1,23 +1,16 @@
 # StudyPhysio
 
-Interactive true/false physiology checkups for course-aligned practice and review.
+Interactive physiology practice built around course-aligned true/false checkups.
 
-## Features
+**Open StudyPhysio:** [studyphysio.org](https://studyphysio.org)
 
-- Eight checkups across the StudyPhysio curriculum
-- Topic selection with one to five questions per selected topic
-- Randomized question selection and order
-- True/false questions designed around conceptual misconceptions
-- Final scoring, topic performance, and detailed answer explanations
-- Exact 50/50 true/false generation for Unit 7
-- Responsive desktop and mobile layouts
+## What it offers
 
-## Development
+- Practice across eight physiology checkups
+- Choose the topics and number of questions you want to review
+- Work through randomized questions focused on concepts and common misconceptions
+- Review your score, topic performance, and detailed explanations after each checkup
 
-The site is a static browser application with no build step. Run the validation suite with:
+StudyPhysio is designed to make physiology review more active, focused, and useful than memorizing isolated facts.
 
-```sh
-npm test
-```
-
-Course guides and raw source materials belong in the ignored `local-materials/` directory.
+Created by [Roshan Saxena](https://github.com/roshan-saxena).
