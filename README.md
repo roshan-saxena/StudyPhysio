@@ -3,11 +3,11 @@
   <p>Course-aligned physiology practice through interactive true/false checkups.</p>
   <p>
     <a href="https://studyphysio.org">Open StudyPhysio</a> ·
-    <a href="https://github.com/roshan-saxena/StudyPhysio/issues">Report a problem</a>
+    <a href="mailto:roshandsaxena@gmail.com">Contact Roshan</a>
   </p>
 </div>
 
-![StudyPhysio homepage preview](assets/studyphysio-preview.svg)
+![StudyPhysio homepage preview](assets/studyphysio-preview.png)
 
 ## What is StudyPhysio?
 
@@ -25,11 +25,3 @@ StudyPhysio makes physiology review more active and focused. It uses conceptual 
 - Topic-focused practice with randomized question selection
 - Questions designed around conceptual understanding
 - Detailed explanations after every checkup
-
-## Feedback
-
-Found a problem or have a suggestion? [Open an issue on GitHub](https://github.com/roshan-saxena/StudyPhysio/issues).
-
-## Maintainer
-
-StudyPhysio is created and maintained by [Roshan Saxena](https://github.com/roshan-saxena).
