@@ -1,8 +1,6 @@
 # StudyPhysio
 
-Course-aligned physiology practice through interactive true/false checkups.
-
-[Open StudyPhysio](https://studyphysio.org) · [Contact Roshan](mailto:roshandsaxena@gmail.com)
+Monta Vista physiology practice through interactive true/false checkups.
 
 ![StudyPhysio homepage preview](assets/studyphysio-preview.png)
 
